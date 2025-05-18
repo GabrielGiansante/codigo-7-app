@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Escolha de Locação</title>
+  <link rel="stylesheet" href="escolhaDataHora.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0e0e0e;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #1c1c1c;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      overflow-y: auto;
+      max-height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .opcao {
+      background-color: #333; /* MAIS CLARO pra ficar visível */
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .opcao:hover {
+      background-color: #444;
+    }
+
+    .opcao input[type="radio"],
+    .opcao input[type="checkbox"] {
+      accent-color: red;
+      width: 18px;
+      height: 18px;
+    }
+
+    .campo {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .campo label {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .campo input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      background-color: #2a2a2a;
+      color: white;
+    }
+
+    .comidas-bebidas {
+      margin-top: 30px;
+    }
+
+    .comidas-bebidas h2 {
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    button {
+      padding: 12px 25px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Escolha sua Locação</h1>
+
+    <label class="opcao">
+      <span>4 horas - R$600,00</span>
+      <input type="radio" name="duracao" value="4h">
+    </label>
+
+    <label class="opcao">
+      <span>12 horas - R$1000,00</span>
+      <input type="radio" name="duracao" value="12h">
+    </label>
+
+    <div class="campo">
+      <label for="data">Data da Locação:</label>
+      <input type="date" id="data" name="data">
+    </div>
+
+    <div class="campo">
+      <label for="hora">Hora de Início:</label>
+      <input type="time" id="hora" name="hora">
+    </div>
+
+    <!-- NOVA SEÇÃO COM VISUAL CORRIGIDO -->
+    <div class="comidas-bebidas">
+      <h2>Comidas e Bebidas</h2>
+
+      <label class="opcao"><span>Cerveja</span><input type="checkbox" value="cerveja"></label>
+      <label class="opcao"><span>Vodka</span><input type="checkbox" value="vodka"></label>
+      <label class="opcao"><span>Suco</span><input type="checkbox" value="suco"></label>
+      <label class="opcao"><span>Refrigerante</span><input type="checkbox" value="refrigerante"></label>
+      <label class="opcao"><span>Carne</span><input type="checkbox" value="carne"></label>
+      <label class="opcao"><span>Petisco</span><input type="checkbox" value="petisco"></label>
+      <label class="opcao"><span>Salgadinho</span><input type="checkbox" value="salgadinho"></label>
+      <label class="opcao"><span>Massa de Pizza</span><input type="checkbox" value="pizza"></label>
+      <label class="opcao"><span>Tomate</span><input type="checkbox" value="tomate"></label>
+      <label class="opcao"><span>Cebola</span><input type="checkbox" value="cebola"></label>
+      <label class="opcao"><span>Arroz</span><input type="checkbox" value="arroz"></label>
+      <label class="opcao"><span>Feijão</span><input type="checkbox" value="feijao"></label>
+    </div>
+
+    <button>Continuar</button>
+  </div>
+</body>
+</html>
+

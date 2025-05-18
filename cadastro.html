@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="cadastro.css" />
+
+</head>
+<body>
+  <div class="container">
+    <h1>Digite seu número de telefone</h1>
+    <p style="color: #aaa; font-size: 1.1em; margin-bottom: 20px;">
+      Seu número é usado apenas para confirmar seu acesso. Não enviamos mensagens. Garantimos sigilo absoluto.
+    </p>
+    <input type="tel" id="telefone" placeholder="Digite seu número" />
+    <button id="botaoContinuar" type="button">Continuar</button>
+    <div id="codigoExibido" style="color: #fff; margin-top: 20px;"></div>
+<button id="confirmarButton" onclick="redirecionar()" style="display: none; margin-top: 10px;">Confirmar</button>
+
+  </div>
+  <script src="codigo.js"></script>
+  <script>
+    document.getElementById("botaoContinuar").addEventListener("click", function() {
+      const numero = "+55" + document.getElementById("telefone").value;
+
+
+  if (numero) {
+    fetch("http://localhost:3001/enviar-codigo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ numero: numero }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.sucesso) {
+       window.location.href = 'codigo.html';
+      } else {
+        alert("Erro ao enviar o código: " + data.erro);
+      }
+    })
+    .catch(error => {
+      alert("Erro de comunicação com o servidor: " + error.message);
+    });
+  } else {
+    alert("Número não informado.");
+  }
+});
+
+  </script>
+  
+</body>
+
+</html>
