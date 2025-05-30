@@ -1,4 +1,5 @@
 import './App.css';
+
 import { useState } from 'react';
 
 function App() {
@@ -101,6 +102,7 @@ function App() {
 
   console.log("Tela atual ANTES do return:", currentScreen);
 
+
   return (
     <div style={{
       backgroundColor: '#000',
@@ -114,6 +116,7 @@ function App() {
       textAlign: 'center',
       padding: '2rem'
     }}>
+
       {currentScreen === 'boasVindas' && (
         <>
           {console.log("DENTRO do bloco boasVindas")}
@@ -169,9 +172,13 @@ function App() {
           {console.log("DENTRO do bloco areaDeReserva")}
           <h2>Área de Reserva</h2>
         </>
+
       )}
     </div>
   );
 }
 
+
 export default App;
+
+
