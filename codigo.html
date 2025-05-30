@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmação de Código</title>
+  <link rel="stylesheet" href="codigo.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Insira o código recebido</h1>
+    <input type="text" id="codigo" placeholder="Digite o código" />
+    <button id="botaoConfirmar">Confirmar</button>
+  </div>
+
+  <script>
+    document.getElementById("botaoConfirmar").addEventListener("click", function () {
+      const codigo = document.getElementById("codigo").value;
+
+      if (codigo) {
+        fetch("http://localhost:3001/verificar-codigo", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ codigo: codigo }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.sucesso) {
+            alert("Código confirmado!");
+            // Redirecionar para a próxima página se quiser
+          } else {
+            alert("Código incorreto. Tente novamente.");
+          }
+        })
+        .catch(error => {
+          alert("Erro ao verificar o código: " + error.message);
+        });
+      } else {
+        alert("Por favor, insira o código.");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0d0d0d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 16px;
+    box-shadow: 0 0 15px #aaa; /* Sombra cinza claro */
+}
+
+
+
+
+
+  
+  h1 {
+    font-family: 'Merriweather', serif;
+    color: #fff;  /* Cor do texto: branco */
+    font-size: 3em;
+    text-shadow: 2px 2px 5px #aaa, -2px -2px 5px #aaa, 2px -2px 5px #aaa, -2px 2px 5px #aaa;  /* Contorno cinza claro */
+  }
+  
+  
+  
+
+  
+  .jargao {
+    font-size: 1.5em;
+    color: #aaa;
+    font-family: 'Times New Roman', serif; /* Fonte mais séria */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+    white-space: nowrap; /* Impede a quebra de linha */
+    text-align: center;
+  }
+  
+  button {
+    background-color: #900;
+    color: white;
+    border: 1px solid white; /* Agora com 1px de espessura */
+    padding: 15px 30px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #c00;
+  }
+  
+  
+
+  
