@@ -48,7 +48,7 @@ function App() {
     const numeroCompleto = "+55" + telefone.trim();
     console.log("Enviando número:", numeroCompleto);
     try {
-      const response = await fetch("http://localhost:3001/enviar-codigo", {
+      const response = await fetch("https://codigo-7-app-3.onrender.com/enviar-codigo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ numero: numeroCompleto }),
@@ -73,7 +73,7 @@ function App() {
     }
     console.log("Verificando código:", codigoDigitado.trim());
     try {
-      const response = await fetch("http://localhost:3001/verificar-codigo", {
+      const response = await fetch("https://codigo-7-app-3.onrender.com/verificar-codigo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ codigo: codigoDigitado.trim() }),
