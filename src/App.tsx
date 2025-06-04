@@ -175,7 +175,8 @@ return;
       alignItems: 'center',
       justifyContent: 'center',  
       paddingTop: '40px',            // <<< ZERAR TEMPORARIAMENTE PARA VER EFEITO PURO
-      paddingBottom: '40px'        // ADICIONADO: para dar espaço ao rolar até o final
+      paddingBottom: '40px', 
+      boxSizing: 'border-box'    // ADICIONADO: para dar espaço ao rolar até o final
     }}>
       {currentScreen === 'boasVindas' && (
         <div className="container"> 

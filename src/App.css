@@ -1,20 +1,30 @@
 
-.container {
+.container { /* Tela de Boas-Vindas */
   text-align: center;
-  padding: 20px; /* <<<< DIMINUÍ O PADDING */
+  padding: 15px; /* Reduzido de 20px (ou do seu valor anterior) */
   background-color: #1a1a1a;
   border-radius: 16px;
   box-shadow: 0 0 15px #aaa;
-  width: 90%; 
-  max-width: 350px; /* <<<< DIMINUÍ SIGNIFICATIVAMENTE O MAX-WIDTH */
-  box-sizing: border-box; 
-  margin-left: auto; 
+  width: 90%;
+  max-width: 350px; /* Mantido, ajuste se necessário depois */
+  box-sizing: border-box;
+  margin-left: auto;
   margin-right: auto;
-  margin-top: 0px;
+  margin-top: 0px; /* Mantém 0px, pois o pai tem paddingTop e justifyContent:center */
+  /* margin-bottom: 0px; */ /* Pode remover ou manter 0px */
 }
 
-.container h1 {
-  font-size: 2.8em; 
+.container h1 { /* Título "Código 7" na tela de Boas-Vindas */
+  font-size: 2.2em; /* Reduzido (ex: de 2.8em) */
+  /* As outras propriedades como color, font-family, text-shadow podem vir do h1 global */
+  /* Se o h1 global já define essas, você pode omiti-las aqui */
+  color: #fff; /* Garantindo a cor */
+  font-family: 'Merriweather', serif; /* Garantindo a fonte */
+  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999; /* Garantindo a sombra */
+  word-break: break-word; /* Do h1 global */
+
+  margin-top: 0;    /* IMPORTANTE: Garante que não há margem no topo do h1 */
+  margin-bottom: 0.5em; /* Reduzido (ex: de 0.6em ou 1em). Ajuste fino depois se precisar. */
 }
 
 
@@ -31,18 +41,18 @@ h1 {
 
 
 .jargao {
-  font-size: 1.2em; /* <<<< DIMINUÍ A FONTE DO JARGÃO */
+  font-size: 0.9em; /* Reduzido (ex: de 1.2em) */
   color: #aaa;
-  font-family: 'Times New Roman', serif; 
+  font-family: 'Times New Roman', serif;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 1em; /* <<<< DIMINUÍ A MARGEM INFERIOR */
-  white-space: normal; 
-  word-wrap: break-word; 
+  margin-bottom: 1.2em; /* Ajustado (ex: de 1em). Dê um espaço bom antes do botão. */
+  white-space: normal;
+  word-wrap: break-word;
   text-align: center;
-  padding-left: 5px; 
+  padding-left: 5px;
   padding-right: 5px;
-  line-height: 1.2; /* Reduzi um pouco */
+  line-height: 1.3; /* Ajustado (ex: de 1.2) */
 }
 
 button {
