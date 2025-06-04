@@ -84,6 +84,9 @@ function App() {
   };
 
   const handleVerificarCodigo = async () => {
+    alert("MODO TESTE: Indo direto para a reserva!");
+setCurrentScreen('areaDeReserva');
+return;
     if (!codigoDigitado.trim()) {
       alert("Por favor, insira o código.");
       return;
@@ -166,11 +169,13 @@ function App() {
 
   return (
     <div style={{
-      minHeight: '100vh',     
-      display: 'flex',        
+      minHeight: '100vh',
+      display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',   
-      justifyContent: 'center' 
+      alignItems: 'center',
+      justifyContent: 'flex-start', 
+      paddingTop: '0px',            // <<< ZERAR TEMPORARIAMENTE PARA VER EFEITO PURO
+      paddingBottom: '40px'        // ADICIONADO: para dar espaço ao rolar até o final
     }}>
       {currentScreen === 'boasVindas' && (
         <div className="container"> 
@@ -209,8 +214,10 @@ function App() {
             placeholder="Digite o código"
             value={codigoDigitado}
             onChange={(e) => setCodigoDigitado(e.target.value)}
+            maxLength={6}
           />
           <button onClick={handleVerificarCodigo}>
+          
             Confirmar
           </button>
         </div>
@@ -218,7 +225,7 @@ function App() {
 
       {currentScreen === 'areaDeReserva' && (
         <>
-          <div className="cadastro-container"> 
+          <div className="area-reserva-container">
             <h1>Faça Sua Reserva</h1>
             <form style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }} onSubmit={handleSubmit}>
               <label htmlFor="reservaData" className="cadastro-info-paragrafo" style={{ textAlign: 'left', marginBottom: '2px' }}>
