@@ -173,7 +173,7 @@ return;
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'flex-start', 
+      justifyContent: 'center',  
       paddingTop: '0px',            // <<< ZERAR TEMPORARIAMENTE PARA VER EFEITO PURO
       paddingBottom: '40px'        // ADICIONADO: para dar espaço ao rolar até o final
     }}>
