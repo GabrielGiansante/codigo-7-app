@@ -110,13 +110,13 @@ return;
     }
   };
 
-  // useEffect para carregar reservas do localStorage
-  useEffect(() => {
+   // useEffect para carregar reservas do localStorage
+   useEffect(() => {
     const storedReservations = localStorage.getItem('reservations');
     if (storedReservations) {
       setReservations(JSON.parse(storedReservations));
     }
-  }, []);
+  }, []); // Roda uma vez ao montar
 
   // useEffect para calcular preço e horário de saída
   useEffect(() => {
@@ -124,13 +124,13 @@ return;
       let novoPreco = 0;
       let novoHorarioSaida = '';
 
-      if (selectedTime) { 
+      if (selectedTime) {
         const [horasEntradaStr, minutosEntradaStr] = selectedTime.split(':');
         const horasEntrada = parseInt(horasEntradaStr, 10);
         const minutosEntrada = parseInt(minutosEntradaStr, 10);
-        
+
         let horasSaidaCalc = horasEntrada;
-        let minutosSaidaCalc = minutosEntrada; // CORRIGIDO: Usa a variável que foi parseada
+        let minutosSaidaCalc = minutosEntrada;
 
         if (opcaoAluguel === '4h') {
           novoPreco = 600;
@@ -145,13 +145,14 @@ return;
         }
 
         if (horasSaidaCalc >= 24) {
-          horasSaidaCalc = horasSaidaCalc % 24; 
+          horasSaidaCalc = horasSaidaCalc % 24;
         }
-        
+
         const horaFormatada = String(horasSaidaCalc).padStart(2, '0');
-        const minutoFormatado = String(minutosSaidaCalc).padStart(2, '0'); // CORRIGIDO: Usa a variável correta
+        const minutoFormatado = String(minutosSaidaCalc).padStart(2, '0');
         novoHorarioSaida = `${horaFormatada}:${minutoFormatado}`;
       } else {
+        // Lógica de preço base se não houver selectedTime
         if (opcaoAluguel === '4h') novoPreco = 600;
         else if (opcaoAluguel === '12h') novoPreco = 1200;
         else if (opcaoAluguel === 'custom') {
@@ -163,7 +164,19 @@ return;
       setHorarioSaida(selectedTime ? novoHorarioSaida : '');
     };
     calcularReserva();
-  }, [selectedTime, opcaoAluguel, totalHorasCustom]);
+  }, [selectedTime, opcaoAluguel, totalHorasCustom]); // Dependências para recalcular
+
+  // NOVO useEffect para rolar para o topo quando a tela de reserva for exibida
+  useEffect(() => {
+    if (currentScreen === 'areaDeReserva') {
+      window.scrollTo(0, 0);
+      console.log("Rolou para o topo - areaDeReserva"); // Para depuração
+    }
+    // Se precisar para outras telas no futuro:
+    // else if (currentScreen === 'algumaOutraTelaLonga') {
+    //   window.scrollTo(0, 0);
+    // }
+  }, [currentScreen]); // Roda sempre que currentScreen mudar
 
   // const isDateAvailable = ... (comentado)
 
