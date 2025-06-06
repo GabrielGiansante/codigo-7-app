@@ -2,18 +2,19 @@
 .form-row-inline {
   display: flex;
   align-items: center;
+  /* margin-bottom é controlado no App.tsx para Data/Hora (ex: marginBottom: '0px' e marginBottom: '10px') */
 }
 
-.form-label-inline {
+.form-label-inline { /* Usado para "Data da Reserva:" e "Hora de Entrada:" */
   margin-right: 8px;
   margin-bottom: 0;
   flex-shrink: 0;
   text-align: left;
-  color: #ccc; /* Cor para os labels de Data e Hora */
-  font-size: 0.9em; /* Tamanho para os labels de Data e Hora */
+  color: #ccc; 
+  font-size: 0.9em; 
 }
 
-.form-input-inline {
+.form-input-inline { /* Usado para input de Data */
   padding: 8px;
   font-size: 0.9em;
   border-radius: 6px;
@@ -24,11 +25,26 @@
   width: 130px; 
 }
 
-.form-input-time-inline {
+.form-input-time-inline { /* Usado para input de Hora */
   width: 100px; 
 }
 
-/* Estilos para a Seção de Duração */
+/* Estilo para títulos de seção dentro do formulário de reserva */
+.form-section-title { /* Usado para "Selecione a Duração:", "Total de Horas Desejado:", "Hora de Saída:", "Preço Total Estimado:" */
+  color: #e0e0e0; /* Cor que você preferiu para "Selecione a Duração" */
+  font-family: 'Merriweather', serif; 
+  font-size: 1.1em;  /* Um pouco maior que labels normais */
+  font-weight: bold; 
+  text-align: left;   /* Mantido como left, mas alguns no App.tsx têm style inline para center */
+  display: block;
+  margin-top: 10px;   /* Reduzido de -5px para um espaçamento mais consistente */
+  margin-bottom: 8px; 
+  padding-left: 0;
+  padding-right: 0;
+  /* text-shadow foi removido como você pediu */
+}
+
+/* Estilos para a Seção de Duração (Radios) */
 .opcoes-duracao-container {
   display: flex;
   flex-direction: column; 
@@ -44,41 +60,27 @@
 }
 
 .radio-grande {
-  transform: scale(2);
+  transform: scale(1.4); /* Voltando para 1.4 como você tinha no seu último CSS. Ajuste se necessário */
   transform-origin: left center; 
-  margin-right: 20px;
+  margin-right: 12px; /* Ajustado para scale(1.4) */
   cursor: pointer;
 }
 #opcao4h,
-  #opcao12h {
-  transform: scale(1.4);
-  }
+#opcao12h { /* Para manter consistência com .radio-grande se quiserem a mesma escala */
+  transform: scale(1.4); /* Mantendo igual a .radio-grande */
+}
+/* Se o terceiro (#opcaoCustom) precisar ser diferente, você pode adicionar: */
+/* #opcaoCustom { transform: scale(SEU_VALOR_DIFERENTE); } */
+
 
 .label-radio-grande {
-  color: #ccc;
+  color: #ccc; /* Cor que você gostou */
   font-size: 0.95em;
   cursor: pointer;
 }
 
-/* === NOVA CLASSE PARA TÍTULOS DE SEÇÃO DE FORMULÁRIO === */
-.form-section-title {
-  color: #fff; /* Mesma cor do h1 */
-  font-family: 'Merriweather', serif; /* Mesma fonte do h1 */
-  font-size: 1.5em;  /* Um pouco menor que o h1 principal (1.8em), mas destacado. Ajuste se desejar. */
-  
-  
-  text-align: left;
-  display: block;
-  margin-top: -5px;  /* Espaço acima (depois de Data/Hora) */
-  margin-bottom: 8px; /* Espaço menor antes das opções de rádio */
-  /* Removendo paddings para não ter recuo extra */
-  padding-left: 0;
-  padding-right: 0;
-}
-
-
 /* ================================================================ */
-/* RESTANTE DO SEU CSS */
+/* RESTANTE DO SEU CSS (sem alterações a partir daqui)              */
 /* ================================================================ */
 
 .container {
@@ -111,6 +113,9 @@ h1 {
   font-size: 1.8em; 
   text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
   word-break: break-word;
+  /* Adicionei margens padrão para h1 para consistência, mas elas são sobrescritas por seletores mais específicos */
+  margin-top: 0; 
+  margin-bottom: 0.8em; 
 }
 
 .jargao {
@@ -160,19 +165,16 @@ button:hover {
 }
 
 .cadastro-container h1 { 
-  font-family: 'Merriweather', serif;
-  color: #fff;
-  font-size: 1.8em; 
+  font-family: 'Merriweather', serif; /* Já herda de h1 global */
+  color: #fff; /* Já herda de h1 global */
+  font-size: 1.8em; /* Igual ao h1 global */
   letter-spacing: 1px; 
-  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999; 
-  margin-top: 0;
-  margin-bottom: 0.8em;
+  /* text-shadow, margin-top, margin-bottom herdam de h1 global */
 }
 
-/* Revertendo .cadastro-info-paragrafo para como era antes das suas últimas mudanças de cor/tamanho */
 .cadastro-info-paragrafo {
-  font-size: 1.0em;  /* Voltando para 1.0em */
-  color: #aaa;      /* Voltando para #aaa */
+  font-size: 1.0em;
+  color: #aaa;
   margin-bottom: 25px;
   line-height: 1.4;
   padding-left: 10px;
@@ -264,14 +266,7 @@ button:hover {
 }
 
 .area-reserva-container h1 {
-  color: #fff;
-  font-family: 'Merriweather', serif;
-  font-size: 1.8em; 
-  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
-  margin-top: 0;
-  margin-bottom: 10px; 
+  /* font-family, color, text-shadow, margin-top herdam de h1 global */
+  font-size: 1.8em; /* Igual ao h1 global */
+  margin-bottom: 15px; /* Espaço antes de Data/Hora */
 }
-
-/* Removendo a regra .form-label que você tinha adicionado ao final,
-   pois agora usaremos .form-section-title para o label "Selecione a Duração"
-   e .form-label-inline para os labels de Data/Hora. */
