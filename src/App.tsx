@@ -6,7 +6,7 @@ function App() {
   const [selectedTime, setSelectedTime] = useState('');
   const [reservations, setReservations] = useState<any[]>([]);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
-  const [currentScreen, setCurrentScreen] = useState('boasVindas');
+  const [currentScreen, setCurrentScreen] = useState('areaDeReserva');
   const [telefone, setTelefone] = useState('');
   const [codigoDigitado, setCodigoDigitado] = useState('');
   const [opcaoAluguel, setOpcaoAluguel] = useState('4h');
