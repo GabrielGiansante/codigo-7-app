@@ -60,14 +60,14 @@
 }
 
 .radio-grande {
-  transform: scale(1.4); /* Voltando para 1.4 como você tinha no seu último CSS. Ajuste se necessário */
+  transform: scale(1.7); /* Voltando para 1.4 como você tinha no seu último CSS. Ajuste se necessário */
   transform-origin: left center; 
-  margin-right: 12px; /* Ajustado para scale(1.4) */
+  margin-right: 15px; /* Ajustado para scale(1.4) */
   cursor: pointer;
 }
 #opcao4h,
 #opcao12h { /* Para manter consistência com .radio-grande se quiserem a mesma escala */
-  transform: scale(1.4); /* Mantendo igual a .radio-grande */
+  transform: scale(1.7); /* Mantendo igual a .radio-grande */
 }
 /* Se o terceiro (#opcaoCustom) precisar ser diferente, você pode adicionar: */
 /* #opcaoCustom { transform: scale(SEU_VALOR_DIFERENTE); } */
