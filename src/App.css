@@ -1,66 +1,135 @@
+/* Estilos para fileiras de label/input na área de reserva (Data e Hora) */
+.form-row-inline {
+  display: flex;
+  align-items: center;
+}
 
-.container { /* Tela de Boas-Vindas */
+.form-label-inline {
+  margin-right: 8px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+  text-align: left;
+  color: #ccc; /* Cor para os labels de Data e Hora */
+  font-size: 0.9em; /* Tamanho para os labels de Data e Hora */
+}
+
+.form-input-inline {
+  padding: 8px;
+  font-size: 0.9em;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2a2a2a;
+  color: #fff;
+  box-sizing: border-box;
+  width: 130px; 
+}
+
+.form-input-time-inline {
+  width: 100px; 
+}
+
+/* Estilos para a Seção de Duração */
+.opcoes-duracao-container {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+  margin-bottom: 15px; 
+  text-align: left;
+}
+
+.opcao-duracao-item {
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+}
+
+.radio-grande {
+  transform: scale(2);
+  transform-origin: left center; 
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.label-radio-grande {
+  color: #ccc;
+  font-size: 0.95em;
+  cursor: pointer;
+}
+
+/* === NOVA CLASSE PARA TÍTULOS DE SEÇÃO DE FORMULÁRIO === */
+.form-section-title {
+  color: #fff; /* Mesma cor do h1 */
+  font-family: 'Merriweather', serif; /* Mesma fonte do h1 */
+  font-size: 1.5em;  /* Um pouco menor que o h1 principal (1.8em), mas destacado. Ajuste se desejar. */
+  
+  
+  text-align: left;
+  display: block;
+  margin-top: -5px;  /* Espaço acima (depois de Data/Hora) */
+  margin-bottom: 8px; /* Espaço menor antes das opções de rádio */
+  /* Removendo paddings para não ter recuo extra */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+/* ================================================================ */
+/* RESTANTE DO SEU CSS */
+/* ================================================================ */
+
+.container {
   text-align: center;
-  padding: 15px; /* Reduzido de 20px (ou do seu valor anterior) */
+  padding: 15px;
   background-color: #1a1a1a;
   border-radius: 16px;
   box-shadow: 0 0 15px #aaa;
   width: 90%;
-  max-width: 350px; /* Mantido, ajuste se necessário depois */
+  max-width: 350px;
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0px; /* Mantém 0px, pois o pai tem paddingTop e justifyContent:center */
-  /* margin-bottom: 0px; */ /* Pode remover ou manter 0px */
+  margin-top: 0px;
 }
 
-.container h1 { /* Título "Código 7" na tela de Boas-Vindas */
-  font-size: 2.2em; /* Reduzido (ex: de 2.8em) */
-  /* As outras propriedades como color, font-family, text-shadow podem vir do h1 global */
-  /* Se o h1 global já define essas, você pode omiti-las aqui */
-  color: #fff; /* Garantindo a cor */
-  font-family: 'Merriweather', serif; /* Garantindo a fonte */
-  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999; /* Garantindo a sombra */
-  word-break: break-word; /* Do h1 global */
-
-  margin-top: 0;    /* IMPORTANTE: Garante que não há margem no topo do h1 */
-  margin-bottom: 0.5em; /* Reduzido (ex: de 0.6em ou 1em). Ajuste fino depois se precisar. */
+.container h1 {
+  font-size: 2.2em;
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
+  word-break: break-word;
+  margin-top: 0;
+  margin-bottom: 0.5em;
 }
-
-
 
 h1 {
   font-family: 'Merriweather', serif;
-  color: #fff; 
-  font-size: 1.8em; /* <<<< DIMINUÍ A FONTE DO H1 */
-  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999; 
-  word-break: break-word; 
+  color: #fff;
+  font-size: 1.8em; 
+  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
+  word-break: break-word;
 }
 
-
-
-
 .jargao {
-  font-size: 0.9em; /* Reduzido (ex: de 1.2em) */
+  font-size: 0.9em;
   color: #aaa;
   font-family: 'Times New Roman', serif;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 1.2em; /* Ajustado (ex: de 1em). Dê um espaço bom antes do botão. */
+  margin-bottom: 1.2em;
   white-space: normal;
   word-wrap: break-word;
   text-align: center;
   padding-left: 5px;
   padding-right: 5px;
-  line-height: 1.3; /* Ajustado (ex: de 1.2) */
+  line-height: 1.3;
 }
 
-button {
+button { 
   background-color: #900;
   color: white;
-  border: 1px solid white; 
-  padding: 8px 15px; /* <<<< DIMINUÍ O PADDING */
-  font-size: 0.9em;  /* <<<< DIMINUÍ A FONTE */
+  border: 1px solid white;
+  padding: 8px 15px;
+  font-size: 0.9em;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -69,46 +138,45 @@ button:hover {
   background-color: #c00;
 }
 
-/* === Estilos para a Tela de Cadastro de Telefone === */
-
 .cadastro-container {
   text-align: center;
-  padding: 15px; /* Reduzido um pouco o padding geral para dar mais espaço interno */
+  padding: 15px;
   background-color: #1a1a1a;
   border-radius: 16px;
   width: 90%;
-  max-width: 320px; /* Mantém o max-width para responsividade */
+  max-width: 320px;
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0px; /* <<< ESSENCIAL: Zera a margem do topo do container */
-  margin-bottom: 0px; /* Aumentei um pouco para dar espaço ao rolar até o fim */
-
-  /* Apenas uma declaração de box-shadow e a borda sutil */
-  border: 1px solid #500; /* Borda vermelha escura sutil */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.07), /* Sombra branca um pouco mais sutil */
-              0 0 8px rgba(180, 0, 0, 0.3);    /* Brilho vermelho um pouco mais sutil */
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 1px solid #500;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.07),
+              0 0 8px rgba(180, 0, 0, 0.3);
 }
-.cadastro-container h1 {
-  font-family: 'Merriweather', serif; 
+
+.cadastro-container h1 { 
+  font-family: 'Merriweather', serif;
   color: #fff;
-  font-size: 2.2em; 
-  letter-spacing: 1px;
+  font-size: 1.8em; 
+  letter-spacing: 1px; 
+  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999; 
   margin-top: 0;
   margin-bottom: 0.8em;
 }
 
+/* Revertendo .cadastro-info-paragrafo para como era antes das suas últimas mudanças de cor/tamanho */
 .cadastro-info-paragrafo {
-  font-size: 1.0em;
-  color: #aaa;
-  margin-bottom: 25px; 
+  font-size: 1.0em;  /* Voltando para 1.0em */
+  color: #aaa;      /* Voltando para #aaa */
+  margin-bottom: 25px;
   line-height: 1.4;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.cadastro-container input[type="tel"] { 
-  width: 90%; 
+.cadastro-container input[type="tel"] {
+  width: 90%;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #444;
@@ -120,20 +188,20 @@ button:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .cadastro-container button { 
   background-color: #900;
   color: white;
-  border: 1px solid white; /* Borda mais fina */
-  padding: 10px 20px; 
+  border: 1px solid white;
+  padding: 10px 20px;
   font-size: 1.2em; 
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  display: block; 
-  width: 60%;  /* Largura reduzida */
+  display: block;
+  width: 60%;
   max-width: 220px;
   margin-left: auto;
   margin-right: auto;
@@ -145,71 +213,61 @@ button:hover {
   background-color: #c00;
 }
 
-/* Estilo SOMENTE para o campo de digitar o código na tela de verificação */
 #codigoInput {
   display: block;
-  width: 65%;             /* Mais estreito */
-  max-width: 220px;       /* Limite máximo da largura */
-
-  padding-top: 12px;      /* Aumenta a altura interna em cima */
-  padding-bottom: 12px;   /* Aumenta a altura interna em baixo */
-  padding-left: 10px;     /* Espaço interno na esquerda */
-  padding-right: 10px;    /* Espaço interno na direita */
-
-  font-size: 1.3em;       /* Tamanho do CÓDIGO DIGITADO */
-  text-align: center;     /* Centraliza o texto digitado */
-  letter-spacing: 0.15em; /* Espaçamento entre os dígitos do CÓDIGO DIGITADO */
-
-  margin-left: auto;      /* Centraliza o campo na tela */
-  margin-right: auto;     /* Centraliza o campo na tela */
-  margin-top: 20px;       /* Espaço em cima do campo */
-  margin-bottom: 25px;    /* Espaço embaixo do campo (antes do botão) */
-
+  width: 65%;
+  max-width: 220px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1.3em;
+  text-align: center;
+  letter-spacing: 0.15em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 25px;
   box-sizing: border-box;
   border-radius: 8px;
   border: 1px solid #444;
-  /* A linha de background-color foi removida para usar o padrão ou o que já existia */
-  color: #000; /* Preto */ /* Cor do texto digitado (se o fundo padrão for escuro) ou ajuste conforme necessidade */
+  color: #000; 
 }
 
-/* Estilo específico para o TEXTO PLACEHOLDER ("Digite o código") dentro do #codigoInput */
 #codigoInput::placeholder {
-  color: #888; /* Cor do texto do placeholder (cinza, ajuste se necessário) */
-  font-size: 0.8rem; /* TAMANHO MENOR para o placeholder. Ajuste (ex: 0.7rem, 13px) se necessário */
-  letter-spacing: normal; /* Sem espaçamento extra para o placeholder */
-  text-align: center; /* Mantém centralizado */
-  opacity: 1; /* Garante que seja visível */
+  color: #888;
+  font-size: 0.8rem;
+  letter-spacing: normal;
+  text-align: center;
+  opacity: 1;
 }
-/* === Estilos específicos para a Área de Reserva === */
+
 .area-reserva-container {
   text-align: center;
   background-color: #1a1a1a;
   border-radius: 16px;
   width: 90%;
-  max-width: 360px; /* Ou o que você tinha */
+  max-width: 360px;
   box-sizing: border-box;
-  padding: 20px;    /* Espaçamento interno */
-
-  /* Estilo da borda/sombra que você gostou */
+  padding: 20px;
   border: 1px solid #500;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.05),
               0 0 10px rgba(180, 0, 0, 0.4);
-
-  /* Centralização horizontal */
   margin-left: auto;
   margin-right: auto;
-
-
-  /* POSICIONAMENTO VERTICAL */
-  margin-top: 200px;     /* <<< IMPORTANTE: Distância do topo da tela */
-  margin-bottom: 50px;  /* <<< IMPORTANTE: Espaço no final para rolagem */
+  margin-top: 200px;
+  margin-bottom: 50px;
 }
 
 .area-reserva-container h1 {
   color: #fff;
   font-family: 'Merriweather', serif;
-  font-size: 1.8em;
+  font-size: 1.8em; 
   text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
-  margin-top: 0;      /* Zera a margem superior do h1 */
-  margin-bottom: 20px; /* Espaço abaixo do título */
+  margin-top: 0;
+  margin-bottom: 10px; 
 }
+
+/* Removendo a regra .form-label que você tinha adicionado ao final,
+   pois agora usaremos .form-section-title para o label "Selecione a Duração"
+   e .form-label-inline para os labels de Data/Hora. */
