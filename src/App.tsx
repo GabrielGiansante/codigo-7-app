@@ -1,5 +1,12 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+const itensConsumoDisponiveis = [
+  { id: 'coca', nome: 'Coca-Cola (lata 350ml)', preco: 8.00, categoria: 'Bebidas' },
+  { id: 'agua_sem_gas', nome: 'Água Mineral s/ Gás (500ml)', preco: 5.00, categoria: 'Bebidas' },
+  { id: 'heineken_ln', nome: 'Cerveja Heineken (long neck)', preco: 12.00, categoria: 'Bebidas Alcoólicas' },
+  { id: 'mini_salgados', nome: 'Porção Mini Salgados (12 un.)', preco: 30.00, categoria: 'Comidas' },
+  // Adicione sua lista completa aqui
+];
 
 function App() {
   const [selectedDate, setSelectedDate] = useState('');
@@ -13,7 +20,21 @@ function App() {
   const [totalHorasCustom, setTotalHorasCustom] = useState(13);
   const [horarioSaida, setHorarioSaida] = useState('');
   const [precoFinal, setPrecoFinal] = useState(600);
+  const [itensConsumoSelecionados, setItensConsumoSelecionados] = useState<{ [itemId: string]: number }>({});
 
+  const handleSelecionarItem = (itemId: string, operacao: 'incrementar' | 'decrementar') => {
+    setItensConsumoSelecionados(prevSelecionados => {
+      const quantidadeAtual = prevSelecionados[itemId] || 0;
+      const novaQuantidade = operacao === 'incrementar' ? quantidadeAtual + 1 : quantidadeAtual - 1;
+  
+      if (novaQuantidade <= 0) {
+        const { [itemId]: _, ...novosSelecionados } = prevSelecionados;
+        return novosSelecionados;
+      } else {
+        return { ...prevSelecionados, [itemId]: novaQuantidade };
+      }
+    });
+  };
   const confirmPayment = () => {
     alert("Pagamento confirmado! A reserva será finalizada.");
     setPaymentConfirmed(true);
