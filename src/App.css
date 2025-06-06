@@ -67,7 +67,7 @@
 }
 #opcao4h,
 #opcao12h { /* Para manter consistência com .radio-grande se quiserem a mesma escala */
-  transform: scale(1.7); /* Mantendo igual a .radio-grande */
+  transform: scale(1.5); /* Mantendo igual a .radio-grande */
 }
 /* Se o terceiro (#opcaoCustom) precisar ser diferente, você pode adicionar: */
 /* #opcaoCustom { transform: scale(SEU_VALOR_DIFERENTE); } */
