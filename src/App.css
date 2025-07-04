@@ -363,3 +363,85 @@ button:hover {
   font-size: 1.8em; 
   margin-bottom: 15px;
 }
+/* === ESTILOS PARA TELA DE PAGAMENTO E CONTROLE === */
+.pagamento-container, .controle-container {
+  background-color: #1a1a1a;
+  padding: 20px 25px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  border: 1px solid #555;
+  margin: 50px 0;
+}
+.pagamento-container h1, .controle-container h1 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+.pagamento-info, .pagamento-aviso, .controle-container p {
+  color: #ccc;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+.pagamento-info strong {
+  color: #FFA500;
+  font-size: 1.2em;
+}
+.pix-section {
+  background-color: #252525;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+.pix-section p {
+  margin: 10px 0;
+  font-size: 0.9em;
+}
+.pix-copia-cola {
+  background-color: #333;
+  padding: 12px;
+  border-radius: 6px;
+  word-wrap: break-word;
+  font-size: 0.85em;
+  color: #e0e0e0;
+  position: relative;
+  text-align: left;
+  padding-right: 75px;
+}
+.pix-copia-cola button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  padding: 6px 10px;
+}
+.pagamento-aviso strong {
+  color: #ff4d4d;
+}
+.btn-pagamento-confirmado, .btn-controle {
+  background-color: #008000;
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: 1px solid #fff;
+}
+.btn-pagamento-voltar {
+  background-color: transparent;
+  border: 1px solid #777;
+  width: 100%;
+  margin-top: 10px;
+  color: #aaa;
+}
+.controle-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+.btn-nova-reserva {
+  background-color: #555;
+}
