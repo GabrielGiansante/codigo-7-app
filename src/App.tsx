@@ -166,9 +166,7 @@ function App() {
               <div className="form-section-title">
                  Selecione a Duração:
               </div>
-              <div className="opcoes-duracao-container"
-              style={{ paddingBottom: '0px' }} 
-              >
+              <div className="opcoes-duracao-container">
                 <div className="opcao-duracao-item">
                   <input className="radio-grande" type="radio" id="opcao4h" name="opcaoAluguel" value="4h" checked={opcaoAluguel === '4h'} onChange={(e) => setOpcaoAluguel(e.target.value)} />
                   <label htmlFor="opcao4h" className="label-radio-grande">4 Horas - R$ 600,00</label>
@@ -208,7 +206,7 @@ function App() {
                 style={{ 
                   textAlign: 'center', 
                   color: '#00BFFF', 
-                  marginTop: '20px', /* << REDUZIDO de 20px */
+                  marginTop: '0px', /* << REDUZIDO de 20px */
                   marginBottom: '5px' 
                 }}
               >
