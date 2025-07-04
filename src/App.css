@@ -38,7 +38,7 @@
   text-align: left;   /* Mantido como left, mas alguns no App.tsx têm style inline para center */
   display: block;
   margin-top: 0px;   /* Reduzido de -5px para um espaçamento mais consistente */
-  margin-bottom: 8px; 
+  margin-bottom: 2px; 
   padding-left: 0;
   padding-right: 0;
   /* text-shadow foi removido como você pediu */
