@@ -153,7 +153,7 @@ function App() {
         <>
           <div className="area-reserva-container">
             <h1>Faça Sua Reserva</h1>
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '100%' }} onSubmit={handleSubmit}>
+            <form style={{ display: 'flex', flexDirection: 'column', width: '100%' }} onSubmit={handleSubmit}>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0px' }}>
                 <label htmlFor="reservaData" className="form-label-inline">Data da Reserva:</label>
                 <input type="date" id="reservaData" className="form-input-inline" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
