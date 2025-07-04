@@ -1,7 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-
 function App() {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -14,8 +13,6 @@ function App() {
   const [totalHorasCustom, setTotalHorasCustom] = useState(13);
   const [horarioSaida, setHorarioSaida] = useState('');
   const [precoFinal, setPrecoFinal] = useState(600);
-  
-
   
   const confirmPayment = () => {
     alert("Pagamento confirmado! A reserva será finalizada.");
@@ -166,7 +163,6 @@ function App() {
                 <input type="time" id="reservaHoraEntrada" className="form-input-inline form-input-time-inline" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} />
               </div>
 
-              {/* SEÇÃO DE DURAÇÃO MODIFICADA */}
               <div className="form-section-title">
                  Selecione a Duração:
               </div>
@@ -184,12 +180,10 @@ function App() {
                   <label htmlFor="opcaoCustom" className="label-radio-grande">Acima de 12 Horas (R$ 100,00/hora adicional)</label>
                 </div>
               </div>
-              {/* FIM DA SEÇÃO DE DURAÇÃO MODIFICADA */}
 
               {opcaoAluguel === 'custom' && (
                 <>
-                  {/* Mantendo a classe original para este label específico, se o estilo for diferente */}
-                  <label htmlFor="totalHorasCustomInput" className="cadastro-info-paragrafo" style={{ textAlign: 'left', marginBottom: '2px' }}>Total de Horas Desejado:</label>
+                  <label htmlFor="totalHorasCustomInput" className="form-section-title" style={{ marginTop: '20px' }}>Total de Horas Desejado:</label>
                   <input type="number" id="totalHorasCustomInput" min="13" value={totalHorasCustom.toString()}
                     onChange={(e) => {
                       const stringValue = e.target.value;
@@ -204,7 +198,22 @@ function App() {
                   />
                 </>
               )}
-              <label htmlFor="reservaHoraSaida" className="cadastro-info-paragrafo" style={{ textAlign: 'center', color: '#00BFFF', fontWeight: 'bold', fontSize: '1.1em', display: 'block', marginBottom: '5px', marginTop: '20px' }}>Hora de Saída:</label>
+              
+              {/* ===== TRECHO MODIFICADO ===== */}
+              <label 
+                htmlFor="reservaHoraSaida" 
+                className="form-section-title" 
+                style={{ 
+                  textAlign: 'center', 
+                  color: '#00BFFF', 
+                  marginTop: '15px', /* << REDUZIDO de 20px */
+                  marginBottom: '5px' 
+                }}
+              >
+                Hora de Saída:
+              </label>
+              {/* ===== FIM DO TRECHO MODIFICADO ===== */}
+              
               <input type="time" id="reservaHoraSaida" value={horarioSaida} readOnly style={{ backgroundColor: '#1F1F1F', color: '#FFA500', border: '1px dashed #555', padding: '10px', borderRadius: '8px', fontSize: '1.5em', textAlign: 'center', width: '50%', minWidth: '120px', marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.5em', cursor: 'default' }} />
               <div className="cadastro-info-paragrafo" style={{ marginTop: '20px', fontWeight: 'bold', fontSize: '1.2em' }}>Preço Total Estimado: R$ {precoFinal.toFixed(2).replace('.', ',')}</div>
               <button type="button" onClick={confirmPayment} style={{ marginTop: '20px' }}>Confirmar Pagamento</button>
