@@ -56,8 +56,7 @@ function App() {
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   // Configurado para 'areaDeReserva' para facilitar o teste da nova seção
   const [currentScreen, setCurrentScreen] = useState('areaDeReserva'); 
-  const [telefone, setTelefone] = useState('');
-  const [codigoDigitado, setCodigoDigitado] = useState('');
+  
   const [opcaoAluguel, setOpcaoAluguel] = useState('4h');
   const [totalHorasCustom, setTotalHorasCustom] = useState(13);
   const [horarioSaida, setHorarioSaida] = useState('');
@@ -95,13 +94,7 @@ function App() {
     }
   };
 
-  const handleEnviarTelefone = async () => { /* ... código existente ... */ };
-
-  const handleVerificarCodigo = async () => {
-    alert("MODO TESTE: Indo direto para a reserva!");
-    setCurrentScreen('areaDeReserva');
-    return;
-  };
+  
 
   // NOVA FUNÇÃO PARA SELECIONAR ITENS
   const handleSelecionarItem = (itemId: string, operacao: 'incrementar' | 'decrementar') => {
