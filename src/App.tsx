@@ -206,7 +206,7 @@ function App() {
                 style={{ 
                   textAlign: 'center', 
                   color: '#00BFFF', 
-                  marginTop: '15px', /* << REDUZIDO de 20px */
+                  marginTop: '5px', /* << REDUZIDO de 20px */
                   marginBottom: '5px' 
                 }}
               >
