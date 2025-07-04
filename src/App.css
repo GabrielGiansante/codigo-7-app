@@ -63,9 +63,9 @@
 #opcao4h,
 #opcao12h,
 #opcaoCustom {
-  transform: scale(1.5); /* Tamanho aumentado. Ajuste 1.5 se quiser maior ou menor. */
+  transform: scale(1.5) !important;/* Tamanho aumentado. Ajuste 1.5 se quiser maior ou menor. */
   transform-origin: left center;
-  margin-right: 15px; /* Espaço à direita da bolinha. Ajuste se a escala mudar. */
+  margin-right: 15px !important; /* Espaço à direita da bolinha. Ajuste se a escala mudar. */
   cursor: pointer;
 }
 /* Se o terceiro (#opcaoCustom) precisar ser diferente, você pode adicionar: */
