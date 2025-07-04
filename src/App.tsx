@@ -153,7 +153,7 @@ function App() {
         <>
           <div className="area-reserva-container">
             <h1>Faça Sua Reserva</h1>
-            <form style={{ display: 'flex', flexDirection: 'column', width: '100%' }} onSubmit={handleSubmit}>
+            <form style={{ display: 'flex', flexDirection: 'column',gap: '10px', width: '100%' }} onSubmit={handleSubmit}>
               <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0px' }}>
                 <label htmlFor="reservaData" className="form-label-inline">Data da Reserva:</label>
                 <input type="date" id="reservaData" className="form-input-inline" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
@@ -166,7 +166,9 @@ function App() {
               <div className="form-section-title">
                  Selecione a Duração:
               </div>
-              <div className="opcoes-duracao-container">
+              <div className="opcoes-duracao-container"
+              style={{ paddingBottom: '0px' }} 
+              >
                 <div className="opcao-duracao-item">
                   <input className="radio-grande" type="radio" id="opcao4h" name="opcaoAluguel" value="4h" checked={opcaoAluguel === '4h'} onChange={(e) => setOpcaoAluguel(e.target.value)} />
                   <label htmlFor="opcao4h" className="label-radio-grande">4 Horas - R$ 600,00</label>
