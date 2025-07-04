@@ -179,8 +179,7 @@ function App() {
       alignItems: 'center', justifyContent: 'center',
       paddingTop: '40px', paddingBottom: '40px', boxSizing: 'border-box'
     }}>
-      {/* Telas de boasVindas, etc. foram removidas temporariamente para o build passar */}
-
+  
       {currentScreen === 'areaDeReserva' && (
         <div className="area-reserva-container">
           <h1>Faça Sua Reserva</h1>
@@ -193,6 +192,7 @@ function App() {
               <label htmlFor="reservaHoraEntrada" className="form-label-inline">Hora de Entrada:</label>
               <input type="time" id="reservaHoraEntrada" className="form-input-inline form-input-time-inline" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} />
             </div>
+            
             <div className="form-section-title">
               Selecione a Duração:
             </div>
@@ -210,7 +210,7 @@ function App() {
                 <label htmlFor="opcaoCustom" className="label-radio-grande">Acima de 12 Horas (R$ 100,00/hora adicional)</label>
               </div>
             </div>
-
+  
             {opcaoAluguel === 'custom' && (
               <div style={{marginBottom: '10px'}}>
                 <label htmlFor="totalHorasCustomInput" className="form-section-title" style={{marginTop: '0'}}>Total de Horas Desejado:</label>
@@ -276,7 +276,7 @@ function App() {
             <div className="form-section-title" style={{textAlign: 'center', fontSize: '1.3em', marginTop: '10px' }}>Preço Total Estimado: R$ {precoFinal.toFixed(2).replace('.', ',')}</div>
             
             <div style={{marginTop: '20px'}}>
-              <button type="button" onClick={confirmPayment}>
+            <button type="button" onClick={confirmPayment}>
                 Ir para Pagamento
               </button>
               {paymentConfirmed && (
@@ -288,7 +288,7 @@ function App() {
           </form>
         </div>
       )}
-
+  
       {currentScreen === 'areaDePagamento' && (
         <div className="pagamento-container">
           <h1>Pagamento via Pix</h1>
@@ -327,7 +327,7 @@ function App() {
           </button>
         </div>
       )}
-
+  
       {currentScreen === 'telaControleRemoto' && (
         <div className="controle-container">
           <h1>Acesso Liberado</h1>
@@ -335,24 +335,28 @@ function App() {
           <div className="controle-botoes">
             <button className="btn-controle btn-abrir">Abrir Portão</button>
             <button 
-              className="btn-controle btn-nova-reserva" 
-              onClick={() => {
-                localStorage.removeItem('acessoLiberado');
-                setSelectedDate(''); setSelectedTime(''); setOpcaoAluguel('4h');
-                setTotalHorasCustom(13); setPaymentConfirmed(false);
-                setPrecoFinal(600); setHorarioSaida('');
-                setItensConsumoSelecionados({});
-                setCurrentScreen('areaDeReserva');
-              }}
+              className="btn-controle btn-estender-reserva"
+              onClick={() => setCurrentScreen('telaEstenderReserva')}
             >
-              Fazer Nova Reserva
+              Estender Reserva
             </button>
           </div>
         </div>
       )}
-
+  
+      {/* === NOVA TELA PARA ESTENDER RESERVA (PLACEHOLDER) === */}
+      {currentScreen === 'telaEstenderReserva' && (
+        <div className="estender-reserva-container">
+          <h1>Estender Reserva</h1>
+          <p>Funcionalidade em construção.</p>
+          <button onClick={() => setCurrentScreen('telaControleRemoto')}>
+            Voltar
+          </button>
+        </div>
+      )}
+  
     </div>
   );
-}
-
-export default App;
+  }
+  
+  export default App;

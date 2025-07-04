@@ -445,3 +445,37 @@ button:hover {
 .btn-nova-reserva {
   background-color: #555;
 }
+/* === ESTILOS PARA A NOVA TELA DE ESTENDER RESERVA === */
+.estender-reserva-container {
+  background-color: #1a1a1a;
+  padding: 20px 25px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  border: 1px solid #555;
+  margin: 50px 0;
+}
+.estender-reserva-container h1 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+.estender-reserva-container p {
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+/* Estilo para o novo botão na tela de controle */
+.btn-estender-reserva {
+  background-color: #005f99; /* Um tom de azul para diferenciar */
+}
+.btn-estender-reserva:hover {
+  background-color: #007acc;
+}
+
+/* Garante que o botão ocupe a largura na tela de controle */
+.controle-botoes .btn-estender-reserva {
+    width: 100%;
+}
