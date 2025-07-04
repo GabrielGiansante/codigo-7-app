@@ -272,7 +272,9 @@ function App() {
             
             <label htmlFor="reservaHoraSaida" className="form-section-title" style={{ textAlign: 'center', color: '#00BFFF', marginTop: '15px', marginBottom: '5px' }}>Hora de Saída:</label>
             <input type="time" id="reservaHoraSaida" value={horarioSaida} readOnly style={{ backgroundColor: '#1F1F1F', color: '#FFA500', border: '1px dashed #555', padding: '10px', borderRadius: '8px', fontSize: '1.5em', textAlign: 'center', width: '50%', minWidth: '120px', marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.5em', cursor: 'default' }} />
-            
+            <div className="consumo-info-msg">
+  Os itens selecionados para sua comodidade estarão disponíveis no local.
+</div>
             <div className="form-section-title" style={{textAlign: 'center', fontSize: '1.3em', marginTop: '10px' }}>Preço Total Estimado: R$ {precoFinal.toFixed(2).replace('.', ',')}</div>
             
             <div style={{marginTop: '20px'}}>
