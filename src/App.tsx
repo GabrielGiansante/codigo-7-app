@@ -215,8 +215,8 @@ function App() {
               {/* ===== FIM DO TRECHO MODIFICADO ===== */}
               
               <input type="time" id="reservaHoraSaida" value={horarioSaida} readOnly style={{ backgroundColor: '#1F1F1F', color: '#FFA500', border: '1px dashed #555', padding: '10px', borderRadius: '8px', fontSize: '1.5em', textAlign: 'center', width: '50%', minWidth: '120px', marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.5em', cursor: 'default' }} />
-              <div className="cadastro-info-paragrafo" style={{ marginTop: '0px', fontWeight: 'bold', fontSize: '1.2em' }}>Preço Total Estimado: R$ {precoFinal.toFixed(2).replace('.', ',')}</div>
-              <button type="button" onClick={confirmPayment} style={{ marginTop: '20px' }}>Confirmar Pagamento</button>
+              <div className="cadastro-info-paragrafo" style={{ marginTop: '-10px', fontWeight: 'bold', fontSize: '1.2em' }}>Preço Total Estimado: R$ {precoFinal.toFixed(2).replace('.', ',')}</div>
+              <button type="button" onClick={confirmPayment} style={{ marginTop: '-20px' }}>Confirmar Pagamento</button>
               {paymentConfirmed && (<button type="submit">Finalizar Reserva</button>)}
             </form>
           </div>
