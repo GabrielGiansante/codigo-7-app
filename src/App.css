@@ -343,14 +343,19 @@ button:hover {
   max-width: 360px;
   box-sizing: border-box;
   padding: 20px;
-  padding-top: 1px; /* Para evitar colapso de margem */
   border: 1px solid #500;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.05),
               0 0 10px rgba(180, 0, 0, 0.4);
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px; /* Ou o valor que você preferiu para subir o container */
-  margin-bottom: 50px;
+  
+  /* --- MUDANÇAS IMPORTANTES AQUI --- */
+  margin-top: 50px; /* Reduzindo a margem do topo para dar mais espaço na tela */
+  margin-bottom: 50px; /* Mantendo a margem inferior */
+
+  /* A linha abaixo pode ser necessária se a rolagem ainda não funcionar bem */
+  /* max-height: 85vh; */ /* Limita a altura máxima a 85% da altura da viewport */
+  /* overflow-y: auto; */  /* Adiciona uma barra de rolagem SE o conteúdo ultrapassar a max-height */
 }
 .area-reserva-container h1 {
   font-size: 1.8em; 
