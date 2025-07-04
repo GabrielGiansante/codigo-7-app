@@ -59,15 +59,14 @@
   padding: 3px 0;
 }
 
-.radio-grande {
-  transform: scale(1.7); /* Voltando para 1.4 como você tinha no seu último CSS. Ajuste se necessário */
-  transform-origin: left center; 
-  margin-right: 15px; /* Ajustado para scale(1.4) */
-  cursor: pointer;
-}
+/* Regra específica para os 3 radios da seção de duração */
 #opcao4h,
-#opcao12h { /* Para manter consistência com .radio-grande se quiserem a mesma escala */
-  transform: scale(1.5); /* Mantendo igual a .radio-grande */
+#opcao12h,
+#opcaoCustom {
+  transform: scale(1.5); /* Tamanho aumentado. Ajuste 1.5 se quiser maior ou menor. */
+  transform-origin: left center;
+  margin-right: 15px; /* Espaço à direita da bolinha. Ajuste se a escala mudar. */
+  cursor: pointer;
 }
 /* Se o terceiro (#opcaoCustom) precisar ser diferente, você pode adicionar: */
 /* #opcaoCustom { transform: scale(SEU_VALOR_DIFERENTE); } */
