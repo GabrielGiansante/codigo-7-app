@@ -59,15 +59,57 @@
   padding: 3px 0;
 }
 
-/* Regra específica para os 3 radios da seção de duração */
-#opcao4h,
-#opcao12h,
-#opcaoCustom {
-  transform: scale(1.5) !important;/* Tamanho aumentado. Ajuste 1.5 se quiser maior ou menor. */
-  transform-origin: left center;
-  margin-right: 15px !important; /* Espaço à direita da bolinha. Ajuste se a escala mudar. */
-  cursor: pointer;
+/* --- INÍCIO DOS ESTILOS PARA RADIO BUTTON CUSTOMIZADO --- */
+
+/* 1. Esconde o input de rádio original */
+.radio-grande {
+  opacity: 0;
+  position: fixed; /* Tira do fluxo da página */
+  width: 0;
+  height: 0;
 }
+
+/* 2. Estiliza o label para ser clicável e ter espaço para a bolinha customizada */
+.label-radio-grande {
+  color: #ccc;
+  font-size: 0.95em;
+  cursor: pointer;
+  position: relative; /* Necessário para posicionar a bolinha customizada */
+  padding-left: 30px; /* Cria espaço à esquerda do texto para a nova bolinha. Ajuste se necessário. */
+  line-height: 20px;  /* Alinha o texto com a bolinha de 20px */
+  display: inline-block; /* Garante que o padding e a altura sejam aplicados corretamente */
+}
+
+/* 3. Desenha a bolinha customizada (o círculo externo) usando um pseudo-elemento no label */
+.label-radio-grande::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;   /* Largura da bolinha customizada */
+  height: 20px;  /* Altura da bolinha customizada */
+  border: 2px solid #ccc; /* Cor da borda da bolinha */
+  border-radius: 50%; /* Faz ser um círculo */
+  background-color: #2a2a2a; /* Cor de fundo da bolinha */
+  box-sizing: border-box; /* Garante que a borda não aumente o tamanho total */
+}
+
+/* 4. Desenha o ponto interno quando o rádio está selecionado */
+.radio-grande:checked + .label-radio-grande::before {
+  border-color: dodgerblue; /* Cor da borda quando selecionado (um azul) */
+}
+
+.radio-grande:checked + .label-radio-grande::after {
+  content: '';
+  position: absolute;
+  left: 5px; /* Posição X do ponto interno (5px de borda + 2px de borda = 7px de espaço) */
+  top: 5px;  /* Posição Y do ponto interno */
+  width: 10px;  /* Largura do ponto interno (20px - 5px - 5px) */
+  height: 10px; /* Altura do ponto interno */
+  border-radius: 50%; /* Faz ser um círculo */
+  background-color: dodgerblue; /* Cor do ponto interno */
+}
+/* --- FIM DOS ESTILOS PARA RADIO BUTTON CUSTOMIZADO --- */
 /* Se o terceiro (#opcaoCustom) precisar ser diferente, você pode adicionar: */
 /* #opcaoCustom { transform: scale(SEU_VALOR_DIFERENTE); } */
 
