@@ -167,8 +167,8 @@ function App() {
               </div>
 
               {/* SEÇÃO DE DURAÇÃO MODIFICADA */}
-              <div className="form-section-title"> {/* << CLASSE ALTERADA AQUI */}
-                Selecione a Duração:
+              <div className="form-section-title">
+                 Selecione a Duração:
               </div>
               <div className="opcoes-duracao-container">
                 <div className="opcao-duracao-item">
