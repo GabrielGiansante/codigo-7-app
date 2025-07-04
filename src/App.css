@@ -1,9 +1,101 @@
+/* === ESTILOS PARA A NOVA SEÇÃO DE ITENS DE CONSUMO === */
+.consumo-section {
+  border-top: 2px solid #333; /* Linha separadora forte antes da seção */
+  margin-top: 25px; /* Espaço antes da linha */
+  padding-top: 15px; /* Espaço depois da linha */
+}
+.consumo-section-title {
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  font-size: 1.5em; 
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 15px 0; /* Margem apenas abaixo */
+}
+.consumo-category-wrapper {
+  margin-bottom: 20px;
+}
+.consumo-category-title {
+  color: #00BFFF;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.consumo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  border-bottom: 1px solid #333; /* Linha separadora sutil entre itens */
+  gap: 10px; /* Espaço entre os grupos de detalhes e controles */
+}
+.consumo-item:last-child {
+  border-bottom: none; /* Remove a borda do último item da categoria */
+}
+.consumo-item-details {
+  flex-grow: 1;
+  text-align: left;
+}
+.consumo-item-name {
+  color: #e0e0e0;
+  font-size: 0.95em;
+  display: block;
+}
+.consumo-item-price {
+  color: #aaa;
+  font-size: 0.85em;
+}
+.consumo-item-controls {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.consumo-item-controls span {
+  color: #fff;
+  min-width: 25px;
+  text-align: center;
+  font-size: 1em;
+  margin: 0 8px;
+}
+.btn-consumo-control {
+  background-color: #404040;
+  color: white;
+  border: 1px solid #555;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 50%; 
+  cursor: pointer;
+  transition: background-color 0.2s;
+  line-height: 1;
+}
+.btn-consumo-control:hover {
+  background-color: #555;
+}
+.btn-consumo-control:disabled {
+  background-color: #2a2a2a;
+  color: #505050; 
+  border-color: #404040; 
+  cursor: not-allowed;
+}
+.btn-consumo-increment {
+   background-color: #006020; 
+}
+.btn-consumo-increment:hover {
+   background-color: #008030;
+}
+
+
+/* RESTANTE DO SEU CSS (MANTIDO COMO ESTAVA) */
 /* Estilos para fileiras de label/input na área de reserva (Data e Hora) */
 .form-row-inline {
   display: flex;
   align-items: center;
 }
-
 .form-label-inline {
   margin-right: 8px;
   margin-bottom: 0;
@@ -12,7 +104,6 @@
   color: #ccc; 
   font-size: 0.9em; 
 }
-
 .form-input-inline {
   padding: 8px;
   font-size: 0.9em;
@@ -23,14 +114,11 @@
   box-sizing: border-box;
   width: 130px; 
 }
-
 .form-input-time-inline {
   width: 100px; 
 }
-
-/* Estilo para títulos de seção dentro do formulário de reserva */
 .form-section-title {
-  color: #e0e0e0;
+  color: #e0e0e0; 
   font-family: 'Merriweather', serif; 
   font-size: 1.1em;
   font-weight: bold; 
@@ -41,32 +129,26 @@
   padding-left: 0;
   padding-right: 0;
 }
-
-/* Estilos para a Seção de Duração (Radios) */
 .opcoes-duracao-container {
   display: flex;
   flex-direction: column; 
   gap: 10px; 
-  margin-bottom: 0px; 
+  margin-bottom: 15px; /* Voltando para 15px, pois agora temos a seção de consumo depois */
   text-align: left;
 }
-
 .opcao-duracao-item {
   display: flex;
   align-items: center;
   padding: 3px 0;
 }
-
 /* --- INÍCIO DOS ESTILOS PARA RADIO BUTTON CUSTOMIZADO --- */
-
-.radio-grande { /* 1. Esconde o input de rádio original */
+.radio-grande {
   opacity: 0;
   position: fixed;
   width: 0;
   height: 0;
 }
-
-.label-radio-grande { /* 2. Estiliza o label para ser clicável e ter espaço para a bolinha */
+.label-radio-grande {
   color: #ccc;
   font-size: 0.95em;
   cursor: pointer;
@@ -75,8 +157,7 @@
   line-height: 20px;
   display: inline-block;
 }
-
-.label-radio-grande::before { /* 3. Desenha a bolinha customizada (o círculo externo) */
+.label-radio-grande::before {
   content: '';
   position: absolute;
   left: 0;
@@ -85,15 +166,13 @@
   height: 20px;
   border: 2px solid #ccc;
   border-radius: 50%;
-  background-color: #fff; /* << CORRIGIDO COM PONTO E VÍRGULA ABAIXO */
+  background-color: #fff;
   box-sizing: border-box;
 }
-
-.radio-grande:checked + .label-radio-grande::before { /* 4. Estilo da borda quando selecionado */
+.radio-grande:checked + .label-radio-grande::before {
   border-color: dodgerblue;
 }
-
-.radio-grande:checked + .label-radio-grande::after { /* 5. Desenha o ponto interno quando selecionado */
+.radio-grande:checked + .label-radio-grande::after {
   content: '';
   position: absolute;
   left: 5px;
@@ -103,15 +182,33 @@
   border-radius: 50%;
   background-color: dodgerblue;
 }
-/* --- FIM DOS ESTILOS PARA RADIO BUTTON CUSTOMIZADO --- */
-
-/* A regra duplicada para .label-radio-grande foi removida. */
-/* O seletor #opcao4h, #opcao12h, #opcaoCustom foi removido pois agora usamos a abordagem de customização total. */
-
 
 /* ================================================================ */
-/* RESTANTE DO SEU CSS (sem alterações)                             */
+/* ESTILOS GERAIS E DE OUTRAS TELAS */
 /* ================================================================ */
+
+h1 {
+  font-family: 'Merriweather', serif;
+  color: #fff;
+  font-size: 1.8em; 
+  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
+  word-break: break-word;
+  margin-top: 0; 
+  margin-bottom: 0.8em; 
+}
+button { 
+  background-color: #900;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 15px;
+  font-size: 0.9em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #c00;
+}
 
 .container {
   text-align: center;
@@ -126,25 +223,9 @@
   margin-right: auto;
   margin-top: 0px;
 }
-
 .container h1 {
   font-size: 2.2em;
-  color: #fff;
-  font-family: 'Merriweather', serif;
-  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
-  word-break: break-word;
-  margin-top: 0;
   margin-bottom: 0.5em;
-}
-
-h1 {
-  font-family: 'Merriweather', serif;
-  color: #fff;
-  font-size: 1.8em; 
-  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
-  word-break: break-word;
-  margin-top: 0; 
-  margin-bottom: 0.8em; 
 }
 
 .jargao {
@@ -160,20 +241,6 @@ h1 {
   padding-left: 5px;
   padding-right: 5px;
   line-height: 1.3;
-}
-
-button { 
-  background-color: #900;
-  color: white;
-  border: 1px solid white;
-  padding: 8px 15px;
-  font-size: 0.9em;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-button:hover {
-  background-color: #c00;
 }
 
 .cadastro-container {
@@ -192,17 +259,10 @@ button:hover {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.07),
               0 0 8px rgba(180, 0, 0, 0.3);
 }
-
 .cadastro-container h1 { 
-  font-family: 'Merriweather', serif;
-  color: #fff;
   font-size: 1.8em; 
   letter-spacing: 1px; 
-  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999; 
-  margin-top: 0;
-  margin-bottom: 0.8em;
 }
-
 .cadastro-info-paragrafo {
   font-size: 1.0em;
   color: #aaa;
@@ -211,7 +271,6 @@ button:hover {
   padding-left: 10px;
   padding-right: 10px;
 }
-
 .cadastro-container input[type="tel"] {
   width: 90%;
   padding: 12px;
@@ -227,7 +286,6 @@ button:hover {
   margin-right: auto;
   box-sizing: border-box;
 }
-
 .cadastro-container button { 
   background-color: #900;
   color: white;
@@ -245,7 +303,6 @@ button:hover {
   box-sizing: border-box;
   margin-top: 10px;
 }
-
 .cadastro-container button:hover {
   background-color: #c00;
 }
@@ -270,7 +327,6 @@ button:hover {
   border: 1px solid #444;
   color: #000; 
 }
-
 #codigoInput::placeholder {
   color: #888;
   font-size: 0.8rem;
@@ -287,15 +343,15 @@ button:hover {
   max-width: 360px;
   box-sizing: border-box;
   padding: 20px;
+  padding-top: 1px; /* Para evitar colapso de margem */
   border: 1px solid #500;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.05),
               0 0 10px rgba(180, 0, 0, 0.4);
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
+  margin-top: 100px; /* Ou o valor que você preferiu para subir o container */
   margin-bottom: 50px;
 }
-
 .area-reserva-container h1 {
   font-size: 1.8em; 
   margin-bottom: 15px;
