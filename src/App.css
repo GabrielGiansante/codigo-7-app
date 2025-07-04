@@ -90,7 +90,7 @@
   height: 20px;  /* Altura da bolinha customizada */
   border: 2px solid #ccc; /* Cor da borda da bolinha */
   border-radius: 50%; /* Faz ser um círculo */
-  background-color: #2a2a2a; /* Cor de fundo da bolinha */
+  background-color: #fff /* Cor de fundo da bolinha */
   box-sizing: border-box; /* Garante que a borda não aumente o tamanho total */
 }
 
@@ -115,7 +115,7 @@
 
 
 .label-radio-grande {
-  color: #fff; /* Cor que você gostou */
+  color: #ccc; /* Cor que você gostou */
   font-size: 0.95em;
   cursor: pointer;
 }
