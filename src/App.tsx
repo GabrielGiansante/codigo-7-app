@@ -183,7 +183,7 @@ function App() {
   return (
     <div style={{
       minHeight: '100vh', display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'flex-start',
+      alignItems: 'center', justifyContent: 'center',
       paddingTop: '40px', paddingBottom: '40px', boxSizing: 'border-box'
     }}>
       {/* ... Telas de boasVindas, cadastroTelefone, verificacaoCodigo ... */}

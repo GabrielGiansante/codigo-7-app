@@ -356,6 +356,8 @@ button:hover {
   /* A linha abaixo pode ser necessária se a rolagem ainda não funcionar bem */
   /* max-height: 85vh; */ /* Limita a altura máxima a 85% da altura da viewport */
   /* overflow-y: auto; */  /* Adiciona uma barra de rolagem SE o conteúdo ultrapassar a max-height */
+  max-height: 85vh; /* Limita a altura a 85% da altura da tela do dispositivo */
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical DENTRO deste container SE o conteúdo for maior */
 }
 .area-reserva-container h1 {
   font-size: 1.8em; 
