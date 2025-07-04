@@ -479,3 +479,14 @@ button:hover {
 .controle-botoes .btn-estender-reserva {
     width: 100%;
 }
+/* Estilo para a mensagem de confirmação dos itens de consumo */
+.consumo-info-msg {
+  font-size: 0.9em;         /* Tamanho da fonte */
+  color: #FFA500;            /* Cor laranja, igual à da Hora de Saída */
+  font-family: 'Merriweather', serif; /* Mesma fonte dos títulos */
+  font-weight: bold;          /* Mesmo peso dos títulos */
+  text-align: center;       /* Centralizado */
+  padding: 0 15px;            /* Espaçamento lateral */
+  margin-top: -1em;           /* Puxa um pouco para cima */
+  margin-bottom: 20px;        /* Espaço antes do Preço Total */
+}
