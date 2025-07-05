@@ -1,16 +1,91 @@
-/* === ESTILOS PARA A NOVA SEÇÃO DE ITENS DE CONSUMO === */
-.consumo-section {
-  border-top: 2px solid #333; /* Linha separadora forte antes da seção */
-  margin-top: 25px; /* Espaço antes da linha */
-  padding-top: 15px; /* Espaço depois da linha */
+/* ================================================================ */
+/* ESTILOS DE FORMULÁRIO GERAIS E PARA RESERVA */
+/* ================================================================ */
+.form-row-inline {
+  display: flex;
+  align-items: center;
 }
-.consumo-section-title {
+.form-label-inline {
+  margin-right: 8px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+  text-align: left;
+  color: #ccc; 
+  font-size: 0.9em; 
+}
+.form-input-inline {
+  padding: 8px;
+  font-size: 0.9em;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2a2a2a;
+  color: #fff;
+  box-sizing: border-box;
+  width: 130px; 
+}
+.form-input-time-inline {
+  width: 100px; 
+}
+.form-section-title {
+  color: #e0e0e0; 
+  font-family: 'Merriweather', serif; 
+  font-size: 1.1em;
+  font-weight: bold; 
+  text-align: left;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 8px; 
+  padding-left: 0;
+  padding-right: 0;
+}
+.opcoes-duracao-container {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+  margin-bottom: 0; /* Reduzido para aproximar da próxima seção */
+  text-align: left;
+}
+.opcao-duracao-item {
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+}
+
+/* --- ESTILOS PARA RADIO BUTTON CUSTOMIZADO --- */
+.radio-grande {
+  opacity: 0; position: fixed; width: 0; height: 0;
+}
+.label-radio-grande {
+  color: #ccc; font-size: 0.95em; cursor: pointer; position: relative;
+  padding-left: 30px; line-height: 20px; display: inline-block;
+}
+.label-radio-grande::before {
+  content: ''; position: absolute; left: 0; top: 0;
+  width: 20px; height: 20px; border: 2px solid #ccc;
+  border-radius: 50%; background-color: #fff; box-sizing: border-box;
+}
+.radio-grande:checked + .label-radio-grande::before {
+  border-color: dodgerblue;
+}
+.radio-grande:checked + .label-radio-grande::after {
+  content: ''; position: absolute; left: 5px; top: 5px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background-color: dodgerblue;
+}
+
+/* --- ESTILOS PARA SEÇÃO DE CONSUMO --- */
+.consumo-section {
+  border-top: 2px solid #333;
+  margin-top: 25px;
+  padding-top: 15px;
+}
+.consumo-section-title { /* Título "Para Sua Comodidade" */
   color: #fff;
   font-family: 'Merriweather', serif;
   font-size: 1.5em; 
   font-weight: bold;
   text-align: left;
-  margin: 0 0 15px 0; /* Margem apenas abaixo */
+  margin: 0 0 15px 0;
 }
 .consumo-category-wrapper {
   margin-bottom: 20px;
@@ -28,11 +103,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 5px;
-  border-bottom: 1px solid #333; /* Linha separadora sutil entre itens */
-  gap: 10px; /* Espaço entre os grupos de detalhes e controles */
+  border-bottom: 1px solid #333;
+  gap: 10px;
 }
 .consumo-item:last-child {
-  border-bottom: none; /* Remove a borda do último item da categoria */
+  border-bottom: none;
 }
 .consumo-item-details {
   flex-grow: 1;
@@ -88,283 +163,19 @@
 .btn-consumo-increment:hover {
    background-color: #008030;
 }
-
-
-/* RESTANTE DO SEU CSS (MANTIDO COMO ESTAVA) */
-/* Estilos para fileiras de label/input na área de reserva (Data e Hora) */
-.form-row-inline {
-  display: flex;
-  align-items: center;
-}
-.form-label-inline {
-  margin-right: 8px;
-  margin-bottom: 0;
-  flex-shrink: 0;
-  text-align: left;
-  color: #ccc; 
-  font-size: 0.9em; 
-}
-.form-input-inline {
-  padding: 8px;
+.consumo-info-msg {
   font-size: 0.9em;
-  border-radius: 6px;
-  border: 1px solid #555;
-  background-color: #2a2a2a;
-  color: #fff;
-  box-sizing: border-box;
-  width: 130px; 
-}
-.form-input-time-inline {
-  width: 100px; 
-}
-.form-section-title {
-  color: #e0e0e0; 
-  font-family: 'Merriweather', serif; 
-  font-size: 1.1em;
-  font-weight: bold; 
-  text-align: left;
-  display: block;
-  margin-top: 0px;
-  margin-bottom: 2px; 
-  padding-left: 0;
-  padding-right: 0;
-}
-.opcoes-duracao-container {
-  display: flex;
-  flex-direction: column; 
-  gap: 10px; 
-  margin-bottom: 15px; /* Voltando para 15px, pois agora temos a seção de consumo depois */
-  text-align: left;
-}
-.opcao-duracao-item {
-  display: flex;
-  align-items: center;
-  padding: 3px 0;
-}
-/* --- INÍCIO DOS ESTILOS PARA RADIO BUTTON CUSTOMIZADO --- */
-.radio-grande {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-  height: 0;
-}
-.label-radio-grande {
-  color: #ccc;
-  font-size: 0.95em;
-  cursor: pointer;
-  position: relative;
-  padding-left: 30px;
-  line-height: 20px;
-  display: inline-block;
-}
-.label-radio-grande::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  background-color: #fff;
-  box-sizing: border-box;
-}
-.radio-grande:checked + .label-radio-grande::before {
-  border-color: dodgerblue;
-}
-.radio-grande:checked + .label-radio-grande::after {
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 5px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: dodgerblue;
-}
-
-/* ================================================================ */
-/* ESTILOS GERAIS E DE OUTRAS TELAS */
-/* ================================================================ */
-
-h1 {
+  color: #FFA500;
   font-family: 'Merriweather', serif;
-  color: #fff;
-  font-size: 1.8em; 
-  text-shadow: 1px 1px 2px #999, -1px -1px 2px #999, 1px -1px 2px #999, -1px 1px 2px #999;
-  word-break: break-word;
-  margin-top: 0; 
-  margin-bottom: 0.8em; 
-}
-button { 
-  background-color: #900;
-  color: white;
-  border: 1px solid white;
-  padding: 8px 15px;
-  font-size: 0.9em;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-button:hover {
-  background-color: #c00;
-}
-
-.container {
-  text-align: center;
-  padding: 15px;
-  background-color: #1a1a1a;
-  border-radius: 16px;
-  box-shadow: 0 0 15px #aaa;
-  width: 90%;
-  max-width: 350px;
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
-}
-.container h1 {
-  font-size: 2.2em;
-  margin-bottom: 0.5em;
-}
-
-.jargao {
-  font-size: 0.9em;
-  color: #aaa;
-  font-family: 'Times New Roman', serif;
   font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 1.2em;
-  white-space: normal;
-  word-wrap: break-word;
   text-align: center;
-  padding-left: 5px;
-  padding-right: 5px;
-  line-height: 1.3;
+  padding: 0 15px;
+  margin-top: -1em;
+  margin-bottom: 20px;
 }
 
-.cadastro-container {
-  text-align: center;
-  padding: 15px;
-  background-color: #1a1a1a;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 320px;
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  border: 1px solid #500;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.07),
-              0 0 8px rgba(180, 0, 0, 0.3);
-}
-.cadastro-container h1 { 
-  font-size: 1.8em; 
-  letter-spacing: 1px; 
-}
-.cadastro-info-paragrafo {
-  font-size: 1.0em;
-  color: #aaa;
-  margin-bottom: 25px;
-  line-height: 1.4;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-.cadastro-container input[type="tel"] {
-  width: 90%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  outline: none;
-  font-size: 1em;
-  margin-bottom: 1.5em;
-  background-color: #2a2a2a;
-  color: #fff;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-}
-.cadastro-container button { 
-  background-color: #900;
-  color: white;
-  border: 1px solid white;
-  padding: 10px 20px;
-  font-size: 1.2em; 
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: block;
-  width: 60%;
-  max-width: 220px;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-  margin-top: 10px;
-}
-.cadastro-container button:hover {
-  background-color: #c00;
-}
-
-#codigoInput {
-  display: block;
-  width: 65%;
-  max-width: 220px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 1.3em;
-  text-align: center;
-  letter-spacing: 0.15em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  margin-bottom: 25px;
-  box-sizing: border-box;
-  border-radius: 8px;
-  border: 1px solid #444;
-  color: #000; 
-}
-#codigoInput::placeholder {
-  color: #888;
-  font-size: 0.8rem;
-  letter-spacing: normal;
-  text-align: center;
-  opacity: 1;
-}
-
-.area-reserva-container {
-  text-align: center;
-  background-color: #1a1a1a;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 360px;
-  box-sizing: border-box;
-  padding: 20px;
-  border: 1px solid #500;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05),
-              0 0 10px rgba(180, 0, 0, 0.4);
-  margin-left: auto;
-  margin-right: auto;
-  
-  /* --- MUDANÇAS IMPORTANTES AQUI --- */
-  margin-top: 50px; /* Reduzindo a margem do topo para dar mais espaço na tela */
-  margin-bottom: 50px; /* Mantendo a margem inferior */
-
-  /* A linha abaixo pode ser necessária se a rolagem ainda não funcionar bem */
-  /* max-height: 85vh; */ /* Limita a altura máxima a 85% da altura da viewport */
-  /* overflow-y: auto; */  /* Adiciona uma barra de rolagem SE o conteúdo ultrapassar a max-height */
-  max-height: 85vh; /* Limita a altura a 85% da altura da tela do dispositivo */
-  overflow-y: auto; /* Adiciona uma barra de rolagem vertical DENTRO deste container SE o conteúdo for maior */
-}
-.area-reserva-container h1 {
-  font-size: 1.8em; 
-  margin-bottom: 15px;
-}
-/* === ESTILOS PARA TELA DE PAGAMENTO E CONTROLE === */
-.pagamento-container, .controle-container {
+/* --- ESTILOS PARA TELA DE PAGAMENTO E CONTROLE --- */
+.pagamento-container, .controle-container, .estender-reserva-container {
   background-color: #1a1a1a;
   padding: 20px 25px;
   border-radius: 16px;
@@ -376,11 +187,11 @@ button:hover {
   border: 1px solid #555;
   margin: 50px 0;
 }
-.pagamento-container h1, .controle-container h1 {
+.pagamento-container h1, .controle-container h1, .estender-reserva-container h1 {
   font-size: 1.8em;
   margin-bottom: 15px;
 }
-.pagamento-info, .pagamento-aviso, .controle-container p {
+.pagamento-info, .pagamento-aviso, .controle-container p, .estender-reserva-container p {
   color: #ccc;
   margin-bottom: 25px;
   line-height: 1.5;
@@ -442,51 +253,34 @@ button:hover {
   gap: 15px;
   margin-top: 30px;
 }
-.btn-nova-reserva {
-  background-color: #555;
-}
-/* === ESTILOS PARA A NOVA TELA DE ESTENDER RESERVA === */
-.estender-reserva-container {
-  background-color: #1a1a1a;
-  padding: 20px 25px;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 400px;
-  box-sizing: border-box;
-  text-align: center;
-  color: #fff;
-  border: 1px solid #555;
-  margin: 50px 0;
-}
-.estender-reserva-container h1 {
-  font-size: 1.8em;
-  margin-bottom: 15px;
-}
-.estender-reserva-container p {
-  color: #ccc;
-  margin-bottom: 25px;
-}
-
-/* Estilo para o novo botão na tela de controle */
 .btn-estender-reserva {
-  background-color: #005f99; /* Um tom de azul para diferenciar */
+  background-color: #005f99;
 }
 .btn-estender-reserva:hover {
   background-color: #007acc;
 }
-
-/* Garante que o botão ocupe a largura na tela de controle */
 .controle-botoes .btn-estender-reserva {
     width: 100%;
 }
-/* Estilo para a mensagem de confirmação dos itens de consumo */
-.consumo-info-msg {
-  font-size: 0.9em;         /* Tamanho da fonte */
-  color: #FFA500;            /* Cor laranja, igual à da Hora de Saída */
-  font-family: 'Merriweather', serif; /* Mesma fonte dos títulos */
-  font-weight: bold;          /* Mesmo peso dos títulos */
-  text-align: center;       /* Centralizado */
-  padding: 0 15px;            /* Espaçamento lateral */
-  margin-top: -1em;           /* Puxa um pouco para cima */
-  margin-bottom: 20px;        /* Espaço antes do Preço Total */
+#codigoInput {
+  display: block; width: 65%; max-width: 220px;
+  padding: 12px; font-size: 1.3em;
+  text-align: center; letter-spacing: 0.15em; margin: 20px auto 25px auto;
+  box-sizing: border-box; border-radius: 8px; border: 1px solid #444; color: #000; 
+}
+#codigoInput::placeholder {
+  color: #888; font-size: 0.8rem; letter-spacing: normal; text-align: center; opacity: 1;
+}
+.area-reserva-container {
+  text-align: center; background-color: #1a1a1a; border-radius: 16px;
+  width: 90%; max-width: 360px; box-sizing: border-box; padding: 20px;
+  border: 1px solid #500;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05),
+              0 0 10px rgba(180, 0, 0, 0.4);
+  margin: 50px auto; /* Reduzido de 200px */
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.area-reserva-container h1 {
+  font-size: 1.8em; margin-bottom: 15px;
 }
