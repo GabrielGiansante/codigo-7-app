@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-// LISTA DE ITENS DE CONSUMO (DO SEU CÓDIGO)
+// LISTA DE ITENS DE CONSUMO
 const itensConsumoDisponiveis = [
   // Carnes
   { id: 'picanha', nome: 'Picanha (aprox. 500g)', preco: 70.00, categoria: 'Carnes' },
@@ -49,17 +49,15 @@ const itensConsumoDisponiveis = [
 ];
 
 function App() {
-  // SEU CÓDIGO ATÉ AQUI ESTÁ OK, VAMOS ADICIONAR APENAS AS PARTES QUE FALTAVAM
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [reservations, setReservations] = useState<any[]>([]);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
-  const [currentScreen, setCurrentScreen] = useState('areaDeReserva'); 
+  const [currentScreen, setCurrentScreen] = useState('areaDeReserva');
   const [opcaoAluguel, setOpcaoAluguel] = useState('4h');
   const [totalHorasCustom, setTotalHorasCustom] = useState(13);
   const [horarioSaida, setHorarioSaida] = useState('');
   const [precoFinal, setPrecoFinal] = useState(600);
-  // ADICIONANDO O ESTADO PARA OS ITENS, SE ELE NÃO ESTIVER AÍ
   const [itensConsumoSelecionados, setItensConsumoSelecionados] = useState<{ [itemId: string]: number }>({});
 
   const confirmPayment = () => {
@@ -87,15 +85,14 @@ function App() {
       setReservations(updatedReservations);
       alert('Reserva Confirmada!');
       localStorage.removeItem('acessoLiberado');
-      setCurrentScreen('areaDeReserva');
+      setCurrentScreen('areaDeReserva'); // Poderíamos voltar para 'boasVindas' se o fluxo completo estivesse ativo
       setSelectedDate(''); setSelectedTime(''); setOpcaoAluguel('4h');
       setTotalHorasCustom(13); setPaymentConfirmed(false);
       setPrecoFinal(600); setHorarioSaida('');
       setItensConsumoSelecionados({});
     }
   };
-  
-  // ADICIONANDO A FUNÇÃO PARA SELECIONAR ITENS, SE ELA NÃO ESTIVER AÍ
+
   const handleSelecionarItem = (itemId: string, operacao: 'incrementar' | 'decrementar') => {
     setItensConsumoSelecionados(prevSelecionados => {
       const quantidadeAtual = prevSelecionados[itemId] || 0;
@@ -121,7 +118,6 @@ function App() {
     }
   }, []);
 
-  // ATUALIZANDO O USEEFFECT PARA CALCULAR O PREÇO CORRETAMENTE
   useEffect(() => {
     const calcularReserva = () => {
       let novoPrecoAluguel = 0;
@@ -139,7 +135,6 @@ function App() {
         }
       }
       setPrecoFinal(novoPrecoAluguel + precoItensConsumo);
-
       let novoHorarioSaida = '';
       if (selectedTime) {
         const [horasEntradaStr, minutosEntradaStr] = selectedTime.split(':');
@@ -184,12 +179,11 @@ function App() {
       alignItems: 'center', justifyContent: 'center',
       paddingTop: '40px', paddingBottom: '40px', boxSizing: 'border-box'
     }}>
-
+  
       {currentScreen === 'areaDeReserva' && (
         <div className="area-reserva-container">
           <h1>Faça Sua Reserva</h1>
           <form style={{ display: 'flex', flexDirection: 'column', width: '100%' }} onSubmit={handleSubmit}>
-            {/* Seções de Data, Hora e Duração */}
             <div className="form-row-inline" style={{ marginBottom: '10px' }}>
               <label htmlFor="reservaData" className="form-label-inline">Data da Reserva:</label>
               <input type="date" id="reservaData" className="form-input-inline" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
@@ -198,24 +192,25 @@ function App() {
               <label htmlFor="reservaHoraEntrada" className="form-label-inline">Hora de Entrada:</label>
               <input type="time" id="reservaHoraEntrada" className="form-input-inline form-input-time-inline" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} />
             </div>
+            
             <div className="form-section-title">
               Selecione a Duração:
             </div>
             <div className="opcoes-duracao-container">
               <div className="opcao-duracao-item">
-                <input type="radio" id="opcao4h" name="opcaoAluguel" value="4h" checked={opcaoAluguel === '4h'} onChange={(e) => setOpcaoAluguel(e.target.value)} />
+                <input className="radio-grande" type="radio" id="opcao4h" name="opcaoAluguel" value="4h" checked={opcaoAluguel === '4h'} onChange={(e) => setOpcaoAluguel(e.target.value)} />
                 <label htmlFor="opcao4h" className="label-radio-grande">4 Horas - R$ 600,00</label>
               </div>
               <div className="opcao-duracao-item">
-                <input type="radio" id="opcao12h" name="opcaoAluguel" value="12h" checked={opcaoAluguel === '12h'} onChange={(e) => setOpcaoAluguel(e.target.value)} />
+                <input className="radio-grande" type="radio" id="opcao12h" name="opcaoAluguel" value="12h" checked={opcaoAluguel === '12h'} onChange={(e) => setOpcaoAluguel(e.target.value)} />
                 <label htmlFor="opcao12h" className="label-radio-grande">12 Horas - R$ 1.200,00</label>
               </div>
               <div className="opcao-duracao-item">
-                <input type="radio" id="opcaoCustom" name="opcaoAluguel" value="custom" checked={opcaoAluguel === 'custom'} onChange={(e) => setOpcaoAluguel(e.target.value)} />
+                <input className="radio-grande" type="radio" id="opcaoCustom" name="opcaoAluguel" value="custom" checked={opcaoAluguel === 'custom'} onChange={(e) => setOpcaoAluguel(e.target.value)} />
                 <label htmlFor="opcaoCustom" className="label-radio-grande">Acima de 12 Horas (R$ 100,00/hora adicional)</label>
               </div>
             </div>
-
+  
             {opcaoAluguel === 'custom' && (
               <div style={{marginBottom: '10px'}}>
                 <label htmlFor="totalHorasCustomInput" className="form-section-title" style={{marginTop: '0'}}>Total de Horas Desejado:</label>
@@ -235,7 +230,6 @@ function App() {
               </div>
             )}
             
-            {/* === SEÇÃO DE ITENS DE CONSUMO INSERIDA AQUI === */}
             <div className="consumo-section">
               <h2 className="consumo-section-title">Para Sua Comodidade</h2>
               {categoriasUnicas.map(categoria => (
@@ -276,13 +270,11 @@ function App() {
               ))}
             </div>
             
-            {/* RESTANTE DO FORMULÁRIO */}
-            <div className="consumo-info-msg">
-              Os itens selecionados para sua comodidade estarão disponíveis no local.
-            </div>
             <label htmlFor="reservaHoraSaida" className="form-section-title" style={{ textAlign: 'center', color: '#00BFFF', marginTop: '15px', marginBottom: '5px' }}>Hora de Saída:</label>
-            <input type="time" id="reservaHoraSaida" value={horarioSaida} readOnly style={{ backgroundColor: '#1F1F1F', color: '#FFA500', border: '1px dashed #555', padding: '10px', borderRadius: '8px', fontSize: '1.7em', textAlign: 'center', width: '50%', minWidth: '120px', marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.5em', cursor: 'default' }} />
-            
+            <input type="time" id="reservaHoraSaida" value={horarioSaida} readOnly style={{ backgroundColor: '#1F1F1F', color: '#FFA500', border: '1px dashed #555', padding: '10px', borderRadius: '8px', fontSize: '1.5em', textAlign: 'center', width: '50%', minWidth: '120px', marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.5em', cursor: 'default' }} />
+            <div className="consumo-info-msg">
+  Os itens selecionados para sua comodidade estarão disponíveis no local.
+</div>
             <div className="form-section-title" style={{textAlign: 'center', fontSize: '1.3em', marginTop: '10px' }}>Preço Total Estimado: R$ {precoFinal.toFixed(2).replace('.', ',')}</div>
             
             <div style={{marginTop: '20px'}}>
@@ -298,7 +290,7 @@ function App() {
           </form>
         </div>
       )}
-
+  
       {currentScreen === 'areaDePagamento' && (
         <div className="pagamento-container">
           <h1>Pagamento via Pix</h1>
@@ -337,7 +329,7 @@ function App() {
           </button>
         </div>
       )}
-
+  
       {currentScreen === 'telaControleRemoto' && (
         <div className="controle-container">
           <h1>Acesso Liberado</h1>
@@ -353,7 +345,8 @@ function App() {
           </div>
         </div>
       )}
-
+  
+      {/* === NOVA TELA PARA ESTENDER RESERVA (PLACEHOLDER) === */}
       {currentScreen === 'telaEstenderReserva' && (
         <div className="estender-reserva-container">
           <h1>Estender Reserva</h1>
@@ -363,9 +356,9 @@ function App() {
           </button>
         </div>
       )}
-
+  
     </div>
   );
-}
-
-export default App;
+  }
+  
+  export default App;
