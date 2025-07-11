@@ -59,7 +59,8 @@ function App() {
   const [horarioSaida, setHorarioSaida] = useState('');
   const [precoFinal, setPrecoFinal] = useState(600);
   const [itensConsumoSelecionados, setItensConsumoSelecionados] = useState<{ [itemId: string]: number }>({});
-
+const [minTime, setMinTime] = useState('');
+const hoje = new Date().toISOString().split('T')[0];
   const confirmPayment = () => {
     setCurrentScreen('areaDePagamento');
   };
@@ -117,7 +118,20 @@ function App() {
       }
     }
   }, []);
-
+  useEffect(() => {
+    const hojeStr = new Date().toISOString().split('T')[0];
+    
+    if (selectedDate === hojeStr) {
+      // Se a data selecionada é hoje, define a hora mínima para a hora atual
+      const agora = new Date();
+      const hora = String(agora.getHours()).padStart(2, '0');
+      const minuto = String(agora.getMinutes()).padStart(2, '0');
+      setMinTime(`${hora}:${minuto}`);
+    } else {
+      // Se for uma data futura, não há restrição de hora mínima
+      setMinTime('');
+    }
+  }, [selectedDate]); // Este efeito roda sempre que a data selecionada muda
   useEffect(() => {
     const calcularReserva = () => {
       let novoPrecoAluguel = 0;
@@ -186,11 +200,11 @@ function App() {
           <form style={{ display: 'flex', flexDirection: 'column', width: '100%' }} onSubmit={handleSubmit}>
             <div className="form-row-inline" style={{ marginBottom: '10px' }}>
               <label htmlFor="reservaData" className="form-label-inline">Data da Reserva:</label>
-              <input type="date" id="reservaData" className="form-input-inline" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+              <input type="date" id="reservaData" className="form-input-inline" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} min={hoje} />
             </div>
             <div className="form-row-inline" style={{ marginBottom: '10px' }}>
               <label htmlFor="reservaHoraEntrada" className="form-label-inline">Hora de Entrada:</label>
-              <input type="time" id="reservaHoraEntrada" className="form-input-inline form-input-time-inline" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} />
+              <input type="time" id="reservaHoraEntrada" className="form-input-inline form-input-time-inline" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} min={minTime} />
             </div>
             
             <div className="form-section-title">
