@@ -1,7 +1,7 @@
 /* === ESTILOS PARA A NOVA SEÇÃO DE ITENS DE CONSUMO === */
 .consumo-section {
   border-top: 2px solid #333; /* Linha separadora forte antes da seção */
-  margin-top: 25px; /* Espaço antes da linha */
+  margin-top: 10px; /* Espaço antes da linha */
   padding-top: 15px; /* Espaço depois da linha */
 }
 .consumo-section-title {
@@ -133,7 +133,7 @@
   display: flex;
   flex-direction: column; 
   gap: 10px; 
-  margin-bottom: 15px; /* Voltando para 15px, pois agora temos a seção de consumo depois */
+  margin-bottom: 5px; /* Voltando para 15px, pois agora temos a seção de consumo depois */
   text-align: left;
 }
 .opcao-duracao-item {
