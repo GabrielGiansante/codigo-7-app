@@ -481,7 +481,7 @@ button:hover {
 }
 /* Estilo para a mensagem de confirmação dos itens de consumo */
 .consumo-info-msg {
-  font-size: 1.1em;
+  font-size: 1.2em;
   color: #FFA500; /* Cor laranja, igual à da Hora de Saída */
   font-family: 'Merriweather', serif;
   font-weight: bold;
