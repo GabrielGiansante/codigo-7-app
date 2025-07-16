@@ -152,6 +152,32 @@ function App() {
     }
     setSelectedTime(novaHora);
   };
+  const handleAbrirPortao = async () => {
+    // Futuramente, aqui adicionaremos a verificação de geolocalização.
+    
+    alert("Enviando sinal para abrir o portão...");
+  
+    try {
+      // Envia a requisição para o seu backend
+      const response = await fetch("https://codigo-7-app-3.onrender.com/abrir-portao", {
+        method: "POST", // Usamos POST para ações que modificam algo ou executam um comando
+        // Não precisamos enviar um corpo (body) por enquanto, a menos que precisemos de autorização
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) { // Se a resposta do servidor for bem-sucedida (status 2xx)
+        alert(data.message); // Exibe a mensagem de sucesso do backend (ex: "Portão acionado!")
+      } else {
+        // Se o servidor responder com um erro (status 4xx ou 5xx)
+        throw new Error(data.error || "Ocorreu um erro no servidor.");
+      }
+  
+    } catch (error: any) {
+      console.error("Erro ao tentar abrir o portão:", error);
+      alert("Falha na comunicação com o portão: " + error.message);
+    }
+  };
   // ===== FIM DAS NOVAS FUNÇÕES =====
 
   useEffect(() => {
@@ -413,9 +439,9 @@ function App() {
         <div className="estender-reserva-container">
           <h1>Estender Reserva</h1>
           <p>Funcionalidade em construção.</p>
-          <button onClick={() => setCurrentScreen('telaControleRemoto')}>
-            Voltar
-          </button>
+          <button className="btn-controle btn-abrir" onClick={handleAbrirPortao}> {/* << ONCLICK ATUALIZADO */}
+  Abrir Portão
+</button>
         </div>
       )}
   
