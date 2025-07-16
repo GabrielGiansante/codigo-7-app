@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-// LISTA DE ITENS DE CONSUMO
+// LISTA DE ITENS DE CONSUMO (DO SEU CÓDIGO)
 const itensConsumoDisponiveis = [
   // Carnes
   { id: 'picanha', nome: 'Picanha (aprox. 500g)', preco: 70.00, categoria: 'Carnes' },
@@ -59,8 +59,9 @@ function App() {
   const [horarioSaida, setHorarioSaida] = useState('');
   const [precoFinal, setPrecoFinal] = useState(600);
   const [itensConsumoSelecionados, setItensConsumoSelecionados] = useState<{ [itemId: string]: number }>({});
-const [minTime, setMinTime] = useState('');
-const hoje = new Date().toISOString().split('T')[0];
+  
+  // O estado 'minTime' e o useEffect para ele foram removidos. A constante 'hoje' agora é 'hojeMinDate' e está antes do return.
+  
   const confirmPayment = () => {
     setCurrentScreen('areaDePagamento');
   };
@@ -86,7 +87,7 @@ const hoje = new Date().toISOString().split('T')[0];
       setReservations(updatedReservations);
       alert('Reserva Confirmada!');
       localStorage.removeItem('acessoLiberado');
-      setCurrentScreen('areaDeReserva'); // Poderíamos voltar para 'boasVindas' se o fluxo completo estivesse ativo
+      setCurrentScreen('areaDeReserva');
       setSelectedDate(''); setSelectedTime(''); setOpcaoAluguel('4h');
       setTotalHorasCustom(13); setPaymentConfirmed(false);
       setPrecoFinal(600); setHorarioSaida('');
@@ -107,6 +108,54 @@ const hoje = new Date().toISOString().split('T')[0];
     });
   };
 
+  // ===== NOVAS FUNÇÕES DE VALIDAÇÃO =====
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const novaDataStr = e.target.value;
+    if (!novaDataStr) { // Se o campo for limpo
+      setSelectedDate('');
+      setSelectedTime(''); // Limpa a hora também
+      return;
+    }
+
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    const dataSelecionada = new Date(novaDataStr);
+    const dataSelecionadaAjustada = new Date(dataSelecionada.getUTCFullYear(), dataSelecionada.getUTCMonth(), dataSelecionada.getUTCDate());
+
+    if (dataSelecionadaAjustada < hoje) {
+      alert("Não é possível selecionar uma data passada.");
+      setSelectedDate('');
+      setSelectedTime('');
+    } else {
+      setSelectedDate(novaDataStr);
+      // Se a data mudou para hoje, re-valida a hora que já estava selecionada, se houver
+      if (novaDataStr === hoje.toISOString().split('T')[0] && selectedTime) {
+        handleTimeChange({ target: { value: selectedTime } } as React.ChangeEvent<HTMLInputElement>);
+      }
+    }
+  };
+
+  const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const novaHora = e.target.value;
+    const hoje = new Date();
+    const hojeStr = hoje.toISOString().split('T')[0];
+
+    if (selectedDate === hojeStr) {
+      const horaAtual = hoje.getHours();
+      const minutoAtual = hoje.getMinutes();
+      const [horaSelecionada, minutoSelecionado] = novaHora.split(':').map(Number);
+
+      if (horaSelecionada < horaAtual || (horaSelecionada === horaAtual && minutoSelecionado < minutoAtual)) {
+        alert("Não é possível selecionar um horário passado para o dia de hoje.");
+        setSelectedTime('');
+        return;
+      }
+    }
+    setSelectedTime(novaHora);
+  };
+  // ===== FIM DAS NOVAS FUNÇÕES =====
+
   useEffect(() => {
     const acessoJaLiberado = localStorage.getItem('acessoLiberado');
     if (acessoJaLiberado === 'true') {
@@ -118,20 +167,7 @@ const hoje = new Date().toISOString().split('T')[0];
       }
     }
   }, []);
-  useEffect(() => {
-    const hojeStr = new Date().toISOString().split('T')[0];
-    
-    if (selectedDate === hojeStr) {
-      // Se a data selecionada é hoje, define a hora mínima para a hora atual
-      const agora = new Date();
-      const hora = String(agora.getHours()).padStart(2, '0');
-      const minuto = String(agora.getMinutes()).padStart(2, '0');
-      setMinTime(`${hora}:${minuto}`);
-    } else {
-      // Se for uma data futura, não há restrição de hora mínima
-      setMinTime('');
-    }
-  }, [selectedDate]); // Este efeito roda sempre que a data selecionada muda
+  
   useEffect(() => {
     const calcularReserva = () => {
       let novoPrecoAluguel = 0;
@@ -187,6 +223,8 @@ const hoje = new Date().toISOString().split('T')[0];
     return (ordemFixa[a] || 99) - (ordemFixa[b] || 99);
   });
 
+  const hojeMinDate = new Date().toISOString().split('T')[0];
+
   return (
     <div style={{
       minHeight: '100vh', display: 'flex', flexDirection: 'column',
@@ -200,11 +238,24 @@ const hoje = new Date().toISOString().split('T')[0];
           <form style={{ display: 'flex', flexDirection: 'column', width: '100%' }} onSubmit={handleSubmit}>
             <div className="form-row-inline" style={{ marginBottom: '10px' }}>
               <label htmlFor="reservaData" className="form-label-inline">Data da Reserva:</label>
-              <input type="date" id="reservaData" className="form-input-inline" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} min={hoje} />
+              <input 
+                type="date" 
+                id="reservaData" 
+                className="form-input-inline" 
+                value={selectedDate} 
+                onChange={handleDateChange} 
+                min={hojeMinDate} 
+              />
             </div>
             <div className="form-row-inline" style={{ marginBottom: '10px' }}>
               <label htmlFor="reservaHoraEntrada" className="form-label-inline">Hora de Entrada:</label>
-              <input type="time" id="reservaHoraEntrada" className="form-input-inline form-input-time-inline" value={selectedTime} onChange={(e) => setSelectedTime(e.target.value)} min={minTime} />
+              <input 
+                type="time" 
+                id="reservaHoraEntrada" 
+                className="form-input-inline form-input-time-inline" 
+                value={selectedTime} 
+                onChange={handleTimeChange} 
+              />
             </div>
             
             <div className="form-section-title">
@@ -287,8 +338,8 @@ const hoje = new Date().toISOString().split('T')[0];
             <label htmlFor="reservaHoraSaida" className="form-section-title" style={{ textAlign: 'center', color: '#00BFFF', marginTop: '5px', marginBottom: '5px' }}>Hora de Saída:</label>
             <input type="time" id="reservaHoraSaida" value={horarioSaida} readOnly style={{ backgroundColor: '#1F1F1F', color: '#FFA500', border: '1px dashed #555', padding: '10px', borderRadius: '8px', fontSize: '1.5em', textAlign: 'center', width: '50%', minWidth: '120px', marginLeft: 'auto', marginRight: 'auto', marginBottom: '1.5em', cursor: 'default' }} />
             <div className="consumo-info-msg">
-  Os itens selecionados para sua comodidade estarão disponíveis no local.
-</div>
+              Os itens selecionados para sua comodidade estarão disponíveis no local.
+            </div>
             <div className="form-section-title" style={{textAlign: 'center', fontSize: '1.3em', marginTop: '10px' }}>Preço Total Estimado: R$ {precoFinal.toFixed(2).replace('.', ',')}</div>
             
             <div style={{marginTop: '20px'}}>
@@ -360,7 +411,6 @@ const hoje = new Date().toISOString().split('T')[0];
         </div>
       )}
   
-      {/* === NOVA TELA PARA ESTENDER RESERVA (PLACEHOLDER) === */}
       {currentScreen === 'telaEstenderReserva' && (
         <div className="estender-reserva-container">
           <h1>Estender Reserva</h1>
@@ -373,6 +423,6 @@ const hoje = new Date().toISOString().split('T')[0];
   
     </div>
   );
-  }
-  
-  export default App;
+}
+
+export default App;
