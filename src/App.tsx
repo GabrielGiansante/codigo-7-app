@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-// LISTA DE ITENS DE CONSUMO (DO SEU CÓDIGO)
+// LISTA DE ITENS DE CONSUMO
 const itensConsumoDisponiveis = [
   // Carnes
   { id: 'picanha', nome: 'Picanha (aprox. 500g)', preco: 70.00, categoria: 'Carnes' },
@@ -60,8 +60,6 @@ function App() {
   const [precoFinal, setPrecoFinal] = useState(600);
   const [itensConsumoSelecionados, setItensConsumoSelecionados] = useState<{ [itemId: string]: number }>({});
   
-  // O estado 'minTime' e o useEffect para ele foram removidos. A constante 'hoje' agora é 'hojeMinDate' e está antes do return.
-  
   const confirmPayment = () => {
     setCurrentScreen('areaDePagamento');
   };
@@ -107,16 +105,15 @@ function App() {
       }
     });
   };
-
+  
   // ===== NOVAS FUNÇÕES DE VALIDAÇÃO =====
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const novaDataStr = e.target.value;
-    if (!novaDataStr) { // Se o campo for limpo
+    if (!novaDataStr) {
       setSelectedDate('');
-      setSelectedTime(''); // Limpa a hora também
+      setSelectedTime('');
       return;
     }
-
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
 
@@ -129,8 +126,8 @@ function App() {
       setSelectedTime('');
     } else {
       setSelectedDate(novaDataStr);
-      // Se a data mudou para hoje, re-valida a hora que já estava selecionada, se houver
       if (novaDataStr === hoje.toISOString().split('T')[0] && selectedTime) {
+        // Força a revalidação da hora caso a data mude para hoje
         handleTimeChange({ target: { value: selectedTime } } as React.ChangeEvent<HTMLInputElement>);
       }
     }
@@ -139,9 +136,10 @@ function App() {
   const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const novaHora = e.target.value;
     const hoje = new Date();
-    const hojeStr = hoje.toISOString().split('T')[0];
+    // Cria a string de data de hoje de forma robusta
+    const hojeStr = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-${String(hoje.getDate()).padStart(2, '0')}`;
 
-    if (selectedDate === hojeStr) {
+    if (selectedDate === hojeStr && novaHora) {
       const horaAtual = hoje.getHours();
       const minutoAtual = hoje.getMinutes();
       const [horaSelecionada, minutoSelecionado] = novaHora.split(':').map(Number);
@@ -222,7 +220,7 @@ function App() {
     };
     return (ordemFixa[a] || 99) - (ordemFixa[b] || 99);
   });
-
+  
   const hojeMinDate = new Date().toISOString().split('T')[0];
 
   return (
@@ -243,7 +241,7 @@ function App() {
                 id="reservaData" 
                 className="form-input-inline" 
                 value={selectedDate} 
-                onChange={handleDateChange} 
+                onChange={handleDateChange} // << ALTERADO
                 min={hojeMinDate} 
               />
             </div>
@@ -254,7 +252,7 @@ function App() {
                 id="reservaHoraEntrada" 
                 className="form-input-inline form-input-time-inline" 
                 value={selectedTime} 
-                onChange={handleTimeChange} 
+                onChange={handleTimeChange} // << ALTERADO
               />
             </div>
             
