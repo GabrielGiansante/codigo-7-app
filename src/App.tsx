@@ -59,7 +59,7 @@ function App() {
   const [horarioSaida, setHorarioSaida] = useState('');
   const [precoFinal, setPrecoFinal] = useState(600);
   const [itensConsumoSelecionados, setItensConsumoSelecionados] = useState<{ [itemId: string]: number }>({});
-  
+
   const confirmPayment = () => {
     setCurrentScreen('areaDePagamento');
   };
@@ -85,7 +85,7 @@ function App() {
       setReservations(updatedReservations);
       alert('Reserva Confirmada!');
       localStorage.removeItem('acessoLiberado');
-      setCurrentScreen('areaDeReserva');
+      setCurrentScreen('areaDeReserva'); 
       setSelectedDate(''); setSelectedTime(''); setOpcaoAluguel('4h');
       setTotalHorasCustom(13); setPaymentConfirmed(false);
       setPrecoFinal(600); setHorarioSaida('');
@@ -106,7 +106,6 @@ function App() {
     });
   };
   
-  // ===== NOVAS FUNÇÕES DE VALIDAÇÃO =====
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const novaDataStr = e.target.value;
     if (!novaDataStr) {
@@ -127,7 +126,6 @@ function App() {
     } else {
       setSelectedDate(novaDataStr);
       if (novaDataStr === hoje.toISOString().split('T')[0] && selectedTime) {
-        // Força a revalidação da hora caso a data mude para hoje
         handleTimeChange({ target: { value: selectedTime } } as React.ChangeEvent<HTMLInputElement>);
       }
     }
@@ -136,7 +134,6 @@ function App() {
   const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const novaHora = e.target.value;
     const hoje = new Date();
-    // Cria a string de data de hoje de forma robusta
     const hojeStr = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-${String(hoje.getDate()).padStart(2, '0')}`;
 
     if (selectedDate === hojeStr && novaHora) {
@@ -152,33 +149,25 @@ function App() {
     }
     setSelectedTime(novaHora);
   };
+
+  // ===== FUNÇÃO ADICIONADA AQUI =====
   const handleAbrirPortao = async () => {
-    // Futuramente, aqui adicionaremos a verificação de geolocalização.
-    
     alert("Enviando sinal para abrir o portão...");
-  
     try {
-      // Envia a requisição para o seu backend
       const response = await fetch("https://codigo-7-app-3.onrender.com/abrir-portao", {
-        method: "POST", // Usamos POST para ações que modificam algo ou executam um comando
-        // Não precisamos enviar um corpo (body) por enquanto, a menos que precisemos de autorização
+        method: "POST",
       });
-  
       const data = await response.json();
-  
-      if (response.ok) { // Se a resposta do servidor for bem-sucedida (status 2xx)
-        alert(data.message); // Exibe a mensagem de sucesso do backend (ex: "Portão acionado!")
+      if (response.ok) {
+        alert(data.message);
       } else {
-        // Se o servidor responder com um erro (status 4xx ou 5xx)
         throw new Error(data.error || "Ocorreu um erro no servidor.");
       }
-  
     } catch (error: any) {
       console.error("Erro ao tentar abrir o portão:", error);
       alert("Falha na comunicação com o portão: " + error.message);
     }
   };
-  // ===== FIM DAS NOVAS FUNÇÕES =====
 
   useEffect(() => {
     const acessoJaLiberado = localStorage.getItem('acessoLiberado');
@@ -267,7 +256,7 @@ function App() {
                 id="reservaData" 
                 className="form-input-inline" 
                 value={selectedDate} 
-                onChange={handleDateChange} // << ALTERADO
+                onChange={handleDateChange}
                 min={hojeMinDate} 
               />
             </div>
@@ -278,7 +267,7 @@ function App() {
                 id="reservaHoraEntrada" 
                 className="form-input-inline form-input-time-inline" 
                 value={selectedTime} 
-                onChange={handleTimeChange} // << ALTERADO
+                onChange={handleTimeChange}
               />
             </div>
             
@@ -424,7 +413,12 @@ function App() {
           <h1>Acesso Liberado</h1>
           <p>Use os botões abaixo para controlar o portão.</p>
           <div className="controle-botoes">
-            <button className="btn-controle btn-abrir">Abrir Portão</button>
+            <button 
+              className="btn-controle btn-abrir"
+              onClick={handleAbrirPortao}
+            >
+              Abrir Portão
+            </button>
             <button 
               className="btn-controle btn-estender-reserva"
               onClick={() => setCurrentScreen('telaEstenderReserva')}
@@ -439,14 +433,14 @@ function App() {
         <div className="estender-reserva-container">
           <h1>Estender Reserva</h1>
           <p>Funcionalidade em construção.</p>
-          <button className="btn-controle btn-abrir" onClick={handleAbrirPortao}> {/* << ONCLICK ATUALIZADO */}
-  Abrir Portão
-</button>
+          <button onClick={() => setCurrentScreen('telaControleRemoto')}>
+            Voltar
+          </button>
         </div>
       )}
   
     </div>
   );
 }
-
+  
 export default App;
