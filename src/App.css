@@ -364,7 +364,7 @@ button:hover {
   margin-bottom: 15px;
 }
 /* === ESTILOS PARA TELA DE PAGAMENTO E CONTROLE === */
-.pagamento-container, .controle-container {
+.pagamento-container, .controle-container .estender-reserva-container{
   background-color: #1a1a1a;
   padding: 20px 25px;
   border-radius: 16px;
@@ -373,8 +373,12 @@ button:hover {
   box-sizing: border-box;
   text-align: center;
   color: #fff;
-  border: 1px solid #555;
   margin: 50px 0;
+  /* ===== LINHAS ATUALIZADAS/ADICIONADAS AQUI ===== */
+  border: 1px solid #500; /* Borda vermelha escura sutil */
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05),
+              0 0 10px rgba(180, 0, 0, 0.4); /* Sombra e brilho vermelho */
+
 }
 .pagamento-container h1, .controle-container h1 {
   font-size: 1.8em;
