@@ -53,14 +53,11 @@ function App() {
   const [horasParaEstender, setHorasParaEstender] = useState(1);
   const [precoExtensao, setPrecoExtensao] = useState(100);
 
-  const handleConfirmarPagamento = () => {
-    // Verifica se a data e a hora foram selecionadas
+  const confirmPayment = () => {
     if (!selectedDate || !selectedTime) {
       alert("Por favor, selecione a Data e a Hora de Entrada antes de prosseguir para o pagamento.");
-      return; // Impede a navegação para a tela de pagamento
+      return;
     }
-    
-    // Se a data e hora estiverem preenchidas, continua para a tela de pagamento
     setCurrentScreen('areaDePagamento');
   };
 
