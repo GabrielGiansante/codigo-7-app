@@ -48,12 +48,19 @@ app.post('/verificar-codigo', (req, res) => {
   }
 });
 
+// ===== NOVA ROTA PARA ABRIR O PORTÃO (APENAS UMA VEZ) =====
 app.post('/abrir-portao', (req, res) => {
   console.log("Recebido comando para ABRIR O PORTÃO.");
-  // Lógica futura do hardware aqui
+  
+  // Lógica futura para acionar o hardware virá aqui.
+  
+  // Enviando uma resposta de sucesso para o frontend.
   res.status(200).json({ sucesso: true, message: "Sinal enviado para o portão!" });
 });
+// ===== FIM DA NOVA ROTA =====
 
+
+// ===== CHAMADA PARA INICIAR O SERVIDOR (APENAS UMA VEZ) =====
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
