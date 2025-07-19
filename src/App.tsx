@@ -64,7 +64,14 @@ function App() {
   const [precoExtensao, setPrecoExtensao] = useState(100);
 
   const confirmPayment = () => {
-    setTelaAnteriorPagamento('areaDeReserva'); // Define a tela anterior
+    // Verifica se a data e a hora foram selecionadas
+    if (!selectedDate || !selectedTime) {
+      alert("Por favor, selecione a Data e a Hora de Entrada antes de prosseguir para o pagamento.");
+      return; // Impede a navegação para a tela de pagamento
+    }
+    
+    // Se a data e hora estiverem preenchidas, continua para a tela de pagamento
+    setTelaAnteriorPagamento('areaDeReserva');
     setCurrentScreen('areaDePagamento');
   };
 
