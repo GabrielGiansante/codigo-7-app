@@ -1,17 +1,15 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-// LISTA DE ITENS DE CONSUMO
+// LISTA DE ITENS DE CONSUMO (DO SEU BACKUP)
 const itensConsumoDisponiveis = [
   // Carnes
   { id: 'picanha', nome: 'Picanha (aprox. 500g)', preco: 70.00, categoria: 'Carnes' },
   { id: 'maminha', nome: 'Maminha (aprox. 500g)', preco: 60.00, categoria: 'Carnes' },
   { id: 'linguica_churras', nome: 'Linguiça Toscana (500g)', preco: 25.00, categoria: 'Carnes' },
-  // Queijos e Frios
   { id: 'gorgonzola', nome: 'Queijo Gorgonzola (150g)', preco: 28.00, categoria: 'Queijos e Frios' },
   { id: 'mussarela_fatiada', nome: 'Mussarela Fatiada (200g)', preco: 18.00, categoria: 'Queijos e Frios' },
   { id: 'presunto_fatiado', nome: 'Presunto Fatiado (200g)', preco: 15.00, categoria: 'Queijos e Frios' },
-  // Acompanhamentos
   { id: 'pao_de_alho', nome: 'Pão de Alho (unidade)', preco: 8.00, categoria: 'Acompanhamentos' },
   { id: 'arroz_branco', nome: 'Porção de Arroz Branco', preco: 15.00, categoria: 'Acompanhamentos' },
   { id: 'farinha_temperada', nome: 'Farinha Temperada (pacote)', preco: 10.00, categoria: 'Acompanhamentos' },
@@ -20,29 +18,22 @@ const itensConsumoDisponiveis = [
   { id: 'milho_ervilha', nome: 'Milho e Ervilha (lata)', preco: 7.00, categoria: 'Acompanhamentos' },
   { id: 'palmito_pupunha', nome: 'Palmito Pupunha (vidro)', preco: 25.00, categoria: 'Acompanhamentos' },
   { id: 'ovo_cozido', nome: 'Ovo Cozido (unidade)', preco: 3.00, categoria: 'Acompanhamentos' },
-  // Pizza (Componentes)
   { id: 'massa_pizza_brotinho', nome: 'Massa de Pizza (brotinho)', preco: 10.00, categoria: 'Para Pizza' },
-  // Snacks
   { id: 'torcida_pimenta', nome: 'Salgadinho Torcida Pimenta Mexicana', preco: 6.00, categoria: 'Snacks' },
   { id: 'torcida_queijo', nome: 'Salgadinho Torcida Queijo', preco: 6.00, categoria: 'Snacks' },
   { id: 'torcida_cebola', nome: 'Salgadinho Torcida Cebola', preco: 6.00, categoria: 'Snacks' },
-  // Outros
   { id: 'tomate_un', nome: 'Tomate (unidade)', preco: 2.00, categoria: 'Outros' },
   { id: 'cebola_un', nome: 'Cebola (unidade)', preco: 2.00, categoria: 'Outros' },
   { id: 'pimenta_dedo_moca', nome: 'Pimenta Dedo de Moça (porção)', preco: 5.00, categoria: 'Outros' },
   { id: 'limao_un', nome: 'Limão Tahiti (unidade)', preco: 1.50, categoria: 'Outros' },
-  // Bebidas não Alcoólicas
   { id: 'coca_cola_2l', nome: 'Coca-Cola (2L)', preco: 15.00, categoria: 'Bebidas não Alcoólicas' },
   { id: 'agua_300ml', nome: 'Água Mineral s/ Gás (300ml)', preco: 4.00, categoria: 'Bebidas não Alcoólicas' },
-  // Cervejas
   { id: 'heineken_ln', nome: 'Cerveja Heineken (long neck)', preco: 12.00, categoria: 'Cervejas' },
   { id: 'eisenbahn_pilsen_ln', nome: 'Cerveja Eisenbahn Pilsen (long neck)', preco: 10.00, categoria: 'Cervejas' },
   { id: 'stella_artois_ln', nome: 'Cerveja Stella Artois (long neck)', preco: 11.00, categoria: 'Cervejas' },
   { id: 'budweiser_ln', nome: 'Cerveja Budweiser (long neck)', preco: 10.00, categoria: 'Cervejas' },
-  // Vinhos
   { id: 'vinho_tinto_seco_nac', nome: 'Vinho Tinto Seco Nacional (garrafa)', preco: 45.00, categoria: 'Vinhos' },
   { id: 'vinho_branco_seco_nac', nome: 'Vinho Branco Seco Nacional (garrafa)', preco: 45.00, categoria: 'Vinhos' },
-  // Destilados
   { id: 'red_label', nome: 'Whisky J.W. Red Label (dose)', preco: 25.00, categoria: 'Destilados' },
   { id: 'black_label', nome: 'Whisky J.W. Black Label (dose)', preco: 35.00, categoria: 'Destilados' },
   { id: 'velho_barreiro', nome: 'Cachaça Velho Barreiro (dose)', preco: 10.00, categoria: 'Destilados' },
@@ -59,6 +50,8 @@ function App() {
   const [horarioSaida, setHorarioSaida] = useState('');
   const [precoFinal, setPrecoFinal] = useState(600);
   const [itensConsumoSelecionados, setItensConsumoSelecionados] = useState<{ [itemId: string]: number }>({});
+  const [horasParaEstender, setHorasParaEstender] = useState(1);
+  const [precoExtensao, setPrecoExtensao] = useState(100);
 
   const confirmPayment = () => {
     setCurrentScreen('areaDePagamento');
@@ -143,7 +136,6 @@ function App() {
     setSelectedTime(novaHora);
   };
 
-  // ===== FUNÇÃO ADICIONADA AQUI =====
   const handleAbrirPortao = async () => {
     try {
       const response = await fetch("https://codigo-7-app-3.onrender.com/abrir-portao", {
@@ -151,7 +143,6 @@ function App() {
       });
       const data = await response.json();
       if (response.ok) {
-        // Sem alerta de sucesso para uma experiência mais limpa
         console.log("Sinal do portão enviado com sucesso.");
       } else {
         throw new Error(data.error || "Ocorreu um erro no servidor.");
@@ -160,6 +151,16 @@ function App() {
       console.error("Erro ao tentar abrir o portão:", error);
       alert("Falha na comunicação com o portão: " + error.message);
     }
+  };
+
+  const handleConfirmarExtensao = () => {
+    const conflito = false; // Placeholder para verificação futura
+    if (conflito) {
+      alert("Desculpe, o período solicitado para extensão não está disponível.");
+      return;
+    }
+    setPrecoFinal(precoExtensao);
+    setCurrentScreen('areaDePagamento');
   };
 
   useEffect(() => {
@@ -176,21 +177,24 @@ function App() {
   
   useEffect(() => {
     const calcularReserva = () => {
-      let novoPrecoAluguel = 0;
-      if (opcaoAluguel === '4h') novoPrecoAluguel = 600;
-      else if (opcaoAluguel === '12h') novoPrecoAluguel = 1200;
-      else if (opcaoAluguel === 'custom') {
-        const horasParaCalculo = (totalHorasCustom === 0 || totalHorasCustom < 13) ? 13 : totalHorasCustom;
-        novoPrecoAluguel = 1200 + (horasParaCalculo - 12) * 100;
-      }
-      let precoItensConsumo = 0;
-      for (const itemId in itensConsumoSelecionados) {
-        const itemInfo = itensConsumoDisponiveis.find(item => item.id === itemId);
-        if (itemInfo) {
-          precoItensConsumo += itemInfo.preco * itensConsumoSelecionados[itemId];
+      if (currentScreen !== 'telaEstenderReserva') {
+        let novoPrecoAluguel = 0;
+        if (opcaoAluguel === '4h') novoPrecoAluguel = 600;
+        else if (opcaoAluguel === '12h') novoPrecoAluguel = 1200;
+        else if (opcaoAluguel === 'custom') {
+          const horasParaCalculo = (totalHorasCustom === 0 || totalHorasCustom < 13) ? 13 : totalHorasCustom;
+          novoPrecoAluguel = 1200 + (horasParaCalculo - 12) * 100;
         }
+        let precoItensConsumo = 0;
+        for (const itemId in itensConsumoSelecionados) {
+          const itemInfo = itensConsumoDisponiveis.find(item => item.id === itemId);
+          if (itemInfo) {
+            precoItensConsumo += itemInfo.preco * itensConsumoSelecionados[itemId];
+          }
+        }
+        setPrecoFinal(novoPrecoAluguel + precoItensConsumo);
       }
-      setPrecoFinal(novoPrecoAluguel + precoItensConsumo);
+      
       let novoHorarioSaida = '';
       if (selectedTime) {
         const [horasEntradaStr, minutosEntradaStr] = selectedTime.split(':');
@@ -211,13 +215,21 @@ function App() {
       setHorarioSaida(selectedTime ? novoHorarioSaida : '');
     };
     calcularReserva();
-  }, [selectedTime, opcaoAluguel, totalHorasCustom, itensConsumoSelecionados]);
+  }, [selectedTime, opcaoAluguel, totalHorasCustom, itensConsumoSelecionados, currentScreen]);
 
   useEffect(() => {
     if (currentScreen === 'areaDeReserva' || currentScreen === 'areaDePagamento') {
       window.scrollTo(0, 0);
     }
   }, [currentScreen]);
+
+  useEffect(() => {
+    if (currentScreen === 'telaEstenderReserva') {
+      const valorPorHoraAdicional = 100;
+      const horasValidas = Math.max(1, horasParaEstender || 1);
+      setPrecoExtensao(horasValidas * valorPorHoraAdicional);
+    }
+  }, [horasParaEstender, currentScreen]);
 
   const categoriasUnicas = Array.from(new Set(itensConsumoDisponiveis.map(item => item.categoria)));
   categoriasUnicas.sort((a, b) => {
@@ -408,7 +420,7 @@ function App() {
           <div className="controle-botoes">
             <button 
               className="btn-controle btn-abrir"
-              onClick={handleAbrirPortao} // << ONCLICK ATUALIZADO
+              onClick={handleAbrirPortao}
             >
               Abrir Portão
             </button>
@@ -425,8 +437,39 @@ function App() {
       {currentScreen === 'telaEstenderReserva' && (
         <div className="estender-reserva-container">
           <h1>Estender Reserva</h1>
-          <p>Funcionalidade em construção.</p>
-          <button onClick={() => setCurrentScreen('telaControleRemoto')}>
+          <div className="info-reserva-atual">
+            <span>Sua reserva atual termina às:</span>
+            <strong>{horarioSaida || "HH:MM"}</strong> 
+          </div>
+
+          <label htmlFor="horas-adicionais-input" className="form-label-estender">
+            Quantas horas deseja adicionar?
+          </label>
+          <input 
+            type="number"
+            id="horas-adicionais-input"
+            className="form-input-estender"
+            value={horasParaEstender}
+            onChange={(e) => setHorasParaEstender(parseInt(e.target.value, 10) || 1)}
+            min="1"
+          />
+
+          <div className="info-extensao-resumo">
+            <div className="info-extensao-item">
+              <span>Novo horário de saída:</span>
+              <strong>{horarioSaida ? `${(parseInt(horarioSaida.split(':')[0], 10) + horasParaEstender) % 24}`.padStart(2, '0') + `:${horarioSaida.split(':')[1]}` : 'HH:MM'}</strong>
+            </div>
+            <div className="info-extensao-item">
+              <span>Valor adicional a pagar:</span>
+              <strong className="preco-adicional">R$ {precoExtensao.toFixed(2).replace('.', ',')}</strong>
+            </div>
+          </div>
+          
+          <button className="btn-confirmar-extensao" onClick={handleConfirmarExtensao}>
+            Confirmar e Pagar Extensão
+          </button>
+
+          <button className="btn-voltar" onClick={() => setCurrentScreen('telaControleRemoto')}>
             Voltar
           </button>
         </div>

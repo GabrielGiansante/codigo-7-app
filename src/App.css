@@ -490,3 +490,102 @@ button:hover {
   margin-top: -1em;
   margin-bottom: 20px;
 }
+/* ================================================================ */
+/* SEU CSS ATUAL (do backup) VEM PRIMEIRO                           */
+/* ================================================================ */
+/* === ESTILOS PARA A NOVA SEÇÃO DE ITENS DE CONSUMO === */
+.consumo-section {
+  border-top: 2px solid #333;
+  margin-top: 10px;
+  padding-top: 15px;
+}
+.consumo-section-title {
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  font-size: 1.5em; 
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 15px 0;
+}
+/* ... (e todas as outras regras do seu CSS até o final) ... */
+.consumo-info-msg {
+  font-size: 1.2em;
+  color: #FFA500;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 15px;
+  margin-top: -1em;
+  margin-bottom: 20px;
+}
+
+/* === NOVOS ESTILOS PARA A TELA DE ESTENDER RESERVA (ADICIONAR NO FINAL) === */
+.estender-reserva-container .info-reserva-atual {
+  background-color: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  font-size: 1.1em;
+  color: #ccc;
+}
+.estender-reserva-container .info-reserva-atual strong {
+  color: #FFA500;
+  display: block;
+  font-size: 1.3em;
+  margin-top: 5px;
+}
+.form-label-estender {
+  display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #e0e0e0;
+}
+.form-input-estender {
+  width: 80px;
+  padding: 10px;
+  font-size: 1.2em;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: #fff;
+  margin-bottom: 25px;
+}
+.info-extensao-resumo {
+  text-align: left;
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.info-extensao-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  color: #ccc;
+}
+.info-extensao-item strong {
+  color: #fff;
+  font-weight: bold;
+}
+.info-extensao-item .preco-adicional {
+  color: #4CAF50; /* Verde */
+  font-size: 1.1em;
+}
+.btn-confirmar-extensao {
+  width: 100%;
+  background-color: #008000; /* Verde */
+  padding: 12px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.btn-voltar {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #777;
+  color: #aaa;
+  margin-top: 10px;
+}
