@@ -85,7 +85,7 @@ function App() {
       setReservations(updatedReservations);
       alert('Reserva Confirmada!');
       localStorage.removeItem('acessoLiberado');
-      setCurrentScreen('areaDeReserva'); 
+      setCurrentScreen('areaDeReserva');
       setSelectedDate(''); setSelectedTime(''); setOpcaoAluguel('4h');
       setTotalHorasCustom(13); setPaymentConfirmed(false);
       setPrecoFinal(600); setHorarioSaida('');
@@ -105,24 +105,19 @@ function App() {
       }
     });
   };
-  
+
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const novaDataStr = e.target.value;
     if (!novaDataStr) {
-      setSelectedDate('');
-      setSelectedTime('');
-      return;
+      setSelectedDate(''); setSelectedTime(''); return;
     }
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
-
     const dataSelecionada = new Date(novaDataStr);
     const dataSelecionadaAjustada = new Date(dataSelecionada.getUTCFullYear(), dataSelecionada.getUTCMonth(), dataSelecionada.getUTCDate());
-
     if (dataSelecionadaAjustada < hoje) {
       alert("Não é possível selecionar uma data passada.");
-      setSelectedDate('');
-      setSelectedTime('');
+      setSelectedDate(''); setSelectedTime('');
     } else {
       setSelectedDate(novaDataStr);
       if (novaDataStr === hoje.toISOString().split('T')[0] && selectedTime) {
@@ -135,12 +130,10 @@ function App() {
     const novaHora = e.target.value;
     const hoje = new Date();
     const hojeStr = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-${String(hoje.getDate()).padStart(2, '0')}`;
-
     if (selectedDate === hojeStr && novaHora) {
       const horaAtual = hoje.getHours();
       const minutoAtual = hoje.getMinutes();
       const [horaSelecionada, minutoSelecionado] = novaHora.split(':').map(Number);
-
       if (horaSelecionada < horaAtual || (horaSelecionada === horaAtual && minutoSelecionado < minutoAtual)) {
         alert("Não é possível selecionar um horário passado para o dia de hoje.");
         setSelectedTime('');
@@ -152,14 +145,17 @@ function App() {
 
   // ===== FUNÇÃO ADICIONADA AQUI =====
   const handleAbrirPortao = async () => {
-    alert("Enviando sinal para abrir o portão...");
+    // Futuramente, aqui adicionaremos a verificação de geolocalização.
+    // alert("Enviando sinal para abrir o portão..."); // Removido como você pediu
     try {
+      // Envia a requisição para o seu backend
       const response = await fetch("https://codigo-7-app-3.onrender.com/abrir-portao", {
         method: "POST",
       });
       const data = await response.json();
       if (response.ok) {
-        alert(data.message);
+        // alert(data.message); // Removido como você pediu
+        console.log("Sinal do portão enviado com sucesso.");
       } else {
         throw new Error(data.error || "Ocorreu um erro no servidor.");
       }
