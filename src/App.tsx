@@ -49,6 +49,7 @@ const itensConsumoDisponiveis = [
 ];
 
 function App() {
+  const [telaAnteriorPagamento, setTelaAnteriorPagamento] = useState('areaDeReserva');
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [reservations, setReservations] = useState<any[]>([]);
@@ -62,15 +63,8 @@ function App() {
   const [horasParaEstender, setHorasParaEstender] = useState(1);
   const [precoExtensao, setPrecoExtensao] = useState(100);
 
-  // ===== FUNÇÃO CONFIRMPAYMENT ATUALIZADA COM A VALIDAÇÃO =====
   const confirmPayment = () => {
-    // Verifica se a data e a hora foram selecionadas
-    if (!selectedDate || !selectedTime) {
-      alert("Por favor, selecione a Data e a Hora de Entrada antes de prosseguir para o pagamento.");
-      return; // Impede a navegação para a tela de pagamento
-    }
-    
-    // Se a data e hora estiverem preenchidas, continua para a tela de pagamento
+    setTelaAnteriorPagamento('areaDeReserva'); // Define a tela anterior
     setCurrentScreen('areaDePagamento');
   };
 
@@ -169,11 +163,8 @@ function App() {
   };
 
   const handleConfirmarExtensao = () => {
-    const conflito = false; // Placeholder
-    if (conflito) {
-      alert("Desculpe, o período solicitado para extensão não está disponível.");
-      return;
-    }
+    // ... (código existente)
+    setTelaAnteriorPagamento('telaEstenderReserva'); // Define a tela anterior
     setPrecoFinal(precoExtensao);
     setCurrentScreen('areaDePagamento');
   };
@@ -421,11 +412,11 @@ function App() {
             Já Paguei, Liberar Acesso
           </button>
           <button 
-            className="btn-pagamento-voltar" 
-            onClick={() => setCurrentScreen('areaDeReserva')}
-          >
-            Voltar e Alterar Pedido
-          </button>
+  className="btn-pagamento-voltar" 
+  onClick={() => setCurrentScreen(telaAnteriorPagamento)} // << LÓGICA ATUALIZADA
+>
+  Voltar e Alterar Pedido
+</button>
         </div>
       )}
   
