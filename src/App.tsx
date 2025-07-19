@@ -59,8 +59,18 @@ function App() {
   const [horarioSaida, setHorarioSaida] = useState('');
   const [precoFinal, setPrecoFinal] = useState(600);
   const [itensConsumoSelecionados, setItensConsumoSelecionados] = useState<{ [itemId: string]: number }>({});
+  const [horasParaEstender, setHorasParaEstender] = useState(1);
+  const [precoExtensao, setPrecoExtensao] = useState(100);
 
+  // ===== FUNÇÃO CONFIRMPAYMENT ATUALIZADA COM A VALIDAÇÃO =====
   const confirmPayment = () => {
+    // Verifica se a data e a hora foram selecionadas
+    if (!selectedDate || !selectedTime) {
+      alert("Por favor, selecione a Data e a Hora de Entrada antes de prosseguir para o pagamento.");
+      return; // Impede a navegação para a tela de pagamento
+    }
+    
+    // Se a data e hora estiverem preenchidas, continua para a tela de pagamento
     setCurrentScreen('areaDePagamento');
   };
 
@@ -143,23 +153,29 @@ function App() {
     setSelectedTime(novaHora);
   };
 
-  // ===== FUNÇÃO ADICIONADA AQUI =====
   const handleAbrirPortao = async () => {
     try {
       const response = await fetch("https://codigo-7-app-3.onrender.com/abrir-portao", {
         method: "POST",
       });
       const data = await response.json();
-      if (response.ok) {
-        // Sem alerta de sucesso para uma experiência mais limpa
-        console.log("Sinal do portão enviado com sucesso.");
-      } else {
+      if (!response.ok) {
         throw new Error(data.error || "Ocorreu um erro no servidor.");
       }
     } catch (error: any) {
       console.error("Erro ao tentar abrir o portão:", error);
       alert("Falha na comunicação com o portão: " + error.message);
     }
+  };
+
+  const handleConfirmarExtensao = () => {
+    const conflito = false; // Placeholder
+    if (conflito) {
+      alert("Desculpe, o período solicitado para extensão não está disponível.");
+      return;
+    }
+    setPrecoFinal(precoExtensao);
+    setCurrentScreen('areaDePagamento');
   };
 
   useEffect(() => {
@@ -176,33 +192,37 @@ function App() {
   
   useEffect(() => {
     const calcularReserva = () => {
-      let novoPrecoAluguel = 0;
-      if (opcaoAluguel === '4h') novoPrecoAluguel = 600;
-      else if (opcaoAluguel === '12h') novoPrecoAluguel = 1200;
-      else if (opcaoAluguel === 'custom') {
-        const horasParaCalculo = (totalHorasCustom === 0 || totalHorasCustom < 13) ? 13 : totalHorasCustom;
-        novoPrecoAluguel = 1200 + (horasParaCalculo - 12) * 100;
-      }
-      let precoItensConsumo = 0;
-      for (const itemId in itensConsumoSelecionados) {
-        const itemInfo = itensConsumoDisponiveis.find(item => item.id === itemId);
-        if (itemInfo) {
-          precoItensConsumo += itemInfo.preco * itensConsumoSelecionados[itemId];
+      if (currentScreen === 'areaDeReserva' || (currentScreen === 'areaDePagamento' && !paymentConfirmed)) {
+        let novoPrecoAluguel = 0;
+        if (opcaoAluguel === '4h') novoPrecoAluguel = 600;
+        else if (opcaoAluguel === '12h') novoPrecoAluguel = 1200;
+        else if (opcaoAluguel === 'custom') {
+          const horasParaCalculo = (totalHorasCustom === 0 || totalHorasCustom < 13) ? 13 : totalHorasCustom;
+          novoPrecoAluguel = 1200 + (horasParaCalculo - 12) * 100;
         }
+        let precoItensConsumo = 0;
+        for (const itemId in itensConsumoSelecionados) {
+          const itemInfo = itensConsumoDisponiveis.find(item => item.id === itemId);
+          if (itemInfo) {
+            precoItensConsumo += itemInfo.preco * itensConsumoSelecionados[itemId];
+          }
+        }
+        setPrecoFinal(novoPrecoAluguel + precoItensConsumo);
       }
-      setPrecoFinal(novoPrecoAluguel + precoItensConsumo);
+      
       let novoHorarioSaida = '';
       if (selectedTime) {
         const [horasEntradaStr, minutosEntradaStr] = selectedTime.split(':');
         const horasEntrada = parseInt(horasEntradaStr, 10);
         const minutosEntrada = parseInt(minutosEntradaStr, 10);
         let horasSaidaCalc = horasEntrada; let minutosSaidaCalc = minutosEntrada;
-        if (opcaoAluguel === '4h') horasSaidaCalc += 4;
-        else if (opcaoAluguel === '12h') horasSaidaCalc += 12;
+        let totalHoras = 0;
+        if (opcaoAluguel === '4h') totalHoras = 4;
+        else if (opcaoAluguel === '12h') totalHoras = 12;
         else if (opcaoAluguel === 'custom') {
-          const horasParaCalculo = (totalHorasCustom === 0 || totalHorasCustom < 13) ? 13 : totalHorasCustom;
-          horasSaidaCalc += horasParaCalculo;
+            totalHoras = (totalHorasCustom === 0 || totalHorasCustom < 13) ? 13 : totalHorasCustom;
         }
+        horasSaidaCalc += totalHoras;
         if (horasSaidaCalc >= 24) horasSaidaCalc = horasSaidaCalc % 24;
         const horaFormatada = String(horasSaidaCalc).padStart(2, '0');
         const minutoFormatado = String(minutosSaidaCalc).padStart(2, '0');
@@ -211,13 +231,21 @@ function App() {
       setHorarioSaida(selectedTime ? novoHorarioSaida : '');
     };
     calcularReserva();
-  }, [selectedTime, opcaoAluguel, totalHorasCustom, itensConsumoSelecionados]);
+  }, [selectedTime, opcaoAluguel, totalHorasCustom, itensConsumoSelecionados, currentScreen]);
 
   useEffect(() => {
     if (currentScreen === 'areaDeReserva' || currentScreen === 'areaDePagamento') {
       window.scrollTo(0, 0);
     }
   }, [currentScreen]);
+
+  useEffect(() => {
+    if (currentScreen === 'telaEstenderReserva') {
+      const valorPorHoraAdicional = 100;
+      const horasValidas = Math.max(1, horasParaEstender || 1);
+      setPrecoExtensao(horasValidas * valorPorHoraAdicional);
+    }
+  }, [horasParaEstender, currentScreen]);
 
   const categoriasUnicas = Array.from(new Set(itensConsumoDisponiveis.map(item => item.categoria)));
   categoriasUnicas.sort((a, b) => {
@@ -408,7 +436,7 @@ function App() {
           <div className="controle-botoes">
             <button 
               className="btn-controle btn-abrir"
-              onClick={handleAbrirPortao} // << ONCLICK ATUALIZADO
+              onClick={handleAbrirPortao}
             >
               Abrir Portão
             </button>
@@ -425,8 +453,39 @@ function App() {
       {currentScreen === 'telaEstenderReserva' && (
         <div className="estender-reserva-container">
           <h1>Estender Reserva</h1>
-          <p>Funcionalidade em construção.</p>
-          <button onClick={() => setCurrentScreen('telaControleRemoto')}>
+          <div className="info-reserva-atual">
+            <span>Sua reserva atual termina às:</span>
+            <strong>{horarioSaida || "HH:MM"}</strong> 
+          </div>
+
+          <label htmlFor="horas-adicionais-input" className="form-label-estender">
+            Quantas horas deseja adicionar?
+          </label>
+          <input 
+            type="number"
+            id="horas-adicionais-input"
+            className="form-input-estender"
+            value={horasParaEstender}
+            onChange={(e) => setHorasParaEstender(parseInt(e.target.value, 10) || 1)}
+            min="1"
+          />
+
+          <div className="info-extensao-resumo">
+            <div className="info-extensao-item">
+              <span>Novo horário de saída:</span>
+              <strong>{horarioSaida ? `${(parseInt(horarioSaida.split(':')[0], 10) + horasParaEstender) % 24}`.padStart(2, '0') + `:${horarioSaida.split(':')[1]}` : 'HH:MM'}</strong>
+            </div>
+            <div className="info-extensao-item">
+              <span>Valor adicional a pagar:</span>
+              <strong className="preco-adicional">R$ {precoExtensao.toFixed(2).replace('.', ',')}</strong>
+            </div>
+          </div>
+          
+          <button className="btn-confirmar-extensao" onClick={handleConfirmarExtensao}>
+            Confirmar e Pagar Extensão
+          </button>
+
+          <button className="btn-voltar" onClick={() => setCurrentScreen('telaControleRemoto')}>
             Voltar
           </button>
         </div>
