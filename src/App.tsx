@@ -145,16 +145,13 @@ function App() {
 
   // ===== FUNÇÃO ADICIONADA AQUI =====
   const handleAbrirPortao = async () => {
-    // Futuramente, aqui adicionaremos a verificação de geolocalização.
-    // alert("Enviando sinal para abrir o portão..."); // Removido como você pediu
     try {
-      // Envia a requisição para o seu backend
       const response = await fetch("https://codigo-7-app-3.onrender.com/abrir-portao", {
         method: "POST",
       });
       const data = await response.json();
       if (response.ok) {
-        // alert(data.message); // Removido como você pediu
+        // Sem alerta de sucesso para uma experiência mais limpa
         console.log("Sinal do portão enviado com sucesso.");
       } else {
         throw new Error(data.error || "Ocorreu um erro no servidor.");
@@ -411,7 +408,7 @@ function App() {
           <div className="controle-botoes">
             <button 
               className="btn-controle btn-abrir"
-              onClick={handleAbrirPortao}
+              onClick={handleAbrirPortao} // << ONCLICK ATUALIZADO
             >
               Abrir Portão
             </button>
