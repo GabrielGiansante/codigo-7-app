@@ -67,10 +67,10 @@ function App() {
     // Verifica se a data e a hora foram selecionadas
     if (!selectedDate || !selectedTime) {
       alert("Por favor, selecione a Data e a Hora de Entrada antes de prosseguir para o pagamento.");
-      return; // Impede a navegação para a tela de pagamento
+      return; // Impede a navegação
     }
     
-    // Se a data e hora estiverem preenchidas, continua para a tela de pagamento
+    // Reseta o estado e navega
     setPaymentConfirmed(false);
     setTelaAnteriorPagamento('areaDeReserva');
     setCurrentScreen('areaDePagamento');
@@ -171,18 +171,19 @@ function App() {
   };
 
   const handleConfirmarExtensao = () => {
-    // ... (código existente)
+    // A verificação de disponibilidade virá aqui
     const conflito = false; // Placeholder
-  if (conflito) {
-    alert("Desculpe, o período solicitado...");
-    return;
-  }
-  setPaymentConfirmed(false); // << ADICIONADO AQUI
-    setTelaAnteriorPagamento('telaEstenderReserva'); // Define a tela anterior
+    if (conflito) {
+      alert("Desculpe, o período solicitado para extensão não está disponível.");
+      return;
+    }
+    
+    // Reseta o estado e navega
+    setPaymentConfirmed(false);
+    setTelaAnteriorPagamento('telaEstenderReserva');
     setPrecoFinal(precoExtensao);
     setCurrentScreen('areaDePagamento');
   };
-
   useEffect(() => {
     const acessoJaLiberado = localStorage.getItem('acessoLiberado');
     if (acessoJaLiberado === 'true') {
