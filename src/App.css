@@ -615,8 +615,8 @@ button:hover {
 
 /* Container para a imagem de fundo */
 .controle-remoto-visual {
-  width: 180px; /* Largura da sua imagem de controle */
-  height: 300px; /* Altura da sua imagem de controle */
+  width: 480px; /* Largura da sua imagem de controle */
+  height: 800px; /* Altura da sua imagem de controle */
   background-image: url('/controle-remoto.png'); /* Caminho para a imagem na pasta /public */
   background-size: contain;
   background-repeat: no-repeat;
@@ -634,9 +634,9 @@ button:hover {
   color: white;
   border: 2px solid #fff;
   border-radius: 50%; /* Botão redondo */
-  width: 90px;
-  height: 90px;
-  font-size: 1.2em;
+  width: 110px;
+  height: 110px;
+  font-size: 1.5em;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.4);
