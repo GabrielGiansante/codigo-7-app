@@ -615,8 +615,8 @@ button:hover {
 
 /* Container para a imagem de fundo */
 .controle-remoto-visual {
-  width: 480px; /* Largura da sua imagem de controle */
-  height: 800px; /* Altura da sua imagem de controle */
+  width: 360px; /* Largura da sua imagem de controle */
+  height: 600px; /* Altura da sua imagem de controle */
   background-image: url('/controle-remoto.png'); /* Caminho para a imagem na pasta /public */
   background-size: contain;
   background-repeat: no-repeat;
