@@ -611,3 +611,48 @@ button:hover {
   color: #aaa;
   margin-top: 10px;
 }
+/* ===== NOVOS ESTILOS PARA O CONTROLE REMOTO VISUAL ===== */
+
+/* Container para a imagem de fundo */
+.controle-remoto-visual {
+  width: 150px; /* Largura da sua imagem de controle */
+  height: 250px; /* Altura da sua imagem de controle */
+  background-image: url('/controle-remoto.png'); /* Caminho para a imagem na pasta /public */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 20px auto 30px auto; /* Espaçamento ao redor */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botão que fica sobre a imagem */
+.btn-abrir-portao {
+  /* Estilos visuais para parecer um botão de controle */
+  background-color: #c00; /* Vermelho escuro */
+  color: white;
+  border: 2px solid #fff;
+  border-radius: 50%; /* Botão redondo */
+  width: 80px;
+  height: 80px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  transition: all 0.1s ease-in-out;
+  /* Remove herança da regra 'button' global se necessário */
+  padding: 0; 
+}
+.btn-abrir-portao:hover {
+  background-color: #ff3333; /* Vermelho mais claro */
+}
+.btn-abrir-portao:active { /* Efeito de pressionar */
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* Garante que o botão 'Estender Reserva' ocupe a largura toda */
+.controle-container .btn-estender-reserva {
+  width: 100%;
+}

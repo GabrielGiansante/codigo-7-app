@@ -436,24 +436,30 @@ function App() {
       )}
   
       {currentScreen === 'telaControleRemoto' && (
-        <div className="controle-container">
-          <h1>Acesso Liberado</h1>
-          <p>Use os botões abaixo para controlar o portão.</p>
-          <div className="controle-botoes">
-            <button 
-              className="btn-controle btn-abrir"
-              onClick={handleAbrirPortao}
-            >
-              Abrir Portão
-            </button>
-            <button 
-              className="btn-controle btn-estender-reserva"
-              onClick={() => setCurrentScreen('telaEstenderReserva')}
-            >
-              Estender Reserva
-            </button>
-          </div>
-        </div>
+         <div className="controle-container">
+         <h1>Acesso Liberado</h1>
+         <p>Pressione o botão no controle para abrir o portão.</p>
+         
+         {/* ===== NOVO VISUAL DO CONTROLE REMOTO ===== */}
+         <div className="controle-remoto-visual">
+           <button 
+             className="btn-abrir-portao"
+             onClick={handleAbrirPortao}
+           >
+             ABRIR
+           </button>
+         </div>
+ 
+         {/* O botão "Estender Reserva" fica fora do visual do controle */}
+         <button 
+           className="btn-controle btn-estender-reserva"
+           onClick={() => setCurrentScreen('telaEstenderReserva')}
+         >
+           Estender Reserva
+         </button>
+         {/* ===== FIM DO NOVO VISUAL ===== */}
+ 
+       </div>
       )}
   
       {currentScreen === 'telaEstenderReserva' && (
