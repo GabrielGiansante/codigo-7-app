@@ -442,21 +442,51 @@ button:hover {
 .pagamento-aviso strong {
   color: #ff4d4d;
 }
-.btn-pagamento-confirmado, .btn-controle {
-  background-color: #008000;
-  width: 100%;
-  padding: 12px;
-  font-size: 1.1em;
+/* ===== ESTILOS ISOLADOS PARA BOTÕES DE PAGAMENTO/CONTROLE ===== */
+
+.btn-pagamento-confirmado, 
+.btn-controle {
+  /* Estilos Visuais */
+  background-color: #008000; /* Verde */
+  color: white;
+  border: 1px solid white;
+  border-radius: 8px;
   font-weight: bold;
-  border: 1px solid #fff;
+  font-size: 1.1em;
+  padding: 12px;
+
+  /* Estilos Funcionais */
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+.btn-pagamento-confirmado:hover, 
+.btn-controle:hover {
+  background-color: #006400; /* Verde mais escuro */
+}
+
 .btn-pagamento-voltar {
+  /* Estilos Visuais */
   background-color: transparent;
+  color: #aaa;
   border: 1px solid #777;
+  border-radius: 8px;
+  font-weight: normal; /* Normal, não bold */
+  font-size: 1em;    /* Tamanho um pouco menor */
+  padding: 10px;
+
+  /* Estilos Funcionais */
   width: 100%;
   margin-top: 10px;
-  color: #aaa;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+.btn-pagamento-voltar:hover {
+  background-color: #333;
+}
+
+/* ===== FIM DOS ESTILOS ISOLADOS ===== */
+
 .controle-botoes {
   display: flex;
   flex-direction: column;
