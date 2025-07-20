@@ -71,6 +71,7 @@ function App() {
     }
     
     // Se a data e hora estiverem preenchidas, continua para a tela de pagamento
+    setPaymentConfirmed(false);
     setTelaAnteriorPagamento('areaDeReserva');
     setCurrentScreen('areaDePagamento');
   };
@@ -171,6 +172,12 @@ function App() {
 
   const handleConfirmarExtensao = () => {
     // ... (código existente)
+    const conflito = false; // Placeholder
+  if (conflito) {
+    alert("Desculpe, o período solicitado...");
+    return;
+  }
+  setPaymentConfirmed(false); // << ADICIONADO AQUI
     setTelaAnteriorPagamento('telaEstenderReserva'); // Define a tela anterior
     setPrecoFinal(precoExtensao);
     setCurrentScreen('areaDePagamento');
