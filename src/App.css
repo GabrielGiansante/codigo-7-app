@@ -393,6 +393,7 @@ button:hover {
 .pagamento-container,
 .controle-container,
 .estender-reserva-container {
+  margin-top: 50px;
   max-width: 400px;
 }
 
@@ -613,25 +614,20 @@ button:hover {
 }
 /* ===== NOVOS ESTILOS PARA O CONTROLE REMOTO VISUAL ===== */
 
+/* Container para a imagem de fundo */
 .controle-remoto-visual {
-  width: 100%; /* Ocupa 100% da largura do pai (.controle-container) */
-  max-width: 360px; /* Define o tamanho máximo que você quer que ele tenha */
-  
-  /* Use a proporção da sua imagem (largura / altura) */
-  /* Exemplo para uma imagem de 360px de largura por 600px de altura: */
-  aspect-ratio: 360 / 600; 
-
-  height: auto; /* A altura será calculada automaticamente */
-  
-  background-image: url('/controle-remoto.png');
+  width: 360px; /* Largura da sua imagem de controle */
+  height: 600px; /* Altura da sua imagem de controle */
+  background-image: url('/controle-remoto.png'); /* Caminho para a imagem na pasta /public */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 20px auto 30px auto;
+  margin: 20px auto 30px auto; /* Espaçamento ao redor */
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 /* Botão que fica sobre a imagem */
 .btn-abrir-portao {
   /* Estilos visuais para parecer um botão de controle */
