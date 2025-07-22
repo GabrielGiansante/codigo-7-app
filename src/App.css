@@ -668,3 +668,21 @@ button:hover {
 .controle-container p {
   margin-bottom: 0;
 }
+/* ================================================================ */
+/*  SOLUÇÃO DE CONTROLE TOTAL DE ESPAÇAMENTO                        */
+/* ================================================================ */
+
+/* 1. Para o título H1 dentro da tela de controle... */
+.controle-container h1 {
+  margin-bottom: 15px; /* ...deixe apenas um pequeno espaço abaixo dele. */
+}
+
+/* 2. Para o parágrafo P dentro da tela de controle... */
+.controle-container p {
+  margin-bottom: 5px; /* ...deixe um espaço mínimo antes do controle. */
+}
+
+/* 3. E para a imagem do controle... */
+.controle-remoto-visual {
+   margin-top: 0; /* ...NÃO adicione nenhum espaço extra no topo. */
+}
