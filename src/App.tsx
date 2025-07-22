@@ -1,8 +1,11 @@
+// src/App.tsx
+
 import './App.css';
 import { useState, useEffect } from 'react';
 
-// LISTA DE ITENS DE CONSUMO
+// A lista de itens de consumo permanece a mesma...
 const itensConsumoDisponiveis = [
+  // ... (toda a sua lista de itens aqui, igual a antes) ...
   // Carnes
   { id: 'picanha', nome: 'Picanha (aprox. 500g)', preco: 70.00, categoria: 'Carnes' },
   { id: 'maminha', nome: 'Maminha (aprox. 500g)', preco: 60.00, categoria: 'Carnes' },
@@ -63,14 +66,14 @@ function App() {
   const [horasParaEstender, setHorasParaEstender] = useState(1);
   const [precoExtensao, setPrecoExtensao] = useState(100);
 
+  // As funções de lógica continuam as mesmas...
+  // ... (todo o resto das funções: confirmPayment, handlePagamentoRealizado, handleSubmit, etc., permanecem exatamente como estavam) ...
   const confirmPayment = () => {
-    // Verifica se a data e a hora foram selecionadas
     if (!selectedDate || !selectedTime) {
       alert("Por favor, selecione a Data e a Hora de Entrada antes de prosseguir para o pagamento.");
-      return; // Impede a navegação
+      return; 
     }
     
-    // Reseta o estado e navega
     setPaymentConfirmed(false);
     setTelaAnteriorPagamento('areaDeReserva');
     setCurrentScreen('areaDePagamento');
@@ -171,14 +174,12 @@ function App() {
   };
 
   const handleConfirmarExtensao = () => {
-    // A verificação de disponibilidade virá aqui
-    const conflito = false; // Placeholder
+    const conflito = false;
     if (conflito) {
       alert("Desculpe, o período solicitado para extensão não está disponível.");
       return;
     }
     
-    // Reseta o estado e navega
     setPaymentConfirmed(false);
     setTelaAnteriorPagamento('telaEstenderReserva');
     setPrecoFinal(precoExtensao);
@@ -265,15 +266,25 @@ function App() {
   
   const hojeMinDate = new Date().toISOString().split('T')[0];
 
+  // ===== MUDANÇA PRINCIPAL AQUI =====
+  // Define o estilo de alinhamento vertical com base na tela atual
+  const justifyContentStyle = currentScreen === 'areaDeReserva' ? 'flex-start' : 'center';
+
   return (
     <div style={{
-      minHeight: '100vh', display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'flex-start',
-      paddingTop: '40px', paddingBottom: '40px', boxSizing: 'border-box'
+      minHeight: '100vh', 
+      display: 'flex', 
+      flexDirection: 'column',
+      alignItems: 'center', 
+      justifyContent: justifyContentStyle, // Usa a variável de estilo aqui
+      paddingTop: '40px', 
+      paddingBottom: '40px', 
+      boxSizing: 'border-box'
     }}>
   
       {currentScreen === 'areaDeReserva' && (
         <div className="area-reserva-container">
+          {/* O conteúdo da tela de reserva continua igual */}
           <h1>Faça Sua Reserva</h1>
           <form style={{ display: 'flex', flexDirection: 'column', width: '100%' }} onSubmit={handleSubmit}>
             <div className="form-row-inline" style={{ marginBottom: '10px' }}>
@@ -398,6 +409,7 @@ function App() {
   
       {currentScreen === 'areaDePagamento' && (
         <div className="pagamento-container">
+          {/* O conteúdo da tela de pagamento continua igual */}
           <h1>Pagamento via Pix</h1>
           <p className="pagamento-info">
             Para liberar seu acesso, realize o pagamento de <strong>R$ {precoFinal.toFixed(2).replace('.', ',')}</strong>.
@@ -427,11 +439,11 @@ function App() {
             Já Paguei, Liberar Acesso
           </button>
           <button 
-  className="btn-pagamento-voltar" 
-  onClick={() => setCurrentScreen(telaAnteriorPagamento)} // << LÓGICA ATUALIZADA
->
-  Voltar e Alterar Pedido
-</button>
+            className="btn-pagamento-voltar" 
+            onClick={() => setCurrentScreen(telaAnteriorPagamento)}
+          >
+            Voltar e Alterar Pedido
+          </button>
         </div>
       )}
   
@@ -440,7 +452,6 @@ function App() {
          <h1>Acesso Liberado</h1>
          <p>Pressione o botão no controle para abrir o portão.</p>
          
-         {/* ===== NOVO VISUAL DO CONTROLE REMOTO ===== */}
          <div className="controle-remoto-visual">
            <button 
              className="btn-abrir-portao"
@@ -450,20 +461,19 @@ function App() {
            </button>
          </div>
  
-         {/* O botão "Estender Reserva" fica fora do visual do controle */}
          <button 
            className="btn-controle btn-estender-reserva"
            onClick={() => setCurrentScreen('telaEstenderReserva')}
          >
            Estender Reserva
          </button>
-         {/* ===== FIM DO NOVO VISUAL ===== */}
  
        </div>
       )}
   
       {currentScreen === 'telaEstenderReserva' && (
         <div className="estender-reserva-container">
+          {/* O conteúdo da tela de estender reserva continua igual */}
           <h1>Estender Reserva</h1>
           <div className="info-reserva-atual">
             <span>Sua reserva atual termina às:</span>
