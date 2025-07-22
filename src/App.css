@@ -669,27 +669,21 @@ button:hover {
   width: 100%;
 }
 /* ================================================================ */
-/*  CORREÇÃO FINAL E SIMPLES PARA CENTRALIZAR O CONTROLE            */
+/*  SOLUÇÃO COMPLETA DE LAYOUT E CENTRALIZAÇÃO                      */
 /* ================================================================ */
 
-.controle-container {
-  /* Garante que o container ocupe o espaço vertical disponível */
-  flex: 1;
-
-  /* Usa o modelo de Grid, que é excelente para centralizar */
-  display: grid;
-  place-items: center;
-
-  /* Garante que o container ocupe a largura da tela */
-  width: 100%;
+/* 1. Prepara o 'palco' principal para TODAS as telas */
+#root > div {
+  min-height: 100vh;      /* Garante que o palco ocupe a altura toda da tela */
+  display: flex;          /* Ativa o modo de layout flexível */
+  flex-direction: column; /* Organiza as telas em uma coluna vertical */
 }
-/* ================================================================ */
-/*  TOQUE FINAL DE CENTRALIZAÇÃO VERTICAL                           */
-/* ================================================================ */
 
+/* 2. Regra específica para a TELA DE CONTROLE se centralizar no palco */
 .controle-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centraliza verticalmente */
-  flex: 1; /* Faz o container crescer para ocupar o espaço disponível */
+  /* Estas duas regras são a 'mágica' final. */
+  /* Elas dizem ao container: 'use todo o espaço vertical   */
+  /* igualmente acima e abaixo de você'. */
+  margin-top: auto;
+  margin-bottom: auto;
 }
