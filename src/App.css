@@ -657,7 +657,26 @@ button:hover {
 .controle-container .btn-estender-reserva {
   width: 100%;
 }
+/* ================================================================ */
+/*  NOVA TENTATIVA DE CENTRALIZAÇÃO PARA TELA DE CONTROLE           */
+/* ================================================================ */
+
+/* Este é o wrapper que envolve todas as telas */
+#root > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 40px 0;
+}
+
+/* 
+ * Esta é a MÁGICA.
+ * Dizemos ao container do controle para se 'empurrar' para longe
+ * do topo e da base com a mesma força, centralizando-se no espaço que sobra.
+*/
 .controle-container {
-  background-color: yellow !important;
-  color: black !important;
+  margin-top: auto;
+  margin-bottom: auto;
 }
