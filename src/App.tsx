@@ -449,7 +449,7 @@ function App() {
   
       {currentScreen === 'telaControleRemoto' && (
          <div className="controle-container">
-         <h1>Acesso Liberado</h1>
+         <h1>Acesso Liberado - Teste Visual</h1>
          <p>Pressione o botão no controle para abrir o portão.</p>
          
          <div className="controle-remoto-visual">
