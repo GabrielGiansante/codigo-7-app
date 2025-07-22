@@ -669,21 +669,22 @@ button:hover {
   width: 100%;
 }
 /* ================================================================ */
-/*  SOLUÇÃO COMPLETA DE LAYOUT E CENTRALIZAÇÃO                      */
+/*  LAYOUT FINAL E À PROVA DE FALHAS                                */
 /* ================================================================ */
 
-/* 1. Prepara o 'palco' principal para TODAS as telas */
-#root > div {
-  min-height: 100vh;      /* Garante que o palco ocupe a altura toda da tela */
-  display: flex;          /* Ativa o modo de layout flexível */
-  flex-direction: column; /* Organiza as telas em uma coluna vertical */
+/* Estilo para a tela de reserva (alinhada no topo) */
+.app-wrapper-topo {
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start; /* Alinha no topo */
+  align-items: center;
+  padding: 40px 0;
 }
 
-/* 2. Regra específica para a TELA DE CONTROLE se centralizar no palco */
-.controle-container {
-  /* Estas duas regras são a 'mágica' final. */
-  /* Elas dizem ao container: 'use todo o espaço vertical   */
-  /* igualmente acima e abaixo de você'. */
-  margin-top: auto;
-  margin-bottom: auto;
+/* Estilo para o controle e outras telas (centralizadas) */
+.app-wrapper-centro {
+  min-height: 100vh;
+  display: grid; /* A técnica mais moderna */
+  place-items: center; /* Centraliza tudo perfeitamente */
+  padding: 40px 0;
 }

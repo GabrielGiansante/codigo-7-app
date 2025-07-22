@@ -269,18 +269,9 @@ function App() {
   // ===== MUDANÇA PRINCIPAL AQUI =====
   // Define o estilo de alinhamento vertical com base na tela atual
   const justifyContentStyle = currentScreen === 'areaDeReserva' ? 'flex-start' : 'center';
-
+  const wrapperClassName = currentScreen === 'areaDeReserva' ? 'app-wrapper-topo' : 'app-wrapper-centro';
   return (
-    <div style={{
-      minHeight: '100vh', 
-      display: 'flex', 
-      flexDirection: 'column',
-      alignItems: 'center', 
-      justifyContent: justifyContentStyle, // Usa a variável de estilo aqui
-      paddingTop: '40px', 
-      paddingBottom: '40px', 
-      boxSizing: 'border-box'
-    }}>
+    <div className={wrapperClassName}>
   
       {currentScreen === 'areaDeReserva' && (
         <div className="area-reserva-container">
