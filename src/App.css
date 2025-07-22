@@ -614,7 +614,7 @@ button:hover {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: -20px auto 30px;
+  margin: 20px auto 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -656,4 +656,15 @@ button:hover {
   overflow-y: auto;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+/* ================================================================ */
+/*  CORREÇÃO FOCADA NO ESPAÇAMENTO DO TEXTO ACIMA DO CONTROLE      */
+/* ================================================================ */
+
+/*
+ * Alvo: O parágrafo <p> que está DENTRO do .controle-container.
+ * Ação: Remover a margem inferior dele.
+*/
+.controle-container p {
+  margin-bottom: 0;
 }
