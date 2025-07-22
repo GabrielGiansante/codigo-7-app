@@ -657,3 +657,7 @@ button:hover {
 .controle-container .btn-estender-reserva {
   width: 100%;
 }
+.controle-container {
+  background-color: yellow !important;
+  color: black !important;
+}
