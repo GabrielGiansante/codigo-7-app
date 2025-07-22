@@ -690,3 +690,11 @@ button:hover {
   padding: 40px 0;
   box-sizing: border-box;
 }
+
+/* ================================================================ */
+/*  ESTILO DE DEBUG VISUAL                                          */
+/* ================================================================ */
+
+.debug-ativo {
+  background-color: lime !important; /* Verde-limão berrante */
+}
