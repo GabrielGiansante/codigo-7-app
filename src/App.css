@@ -669,23 +669,14 @@ button:hover {
   margin-bottom: 0;
 }
 /* ================================================================ */
-/*  SOLUÇÃO DEFINITIVA: CONTROLANDO O LAYOUT INTERNO                */
+/*  SOLUÇÃO BRUTE FORCE: FORÇANDO O ELEMENTO PARA CIMA              */
 /* ================================================================ */
 
-/* 1. Transforma o container em um organizador Flexbox. */
-/*    Isso nos dá controle total sobre os itens dentro dele. */
-.controle-container {
-  display: flex;
-  flex-direction: column; /* Empilha os itens verticalmente. */
-  align-items: center;   /* Centraliza tudo na horizontal. */
-}
-
-/* 2. Removemos o espaço extra do parágrafo que empurra o controle. */
-.controle-container p {
-margin-bottom: 0; /* Zera a margem de baixo do texto. */
-}
-
-/* 3. Puxamos o controle para cima, o mais próximo possível. */
+/*
+ * Esta regra aplica uma transformação visual no controle,
+ * forçando-o a se mover 40 pixels para cima de sua posição normal.
+*/
 .controle-remoto-visual {
-margin-top: 5px; /* Define um espaço superior mínimo e fixo. */
+  position: relative; /* Necessário para a transformação funcionar corretamente */
+  transform: translateY(-40px);
 }
