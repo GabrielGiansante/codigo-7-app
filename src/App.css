@@ -658,25 +658,26 @@ button:hover {
   width: 100%;
 }
 /* ================================================================ */
-/*  NOVA TENTATIVA DE CENTRALIZAÇÃO PARA TELA DE CONTROLE           */
+/*  SOLUÇÃO DE POSICIONAMENTO ABSOLUTO PARA CENTRALIZAÇÃO           */
 /* ================================================================ */
 
-/* Este é o wrapper que envolve todas as telas */
+/* 
+ * Primeiro, garantimos que o container principal possa ser uma 
+ * referência de posicionamento, sem mexer no layout das outras telas.
+*/
 #root > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative; /* Define um 'contexto' para o posicionamento */
   min-height: 100vh;
-  box-sizing: border-box;
-  padding: 40px 0;
 }
 
 /* 
- * Esta é a MÁGICA.
- * Dizemos ao container do controle para se 'empurrar' para longe
- * do topo e da base com a mesma força, centralizando-se no espaço que sobra.
+ * Agora, forçamos o container do controle para o centro absoluto.
+ * Isso o retira do 'fluxo' normal da página e o crava no meio.
 */
 .controle-container {
-  margin-top: auto;
-  margin-bottom: auto;
+  width: 90%; /* Mantém a largura que você já tinha definido */
+  position: absolute;   /* TÉCNICA AGRESSIVA */
+  top: 50%;             /* Move o topo do elemento para o meio da tela */
+  left: 50%;            /* Move a esquerda do elemento para o meio da tela */
+  transform: translate(-50%, -50%); /* Ajuste fino para centralizar o *centro* do elemento, não a ponta dele */
 }
