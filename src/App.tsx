@@ -1,11 +1,8 @@
-// src/App.tsx
-
 import './App.css';
 import { useState, useEffect } from 'react';
 
-// A lista de itens de consumo permanece a mesma...
+// LISTA DE ITENS DE CONSUMO
 const itensConsumoDisponiveis = [
-  // ... (toda a sua lista de itens aqui, igual a antes) ...
   // Carnes
   { id: 'picanha', nome: 'Picanha (aprox. 500g)', preco: 70.00, categoria: 'Carnes' },
   { id: 'maminha', nome: 'Maminha (aprox. 500g)', preco: 60.00, categoria: 'Carnes' },
@@ -66,8 +63,6 @@ function App() {
   const [horasParaEstender, setHorasParaEstender] = useState(1);
   const [precoExtensao, setPrecoExtensao] = useState(100);
 
-  // As funções de lógica continuam as mesmas...
-  // ... (todo o resto das funções: confirmPayment, handlePagamentoRealizado, handleSubmit, etc., permanecem exatamente como estavam) ...
   const confirmPayment = () => {
     if (!selectedDate || !selectedTime) {
       alert("Por favor, selecione a Data e a Hora de Entrada antes de prosseguir para o pagamento.");
@@ -174,7 +169,7 @@ function App() {
   };
 
   const handleConfirmarExtensao = () => {
-    const conflito = false;
+    const conflito = false; 
     if (conflito) {
       alert("Desculpe, o período solicitado para extensão não está disponível.");
       return;
@@ -185,6 +180,7 @@ function App() {
     setPrecoFinal(precoExtensao);
     setCurrentScreen('areaDePagamento');
   };
+  
   useEffect(() => {
     const acessoJaLiberado = localStorage.getItem('acessoLiberado');
     if (acessoJaLiberado === 'true') {
@@ -245,7 +241,6 @@ function App() {
       window.scrollTo(0, 0);
     }
   }, [currentScreen]);
-  
 
   useEffect(() => {
     if (currentScreen === 'telaEstenderReserva') {
@@ -267,16 +262,15 @@ function App() {
   
   const hojeMinDate = new Date().toISOString().split('T')[0];
 
-  // ===== MUDANÇA PRINCIPAL AQUI =====
-  // Define o estilo de alinhamento vertical com base na tela atual
-  
-  
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '40px', paddingBottom: '40px', boxSizing: 'border-box' }}>
+    <div style={{
+      minHeight: '100vh', display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'flex-start',
+      paddingTop: '40px', paddingBottom: '40px', boxSizing: 'border-box'
+    }}>
   
       {currentScreen === 'areaDeReserva' && (
         <div className="area-reserva-container">
-          {/* O conteúdo da tela de reserva continua igual */}
           <h1>Faça Sua Reserva</h1>
           <form style={{ display: 'flex', flexDirection: 'column', width: '100%' }} onSubmit={handleSubmit}>
             <div className="form-row-inline" style={{ marginBottom: '10px' }}>
@@ -401,7 +395,6 @@ function App() {
   
       {currentScreen === 'areaDePagamento' && (
         <div className="pagamento-container">
-          {/* O conteúdo da tela de pagamento continua igual */}
           <h1>Pagamento via Pix</h1>
           <p className="pagamento-info">
             Para liberar seu acesso, realize o pagamento de <strong>R$ {precoFinal.toFixed(2).replace('.', ',')}</strong>.
@@ -459,13 +452,11 @@ function App() {
          >
            Estender Reserva
          </button>
- 
        </div>
       )}
   
       {currentScreen === 'telaEstenderReserva' && (
         <div className="estender-reserva-container">
-          {/* O conteúdo da tela de estender reserva continua igual */}
           <h1>Estender Reserva</h1>
           <div className="info-reserva-atual">
             <span>Sua reserva atual termina às:</span>

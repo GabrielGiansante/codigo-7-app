@@ -349,15 +349,11 @@ button:hover {
   margin-left: auto;
   margin-right: auto;
   
-  /* --- MUDANÇAS IMPORTANTES AQUI --- */
-  margin-top: 50px; /* Reduzindo a margem do topo para dar mais espaço na tela */
-  margin-bottom: 50px; /* Mantendo a margem inferior */
+  margin-top: 50px; 
+  margin-bottom: 50px; 
 
-  /* A linha abaixo pode ser necessária se a rolagem ainda não funcionar bem */
-  /* max-height: 85vh; */ /* Limita a altura máxima a 85% da altura da viewport */
-  /* overflow-y: auto; */  /* Adiciona uma barra de rolagem SE o conteúdo ultrapassar a max-height */
-  max-height: 85vh; /* Limita a altura a 85% da altura da tela do dispositivo */
-  overflow-y: auto; /* Adiciona uma barra de rolagem vertical DENTRO deste container SE o conteúdo for maior */
+  max-height: 85vh; 
+  overflow-y: auto;  
 }
 .area-reserva-container h1 {
   font-size: 1.8em; 
@@ -377,7 +373,6 @@ button:hover {
   color: #fff;
   margin: 50px 0; /* Espaçamento vertical padrão */
 
-  /* Borda e sombra vermelha para TODOS */
   border: 1px solid #500; 
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.05),
               0 0 10px rgba(180, 0, 0, 0.4); 
@@ -386,14 +381,14 @@ button:hover {
 /* Ajustes de largura máxima para cada container específico */
 .area-reserva-container {
   max-width: 360px;
-  max-height: 85vh; /* Mantém a rolagem interna para a reserva */
-  overflow-y: auto; /* Mantém a rolagem interna para a reserva */
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 .pagamento-container,
 .controle-container,
 .estender-reserva-container {
-  
+  margin-top: 50px;
   max-width: 400px;
 }
 
@@ -447,8 +442,7 @@ button:hover {
 
 .btn-pagamento-confirmado, 
 .btn-controle {
-  /* Estilos Visuais */
-  background-color: #008000; /* Verde */
+  background-color: #008000; 
   color: white;
   border: 1px solid white;
   border-radius: 8px;
@@ -456,27 +450,24 @@ button:hover {
   font-size: 1.1em;
   padding: 12px;
 
-  /* Estilos Funcionais */
   width: 100%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 .btn-pagamento-confirmado:hover, 
 .btn-controle:hover {
-  background-color: #006400; /* Verde mais escuro */
+  background-color: #006400; 
 }
 
 .btn-pagamento-voltar {
-  /* Estilos Visuais */
   background-color: transparent;
   color: #aaa;
   border: 1px solid #777;
   border-radius: 8px;
-  font-weight: normal; /* Normal, não bold */
-  font-size: 1em;    /* Tamanho um pouco menor */
+  font-weight: normal; 
+  font-size: 1em;    
   padding: 10px;
 
-  /* Estilos Funcionais */
   width: 100%;
   margin-top: 10px;
   cursor: pointer;
@@ -521,7 +512,7 @@ button:hover {
 
 /* Estilo para o novo botão na tela de controle */
 .btn-estender-reserva {
-  background-color: #005f99; /* Um tom de azul para diferenciar */
+  background-color: #005f99; 
 }
 .btn-estender-reserva:hover {
   background-color: #007acc;
@@ -534,7 +525,7 @@ button:hover {
 /* Estilo para a mensagem de confirmação dos itens de consumo */
 .consumo-info-msg {
   font-size: 1.2em;
-  color: #FFA500; /* Cor laranja, igual à da Hora de Saída */
+  color: #FFA500; 
   font-family: 'Merriweather', serif;
   font-weight: bold;
   text-align: center;
@@ -595,12 +586,12 @@ button:hover {
   font-weight: bold;
 }
 .info-extensao-item .preco-adicional {
-  color: #4CAF50; /* Verde */
+  color: #4CAF50; 
   font-size: 1.1em;
 }
 .btn-confirmar-extensao {
   width: 100%;
-  background-color: #008000; /* Verde */
+  background-color: #008000; 
   padding: 12px;
   font-size: 1.1em;
   font-weight: bold;
@@ -614,26 +605,16 @@ button:hover {
 }
 /* ===== NOVOS ESTILOS PARA O CONTROLE REMOTO VISUAL ===== */
 
-/* ================================================================ */
-/*  CORREÇÃO FOCADA NO TAMANHO DA IMAGEM DO CONTROLE REMOTO         */
-/* ================================================================ */
-
+/* Container para a imagem de fundo */
 .controle-remoto-visual {
-  /* Removemos os tamanhos fixos para a imagem se adaptar à tela */
-  /* width: 360px; */  /* REMOVIDO */
-  /* height: 600px; */ /* REMOVIDO */
-
-  /* NOVAS REGRAS DE TAMANHO FLEXÍVEL */
-  width: 80%;               /* A imagem ocupará 80% da largura do container */
-  max-width: 320px;         /* Mas nunca ficará maior que 320px (para telas grandes) */
-  aspect-ratio: 3 / 5;      /* Isso mantém a proporção de altura/largura da imagem original */
-
-  /* Suas regras originais que estavam perfeitas */
-  background-image: url('/controle-remoto.png');
+  width: 80%;
+  max-width: 320px;
+  aspect-ratio: 3 / 5;
+  background-image: url('/controle-remoto.png'); 
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 20px auto;
+  margin: 20px auto; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -641,11 +622,10 @@ button:hover {
 
 /* Botão que fica sobre a imagem */
 .btn-abrir-portao {
-  /* Estilos visuais para parecer um botão de controle */
-  background-color: #c00; /* Vermelho escuro */
+  background-color: #c00; 
   color: white;
   border: 2px solid #fff;
-  border-radius: 50%; /* Botão redondo */
+  border-radius: 50%; 
   width: 110px;
   height: 110px;
   font-size: 1.5em;
@@ -653,13 +633,12 @@ button:hover {
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.4);
   transition: all 0.1s ease-in-out;
-  /* Remove herança da regra 'button' global se necessário */
   padding: 0; 
 }
 .btn-abrir-portao:hover {
-  background-color: #ff3333; /* Vermelho mais claro */
+  background-color: #ff3333; 
 }
-.btn-abrir-portao:active { /* Efeito de pressionar */
+.btn-abrir-portao:active { 
   transform: translateY(2px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
@@ -667,4 +646,14 @@ button:hover {
 /* Garante que o botão 'Estender Reserva' ocupe a largura toda */
 .controle-container .btn-estender-reserva {
   width: 100%;
+}
+
+/* ================================================================ */
+/*  SOLUÇÃO FINAL E SIMPLES PARA EVITAR CORTES                      */
+/* ================================================================ */
+.controle-container {
+  max-height: 90vh;
+  overflow-y: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
