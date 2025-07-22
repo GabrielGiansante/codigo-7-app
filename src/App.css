@@ -669,36 +669,25 @@ button:hover {
   width: 100%;
 }
 /* ================================================================ */
-/*  LAYOUT FINAL E À PROVA DE FALHAS                                */
+/*  LAYOUTS DINÂMICOS PARA AS TELAS                                 */
 /* ================================================================ */
 
-/* Estilo para a tela de reserva (alinhada no topo) */
+/* Layout para a tela de reserva (alinhada no topo) */
 .app-wrapper-topo {
   min-height: 100vh;
   display: flex;
-  justify-content: flex-start; /* Alinha no topo */
+  flex-direction: column;
   align-items: center;
-  padding: 40px 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
   box-sizing: border-box;
 }
 
-/* Estilo para o controle e outras telas (centralizadas) */
+/* Layout para o controle e outras telas (centralizado) */
 .app-wrapper-centro {
   min-height: 100vh;
-  display: grid; /* A técnica mais moderna */
-  place-items: center; /* Centraliza tudo perfeitamente */
-  padding: 40px 0;
+  display: grid;
+  place-items: center;
+  padding: 40px;
   box-sizing: border-box;
-}
-/* ================================================================ */
-/*  SOLUÇÃO FINAL: CLASSE PARA TRAVAR E CENTRALIZAR A TELA          */
-/* ================================================================ */
-
-.tela-fixa {
-  position: fixed; /* Trava o container na tela */
-  overflow: hidden; /* Esconde a rolagem */
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
 }

@@ -245,23 +245,7 @@ function App() {
       window.scrollTo(0, 0);
     }
   }, [currentScreen]);
-  // Efeito para DEBUG VISUAL
-// Efeito para travar a tela de controle
-useEffect(() => {
-  const wrapper = document.querySelector('.app-wrapper-centro, .app-wrapper-topo');
-  if (wrapper) {
-    if (currentScreen === 'telaControleRemoto') {
-      // Adiciona a classe que TRAVA a tela
-      wrapper.classList.add('tela-fixa');
-    } else {
-      // Remove a classe para as outras telas
-      wrapper.classList.remove('tela-fixa');
-    }
-  }
-  return () => {
-    if (wrapper) wrapper.classList.remove('tela-fixa');
-  };
-}, [currentScreen]);
+  
 
   useEffect(() => {
     if (currentScreen === 'telaEstenderReserva') {
@@ -285,8 +269,8 @@ useEffect(() => {
 
   // ===== MUDANÇA PRINCIPAL AQUI =====
   // Define o estilo de alinhamento vertical com base na tela atual
-  
   const wrapperClassName = currentScreen === 'areaDeReserva' ? 'app-wrapper-topo' : 'app-wrapper-centro';
+  
   return (
     <div className={wrapperClassName}>
   
