@@ -678,5 +678,5 @@ button:hover {
 */
 .controle-remoto-visual {
   position: relative; /* Necessário para a transformação funcionar corretamente */
-  transform: translateY(-70px);
+  transform: translateY(-90px);
 }
