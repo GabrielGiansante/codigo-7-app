@@ -679,6 +679,7 @@ button:hover {
   justify-content: flex-start; /* Alinha no topo */
   align-items: center;
   padding: 40px 0;
+  box-sizing: border-box;
 }
 
 /* Estilo para o controle e outras telas (centralizadas) */
@@ -687,4 +688,5 @@ button:hover {
   display: grid; /* A técnica mais moderna */
   place-items: center; /* Centraliza tudo perfeitamente */
   padding: 40px 0;
+  box-sizing: border-box;
 }
