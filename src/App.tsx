@@ -268,7 +268,7 @@ function App() {
 
   // ===== MUDANÇA PRINCIPAL AQUI =====
   // Define o estilo de alinhamento vertical com base na tela atual
-  const justifyContentStyle = currentScreen === 'areaDeReserva' ? 'flex-start' : 'center';
+  
   const wrapperClassName = currentScreen === 'areaDeReserva' ? 'app-wrapper-topo' : 'app-wrapper-centro';
   return (
     <div className={wrapperClassName}>
