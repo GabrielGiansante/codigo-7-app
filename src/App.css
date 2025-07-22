@@ -683,3 +683,13 @@ button:hover {
   /* Garante que o container ocupe a largura da tela */
   width: 100%;
 }
+/* ================================================================ */
+/*  TOQUE FINAL DE CENTRALIZAÇÃO VERTICAL                           */
+/* ================================================================ */
+
+.controle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza verticalmente */
+  flex: 1; /* Faz o container crescer para ocupar o espaço disponível */
+}
