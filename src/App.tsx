@@ -245,6 +245,22 @@ function App() {
       window.scrollTo(0, 0);
     }
   }, [currentScreen]);
+  // Efeito para controlar a rolagem da página
+useEffect(() => {
+  if (currentScreen === 'telaControleRemoto') {
+    // Trava a rolagem quando estiver na tela de controle
+    document.body.classList.add('body-no-scroll');
+  } else {
+    // Libera a rolagem para todas as outras telas
+    document.body.classList.remove('body-no-scroll');
+  }
+
+  // Função de 'limpeza' que garante que a rolagem seja liberada
+  // se o componente for desmontado
+  return () => {
+    document.body.classList.remove('body-no-scroll');
+  };
+}, [currentScreen]); // Este efeito roda toda vez que a 'currentScreen' muda
 
   useEffect(() => {
     if (currentScreen === 'telaEstenderReserva') {
