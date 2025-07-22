@@ -441,7 +441,12 @@ function App() {
              ABRIR
            </button>
          </div>
- 
+          {/* ===== NOVA MENSAGEM DE AVISO ADICIONADA AQUI ===== */}
+   <p className="aviso-fim-reserva">
+     ⚠️ Atenção: Após o fim da reserva, o controle do portão é desativado. Saia antes para não ficar preso.
+   </p>
+   {/* =================================================== */}
+
          <button 
            className="btn-controle btn-estender-reserva"
            onClick={() => setCurrentScreen('telaEstenderReserva')}
