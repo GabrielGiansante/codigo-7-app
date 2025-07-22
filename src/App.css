@@ -605,16 +605,26 @@ button:hover {
 }
 /* ===== NOVOS ESTILOS PARA O CONTROLE REMOTO VISUAL ===== */
 
-/* Container para a imagem de fundo */
+/* ================================================================ */
+/*  AJUSTE FINAL DE TAMANHO E POSIÇÃO DO CONTROLE                   */
+/* ================================================================ */
+
 .controle-remoto-visual {
-  width: 80%;
-  max-width: 320px;
+  /* --- CONTROLE DE TAMANHO --- */
+  width: 90%; /* Aumentamos um pouco a largura base */
+  max-width: 360px; /* AUMENTADO DE 320px para 360px */
   aspect-ratio: 3 / 5;
-  background-image: url('/controle-remoto.png'); 
+
+  /* --- CONTROLE DE POSIÇÃO (mantendo seu ajuste) --- */
+  position: relative;
+  transform: translateY(-100px); /* MANTÉM O SEU VALOR DE -100px */
+
+  /* --- REGRAS DE ESTILO (sem alteração) --- */
+  background-image: url('/controle-remoto.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 20px auto 30px;
+  margin: 0 auto; 
   display: flex;
   justify-content: center;
   align-items: center;
