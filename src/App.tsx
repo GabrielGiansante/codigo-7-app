@@ -263,11 +263,7 @@ function App() {
   const hojeMinDate = new Date().toISOString().split('T')[0];
 
   return (
-    <div style={{
-      minHeight: '100vh', display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'flex-start',
-      paddingTop: '40px', paddingBottom: '40px', boxSizing: 'border-box'
-    }}>
+    <div>
   
       {currentScreen === 'areaDeReserva' && (
         <div className="area-reserva-container">
@@ -434,7 +430,7 @@ function App() {
   
       {currentScreen === 'telaControleRemoto' && (
          <div className="controle-container">
-         <h1>Acesso Liberado - Teste Visual</h1>
+         <h1>Acesso Liberado</h1>
          <p>Pressione o botão no controle para abrir o portão.</p>
          
          <div className="controle-remoto-visual">
