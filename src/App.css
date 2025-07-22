@@ -690,11 +690,15 @@ button:hover {
   padding: 40px 0;
   box-sizing: border-box;
 }
-
 /* ================================================================ */
-/*  ESTILO DE DEBUG VISUAL                                          */
+/*  SOLUÇÃO FINAL: CLASSE PARA TRAVAR E CENTRALIZAR A TELA          */
 /* ================================================================ */
 
-.debug-ativo {
-  background-color: lime !important; /* Verde-limão berrante */
+.tela-fixa {
+  position: fixed; /* Trava o container na tela */
+  overflow: hidden; /* Esconde a rolagem */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }

@@ -246,17 +246,20 @@ function App() {
     }
   }, [currentScreen]);
   // Efeito para DEBUG VISUAL
+// Efeito para travar a tela de controle
 useEffect(() => {
   const wrapper = document.querySelector('.app-wrapper-centro, .app-wrapper-topo');
   if (wrapper) {
     if (currentScreen === 'telaControleRemoto') {
-      wrapper.classList.add('debug-ativo');
+      // Adiciona a classe que TRAVA a tela
+      wrapper.classList.add('tela-fixa');
     } else {
-      wrapper.classList.remove('debug-ativo');
+      // Remove a classe para as outras telas
+      wrapper.classList.remove('tela-fixa');
     }
   }
   return () => {
-    if (wrapper) wrapper.classList.remove('debug-ativo');
+    if (wrapper) wrapper.classList.remove('tela-fixa');
   };
 }, [currentScreen]);
 
