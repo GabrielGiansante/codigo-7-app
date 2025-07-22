@@ -668,26 +668,3 @@ button:hover {
 .controle-container .btn-estender-reserva {
   width: 100%;
 }
-/* ================================================================ */
-/*  LAYOUTS DINÂMICOS PARA AS TELAS                                 */
-/* ================================================================ */
-
-/* Layout para a tela de reserva (alinhada no topo) */
-.app-wrapper-topo {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  box-sizing: border-box;
-}
-
-/* Layout para o controle e outras telas (centralizado) */
-.app-wrapper-centro {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 40px;
-  box-sizing: border-box;
-}
