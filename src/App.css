@@ -561,6 +561,8 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  transform: translateY(-100px);
 }
 
 /* 4. O botão que fica sobre a imagem do controle */
