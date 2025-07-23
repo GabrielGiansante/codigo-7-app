@@ -614,5 +614,5 @@ button:hover {
 .grupo-controle {
   position: relative;
   /* Começamos com -40px. Este é o número que vamos ajustar. */
-  transform: translateY(-40px);
+  transform: translateY(-20px);
 }
