@@ -540,6 +540,9 @@ button:hover {
   max-height: 90vh;
   /* Se o conteúdo interno estourar, ele cria uma rolagem DENTRO do container */
   overflow-y: auto;
+   /* NOVAS REGRAS PARA MOVER O BLOCO INTEIRO PARA CIMA */
+   position: relative;
+   transform: translateY(-60px); 
 }
 
 /* 2. O parágrafo de texto dentro do container de controle */
@@ -562,9 +565,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   
-  /* REGRAS PARA FORÇAR PARA CIMA */
-  position: relative;
-  transform: translateY(-100px);
+ 
 }
 
 /* 4. O botão que fica sobre a imagem do controle */
