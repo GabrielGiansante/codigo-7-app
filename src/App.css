@@ -609,7 +609,7 @@ button:hover {
 
   /* REGRAS PARA PUXAR A MENSAGEM PARA CIMA */
   position: relative;
-  transform: translateY(-90px);
+  transform: translateY(-110px);
 }
 /* ================================================================ */
 /*  SOLUÇÃO FINAL: MOVENDO O GRUPO DE CONTROLE PARA CIMA            */
