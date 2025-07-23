@@ -552,7 +552,7 @@ button:hover {
 /* 3. A imagem visual do controle remoto */
 .controle-remoto-visual {
   width: 90%;
-  max-width: 380px; /* AUMENTADO PARA UM POUCO MAIOR */
+  max-width: 480px; /* AUMENTADO PARA UM POUCO MAIOR */
   aspect-ratio: 3 / 5;
   background-image: url('/controle-remoto.png');
   background-size: contain;
