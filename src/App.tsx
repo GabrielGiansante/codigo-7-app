@@ -195,7 +195,7 @@ function App() {
   
   useEffect(() => {
     const calcularReserva = () => {
-      if (currentScreen === 'areaDeReserva' || (currentScreen === 'areaDePagamento' && !paymentConfirmed)) {
+      if (currentScreen === 'areaDeReserva') {
         let novoPrecoAluguel = 0;
         if (opcaoAluguel === '4h') novoPrecoAluguel = 600;
         else if (opcaoAluguel === '12h') novoPrecoAluguel = 1200;
