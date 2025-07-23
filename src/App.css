@@ -597,15 +597,19 @@ button:hover {
 }
 
 /* 5. A mensagem de aviso abaixo do controle */
+/* 5. A mensagem de aviso abaixo do controle */
 .aviso-fim-reserva {
   color: #ffcc00; 
   font-size: 0.9em; 
   font-weight: 500;
   line-height: 1.4; 
   text-align: center;
-  padding: 0 15px; 
-  margin-top: 0; /* Remove o espaço entre o controle e o aviso */
+  padding: 0 15px;
   margin-bottom: 25px;
+
+  /* REGRAS PARA PUXAR A MENSAGEM PARA CIMA */
+  position: relative;
+  transform: translateY(-90px);
 }
 /* ================================================================ */
 /*  SOLUÇÃO FINAL: MOVENDO O GRUPO DE CONTROLE PARA CIMA            */
