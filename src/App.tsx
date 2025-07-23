@@ -430,17 +430,22 @@ function App() {
   
       {currentScreen === 'telaControleRemoto' && (
          <div className="controle-container">
-         <h1>Acesso Liberado</h1>
-         <p>Pressione o botão no controle para abrir o portão.</p>
-         
-         <div className="controle-remoto-visual">
-           <button 
-             className="btn-abrir-portao"
-             onClick={handleAbrirPortao}
-           >
-             ABRIR
-           </button>
-         </div>
+           <h1>Acesso Liberado</h1>
+
+{/* ===== INÍCIO DA NOVA SUB-CAIXA ===== */}
+<div className="grupo-controle">
+  <p>Pressione o botão no controle para abrir o portão.</p>
+  
+  <div className="controle-remoto-visual">
+    <button 
+      className="btn-abrir-portao"
+      onClick={handleAbrirPortao}
+    >
+      ABRIR
+    </button>
+  </div>
+</div>
+{/* ===== FIM DA NOVA SUB-CAIXA ===== */}
           {/* ===== NOVA MENSAGEM DE AVISO ADICIONADA AQUI ===== */}
    <p className="aviso-fim-reserva">
      ⚠️ Atenção: Após o fim da reserva, o controle do portão é desativado. Saia antes para não ficar preso.

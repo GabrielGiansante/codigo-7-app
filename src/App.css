@@ -540,9 +540,7 @@ button:hover {
   max-height: 90vh;
   /* Se o conteúdo interno estourar, ele cria uma rolagem DENTRO do container */
   overflow-y: auto;
-   /* NOVAS REGRAS PARA MOVER O BLOCO INTEIRO PARA CIMA */
-   position: relative;
-   transform: translateY(-60px); 
+  
 }
 
 /* 2. O parágrafo de texto dentro do container de controle */
@@ -564,7 +562,10 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+   
+  /* REGRAS PARA FORÇAR PARA CIMA */
+  position: relative; 
+  transform: translateY(-100px); 
  
 }
 
@@ -605,4 +606,13 @@ button:hover {
   padding: 0 15px; 
   margin-top: 0; /* Remove o espaço entre o controle e o aviso */
   margin-bottom: 25px;
+}
+/* ================================================================ */
+/*  SOLUÇÃO FINAL: MOVENDO O GRUPO DE CONTROLE PARA CIMA            */
+/* ================================================================ */
+
+.grupo-controle {
+  position: relative;
+  /* Começamos com -40px. Este é o número que vamos ajustar. */
+  transform: translateY(-40px);
 }
