@@ -599,15 +599,34 @@ button:hover {
 /*  ESTILO FINAL E CORRIGIDO PARA O AVISO DENTRO DO CONTROLE        */
 /* ================================================================ */
 
+/* ================================================================ */
+/*  ESTILO FINAL PARA A MENSAGEM DE AVISO DENTRO DO CONTROLE        */
+/* ================================================================ */
+
 .aviso-fim-reserva {
-  color: #ffcc00; 
-  font-size: 0.9em; 
+  color: #ffdd44; /* Cor um pouco mais vibrante */
+  font-size: 1em; /* AUMENTADO PARA O TAMANHO DO TEXTO NORMAL */
+  font-weight: bold; /* Deixando em negrito para mais destaque */
   text-align: center;
-  padding: 0 10%; /* Espaçamento lateral para não encostar nas bordas */
+  padding: 0 10%;
   
-  /* Posiciona o aviso em relação ao pai (.controle-remoto-visual) */
   position: absolute; 
-  bottom: 20px; /* Fica a 20px da borda de BAIXO da imagem do controle */
+  bottom: 20px;
   left: 0;
   right: 0;
+
+  /* ANIMAÇÃO DE PULSAÇÃO LUMINOSA */
+  animation: pulse-glow 2.5s infinite alternate;
+}
+
+/* ESTA É A RECEITA DA ANIMAÇÃO */
+@keyframes pulse-glow {
+  from {
+    /* O texto começa com um brilho sutil */
+    text-shadow: 0 0 5px #ffcc00;
+  }
+  to {
+    /* E pulsa para um brilho mais intenso */
+    text-shadow: 0 0 15px #ffcc00, 0 0 20px #ffcc00;
+  }
 }
