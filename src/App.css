@@ -603,30 +603,33 @@ button:hover {
 /*  ESTILO FINAL PARA A MENSAGEM DE AVISO DENTRO DO CONTROLE        */
 /* ================================================================ */
 
+/* ================================================================ */
+/*  ESTILO FINAL PARA A MENSAGEM DE AVISO DENTRO DO CONTROLE        */
+/* ================================================================ */
+
 .aviso-fim-reserva {
-  color: #ffdd44; /* Cor um pouco mais vibrante */
-  font-size: 1em; /* AUMENTADO PARA O TAMANHO DO TEXTO NORMAL */
-  font-weight: bold; /* Deixando em negrito para mais destaque */
+  color: #ffdd44;
+  font-size: 1em;
+  font-weight: bold;
   text-align: center;
-  padding: 0 10%;
+  /* AUMENTAMOS O ESPAÇO HORIZONTAL DISPONÍVEL */
+  padding: 0 5%; 
   
   position: absolute; 
-  bottom: 20px;
+  /* PUXAMOS UM POUCO PARA BAIXO */
+  bottom: 15px; 
   left: 0;
   right: 0;
 
-  /* ANIMAÇÃO DE PULSAÇÃO LUMINOSA */
   animation: pulse-glow 2.5s infinite alternate;
 }
 
 /* ESTA É A RECEITA DA ANIMAÇÃO */
 @keyframes pulse-glow {
   from {
-    /* O texto começa com um brilho sutil */
     text-shadow: 0 0 5px #ffcc00;
   }
   to {
-    /* E pulsa para um brilho mais intenso */
     text-shadow: 0 0 15px #ffcc00, 0 0 20px #ffcc00;
   }
 }
