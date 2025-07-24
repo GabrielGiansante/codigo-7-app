@@ -596,27 +596,20 @@ button:hover {
   width: 100%;
 }
 
-/* 5. A mensagem de aviso abaixo do controle */
-/* 5. A mensagem de aviso abaixo do controle */
+
+/* ================================================================ */
+/*  ESTILO FINAL E CORRIGIDO PARA O AVISO DENTRO DO CONTROLE        */
+/* ================================================================ */
+
 .aviso-fim-reserva {
   color: #ffcc00; 
   font-size: 0.9em; 
-  font-weight: 500;
-  line-height: 1.4; 
   text-align: center;
-  padding: 0 15px;
-  margin-bottom: 25px;
-
-  /* REGRAS PARA PUXAR A MENSAGEM PARA CIMA */
-  position: relative;
-  transform: translateY(-400px);
-}
-/* ================================================================ */
-/*  SOLUÇÃO FINAL: MOVENDO O GRUPO DE CONTROLE PARA CIMA            */
-/* ================================================================ */
-
-.grupo-controle {
-  position: relative;
-  /* Começamos com -40px. Este é o número que vamos ajustar. */
-  transform: translateY(-20px);
+  padding: 0 10%; /* Espaçamento lateral para não encostar nas bordas */
+  
+  /* Posiciona o aviso em relação ao pai (.controle-remoto-visual) */
+  position: absolute; 
+  bottom: 20px; /* Fica a 20px da borda de BAIXO da imagem do controle */
+  left: 0;
+  right: 0;
 }
