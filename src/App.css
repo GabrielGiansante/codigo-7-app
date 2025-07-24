@@ -569,28 +569,26 @@ button:hover {
  
 }
 
-/* 4. O botão que fica sobre a imagem do controle */
+/* Botão que fica sobre a imagem (agora invisível) */
 .btn-abrir-portao {
-  background-color: #c00; 
-  color: white;
-  border: 2px solid #fff;
+  /* TORNA O BOTÃO COMPLETAMENTE TRANSPARENTE */
+  opacity: 0; 
+  
+  /* Mantém o tamanho e a forma para garantir a área clicável */
   border-radius: 50%; 
-  width: 85px;
-  height: 85px;
-  font-size: 1.5em;
-  font-weight: bold;
+  width: 95px;
+  height: 95px;
+  
+  /* Mantém o cursor de 'mãozinha' para o usuário saber que é clicável */
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-  transition: all 0.1s ease-in-out;
+
+  /* Removemos estilos visuais como cor, borda e sombra */
+  background-color: transparent;
+  border: none;
   padding: 0; 
 }
-.btn-abrir-portao:hover {
-  background-color: #ff3333; 
-}
-.btn-abrir-portao:active { 
-  transform: translateY(2px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-}
+
+/* As regras de :hover e :active não são mais necessárias, então as removemos. */
 
 .controle-container .btn-estender-reserva {
   width: 100%;
