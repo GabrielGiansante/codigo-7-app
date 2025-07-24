@@ -575,8 +575,8 @@ button:hover {
   color: white;
   border: 2px solid #fff;
   border-radius: 50%; 
-  width: 95px;
-  height: 95px;
+  width: 75px;
+  height: 75px;
   font-size: 1.5em;
   font-weight: bold;
   cursor: pointer;
