@@ -607,24 +607,34 @@ button:hover {
 /*  ESTILO FINAL PARA A MENSAGEM DE AVISO DENTRO DO CONTROLE        */
 /* ================================================================ */
 
+/* ================================================================ */
+/*  DIAGNÓSTICO VISUAL PARA A MENSAGEM DE AVISO                     */
+/* ================================================================ */
+
 .aviso-fim-reserva {
+  /* --- ESTILOS VISUAIS (sem alteração) --- */
   color: #ffdd44;
   font-size: 1em;
   font-weight: bold;
   text-align: center;
-  /* AUMENTAMOS O ESPAÇO HORIZONTAL DISPONÍVEL */
-  padding: 0 5%; 
-  
-  position: absolute; 
-  /* PUXAMOS UM POUCO PARA BAIXO */
-  bottom: 15px; 
-  left: 0;
-  right: 0;
-
   animation: pulse-glow 2.5s infinite alternate;
+
+  /* --- DIAGNÓSTICO DE LAYOUT --- */
+  
+  /* 1. VAMOS DESENHAR UMA BORDA VERMELHA PARA VER OS LIMITES REAIS */
+  border: 2px solid red;
+
+  /* 2. VAMOS FORÇAR O TEXTO PARA A BASE DO CONTROLE */
+  position: absolute; 
+  bottom: 5px; /* Valor bem baixo para ser uma mudança óbvia */
+  
+  /* 3. VAMOS USAR O ESPAÇO HORIZONTAL AO MÁXIMO */
+  left: 5%; /* Deixa uma margem de 5% na esquerda */
+  right: 5%; /* Deixa uma margem de 5% na direita */
+  width: 90%; /* Força a largura a ocupar 90% do pai */
 }
 
-/* ESTA É A RECEITA DA ANIMAÇÃO */
+/* Animação (sem alteração) */
 @keyframes pulse-glow {
   from {
     text-shadow: 0 0 5px #ffcc00;
