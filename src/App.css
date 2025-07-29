@@ -551,22 +551,17 @@ button:hover {
 
 /* 3. A imagem visual do controle remoto */
 .controle-remoto-visual {
-  width: 90%;
-  max-width: 380px; /* AUMENTADO PARA UM POUCO MAIOR */
+  width: 100%;
+  max-width: 420px; /* <--- CONTROLE GRANDE */
   aspect-ratio: 3 / 5;
   background-image: url('/controle-remoto.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 0 auto;
+  margin: 20px auto 30px auto;
   display: flex;
   justify-content: center;
   align-items: center;
-   
-  /* REGRAS PARA FORÇAR PARA CIMA */
-  position: relative; 
-  transform: translateY(-100px); 
- 
 }
 
 /* 4. O botão que fica sobre a imagem do controle */
