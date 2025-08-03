@@ -526,8 +526,8 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; 
-  transform: translateY(-100px); 
+ 
+  
 }
 
 .btn-abrir-portao {
@@ -560,4 +560,12 @@ button:hover {
   padding: 0 15px;
   margin-top: 15px;
   margin-bottom: 25px;
+}
+/* ================================================================ */
+/*  CONTROLE DE ESPAÇAMENTO NA TELA DE CONTROLE                     */
+/* ================================================================ */
+
+/* Alvo: O parágrafo <p> que está DIRETAMENTE dentro do .controle-container */
+.controle-container > p {
+  margin-bottom: 5px; /* Define um espaço pequeno abaixo dele */
 }
