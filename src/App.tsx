@@ -444,12 +444,13 @@ function App() {
       ABRIR
     </button>
   </div>
+  <p className="aviso-fim-reserva">
+     ⚠️ Atenção: Após o fim da reserva, o controle do portão é desativado. Saia antes para não ficar preso.
+   </p>
 </div>
 {/* ===== FIM DA NOVA SUB-CAIXA ===== */}
           {/* ===== NOVA MENSAGEM DE AVISO ADICIONADA AQUI ===== */}
-   <p className="aviso-fim-reserva">
-     ⚠️ Atenção: Após o fim da reserva, o controle do portão é desativado. Saia antes para não ficar preso.
-   </p>
+   
    {/* =================================================== */}
 
          <button 
