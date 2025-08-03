@@ -565,7 +565,7 @@ button:hover {
    
   /* REGRAS PARA FORÇAR PARA CIMA */
   position: relative; 
-  
+  transform: translateY(-100px); 
  
 }
 
