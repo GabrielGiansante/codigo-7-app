@@ -329,6 +329,7 @@ button:hover {
               0 0 10px rgba(180, 0, 0, 0.4); 
 }
 
+/* Ajustes de largura máxima para cada container específico */
 .area-reserva-container {
   max-width: 360px;
   max-height: 85vh;
@@ -336,8 +337,7 @@ button:hover {
 }
 
 .pagamento-container,
-.estender-reserva-container,
-.controle-container { /* Adicionado .controle-container aqui */
+.estender-reserva-container {
   max-width: 400px;
 }
 
@@ -389,6 +389,8 @@ button:hover {
 .pagamento-aviso strong {
   color: #ff4d4d;
 }
+/* ===== ESTILOS ISOLADOS PARA BOTÕES DE PAGAMENTO/CONTROLE ===== */
+
 .btn-pagamento-confirmado, 
 .btn-controle {
   background-color: #008000; 
@@ -424,11 +426,26 @@ button:hover {
   background-color: #333;
 }
 
+.controle-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+.btn-nova-reserva {
+  background-color: #555;
+}
+
+/* Estilo para o novo botão na tela de controle */
 .btn-estender-reserva {
   background-color: #005f99; 
 }
 .btn-estender-reserva:hover {
   background-color: #007acc;
+}
+
+.controle-botoes .btn-estender-reserva {
+    width: 100%;
 }
 
 .consumo-info-msg {
@@ -513,45 +530,72 @@ button:hover {
 }
 
 /* ================================================================ */
-/*  ESTILOS FINAIS E UNIFICADOS PARA A TELA DE CONTROLE (BASEADO NO BACKUP) */
+/*  ESTILOS FINAIS E UNIFICADOS PARA A TELA DE CONTROLE             */
 /* ================================================================ */
 
+/* 1. O container do controle */
+.controle-container {
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* 2. O grupo que une o texto e o controle */
+.grupo-controle {
+  /* Puxa o grupo todo para cima, aproximando do título */
+  transform: translateY(-20px);
+}
+
+/* 3. O parágrafo DENTRO do grupo */
+.grupo-controle p {
+  /* Remove o espaço extra abaixo do texto */
+  margin-bottom: 0;
+}
+
+/* 4. A imagem visual do controle remoto */
 .controle-remoto-visual {
-  width: 100%;
-  max-width: 360px; /* <--- AUMENTEI SÓ UM POUCO, DE 320 PARA 360 */
+  width: 90%;
+  max-width: 380px;
   aspect-ratio: 3 / 5;
   background-image: url('/controle-remoto.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 20px auto 30px auto;
+  margin: 5px auto 0; /* Margem superior mínima para não colar no texto */
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; 
 }
 
+/* 5. O botão que fica sobre a imagem */
 .btn-abrir-portao {
-  background-color: #c00;
+  background-color: transparent;
   color: white;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  width: 110px;
-  height: 110px;
-  font-size: 1.5em;
+  border: none;
+  box-shadow: none;
+  border-radius: 50%; 
+  width: 80px; /* Tamanho reduzido */
+  height: 80px; /* Tamanho reduzido */
+  font-size: 1.1em;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-  padding: 0;
-  transition: all 0.1s ease-in-out;
+  padding: 0; 
+  transition: transform 0.1s ease-out;
 }
 .btn-abrir-portao:hover {
-  background-color: #ff3333;
+  transform: scale(1.05);
 }
-.btn-abrir-portao:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+.btn-abrir-portao:active { 
+  transform: scale(0.95);
 }
 
+/* 6. O botão 'Estender Reserva' */
+.controle-container .btn-estender-reserva {
+  width: 100%;
+}
+
+/* 7. A mensagem de aviso */
 .aviso-fim-reserva {
   color: #ffcc00; 
   font-size: 0.9em; 
