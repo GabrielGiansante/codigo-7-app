@@ -329,7 +329,6 @@ button:hover {
               0 0 10px rgba(180, 0, 0, 0.4); 
 }
 
-/* Ajustes de largura máxima para cada container específico */
 .area-reserva-container {
   max-width: 360px;
   max-height: 85vh;
@@ -337,7 +336,8 @@ button:hover {
 }
 
 .pagamento-container,
-.estender-reserva-container {
+.estender-reserva-container,
+.controle-container { /* Adicionado .controle-container aqui */
   max-width: 400px;
 }
 
@@ -389,8 +389,6 @@ button:hover {
 .pagamento-aviso strong {
   color: #ff4d4d;
 }
-/* ===== ESTILOS ISOLADOS PARA BOTÕES DE PAGAMENTO/CONTROLE ===== */
-
 .btn-pagamento-confirmado, 
 .btn-controle {
   background-color: #008000; 
@@ -426,26 +424,11 @@ button:hover {
   background-color: #333;
 }
 
-.controle-botoes {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 30px;
-}
-.btn-nova-reserva {
-  background-color: #555;
-}
-
-/* Estilo para o novo botão na tela de controle */
 .btn-estender-reserva {
   background-color: #005f99; 
 }
 .btn-estender-reserva:hover {
   background-color: #007acc;
-}
-
-.controle-botoes .btn-estender-reserva {
-    width: 100%;
 }
 
 .consumo-info-msg {
@@ -530,78 +513,45 @@ button:hover {
 }
 
 /* ================================================================ */
-/*  ESTILOS FINAIS E CORRIGIDOS PARA A TELA DE CONTROLE             */
+/*  ESTILOS FINAIS E UNIFICADOS PARA A TELA DE CONTROLE (BASEADO NO BACKUP) */
 /* ================================================================ */
 
-/* 1. O container do controle */
-.controle-container {
-  max-width: 400px;
-  /* Garante que o container não seja mais alto que a tela */
-  max-height: 90vh;
-  /* Se o conteúdo interno estourar, ele cria uma rolagem DENTRO do container */
-  overflow-y: auto;
-  
-}
-
-/* 2. O parágrafo de texto dentro do container de controle */
-.controle-container p {
-  /* Remove o espaço extra abaixo do texto, aproximando o controle */
-  margin-bottom: 0;
-}
-
-/* 3. A imagem visual do controle remoto */
 .controle-remoto-visual {
-  width: 90%;
-  max-width: 380px; /* AUMENTADO PARA UM POUCO MAIOR */
+  width: 100%;
+  max-width: 360px; /* <--- AUMENTEI SÓ UM POUCO, DE 320 PARA 360 */
   aspect-ratio: 3 / 5;
   background-image: url('/controle-remoto.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 0 auto;
+  margin: 20px auto 30px auto;
   display: flex;
   justify-content: center;
   align-items: center;
-   
-  /* REGRAS PARA FORÇAR PARA CIMA */
-  position: relative; 
-  transform: translateY(-100px); 
- 
 }
 
-/* 4. O botão que fica sobre a imagem do controle */
 .btn-abrir-portao {
-  background-color: #c00; 
+  background-color: #c00;
   color: white;
   border: 2px solid #fff;
-  border-radius: 50%; 
-  width: 80px;
-  height: 80px;
-  font-size: 1.1em;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  font-size: 1.5em;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  padding: 0;
   transition: all 0.1s ease-in-out;
-  padding: 0; 
-
-  /* NOVAS REGRAS PARA AJUSTE FINO VERTICAL */
-  position: relative; /* Ativa a capacidade de mover o botão */
-  transform: translateY(-15px); /* Move o botão 15 pixels para CIMA */
 }
 .btn-abrir-portao:hover {
-  background-color: #ff3333; 
+  background-color: #ff3333;
 }
-.btn-abrir-portao:active { 
+.btn-abrir-portao:active {
   transform: translateY(2px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
-.controle-container .btn-estender-reserva {
-  width: 100%;
-}
-
-/* 5. A mensagem de aviso abaixo do controle */
-/* 5. A mensagem de aviso abaixo do controle */
 .aviso-fim-reserva {
   color: #ffcc00; 
   font-size: 0.9em; 
@@ -609,30 +559,6 @@ button:hover {
   line-height: 1.4; 
   text-align: center;
   padding: 0 15px;
-  margin-top: 15px; /* Adiciona um espaço fixo abaixo do controle */
+  margin-top: 15px;
   margin-bottom: 25px;
-}
-/* ================================================================ */
-/*  SOLUÇÃO FINAL: MOVENDO O GRUPO DE CONTROLE PARA CIMA            */
-/* ================================================================ */
-
-.grupo-controle {
-  position: relative;
-  /* Começamos com -40px. Este é o número que vamos ajustar. */
-  
-}
-/* ================================================================ */
-/*  AJUSTE FINO DE ESPAÇAMENTO ENTRE TEXTO E CONTROLE               */
-/* ================================================================ */
-
-/* Alvo: O parágrafo que está DENTRO do grupo de controle */
-.grupo-controle p {
-  /* Remove o espaço que ele empurra para baixo */
-  margin-bottom: 0;
-}
-
-/* Alvo: A imagem do controle */
-.controle-remoto-visual {
-  /* Remove o espaço que ele cria em cima */
-  margin-top: 5px; /* Deixei 5px para não colar totalmente */
 }
