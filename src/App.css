@@ -617,3 +617,18 @@ button:hover {
   /* Começamos com -40px. Este é o número que vamos ajustar. */
   
 }
+/* ================================================================ */
+/*  AJUSTE FINO DE ESPAÇAMENTO ENTRE TEXTO E CONTROLE               */
+/* ================================================================ */
+
+/* Alvo: O parágrafo que está DENTRO do grupo de controle */
+.grupo-controle p {
+  /* Remove o espaço que ele empurra para baixo */
+  margin-bottom: 0;
+}
+
+/* Alvo: A imagem do controle */
+.controle-remoto-visual {
+  /* Remove o espaço que ele cria em cima */
+  margin-top: 5px; /* Deixei 5px para não colar totalmente */
+}
